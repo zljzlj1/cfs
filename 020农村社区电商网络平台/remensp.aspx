@@ -1,0 +1,56 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="remensp.aspx.cs" Inherits="remensp" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+  <link href="css/MasterPage.css" rel="Stylesheet" type="text/css" />    
+ <style type="text/css">a{ color:Black; text-decoration:none;}</style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<div style="height: 500px"  >
+<div style="background-image: url('image/bg11.png'); background-repeat: repeat-x"  ><img src="image/2.png" /></div>
+<asp:DataList ID="DataList1" runat="server" CellPadding="4" RepeatColumns="4" 
+        Height="430px" Width="100%" HorizontalAlign="Center">
+        <ItemTemplate>
+       <div style="text-align: center">
+        
+          <a href="spxqxx.aspx?id=<%#Eval("spid") %>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid")%>"  > <asp:Image ID="Image1" runat="server" Height="120px" 
+                                ImageUrl='<%# DataBinder.Eval(Container.DataItem,"sptp") %>' Width="120px" />
+                            <br />
+                           <%#DataBinder.Eval(Container.DataItem,"spmc" )%>
+                            <br />
+                            <%#Eval("spjg").ToString()=="0.00"?"面议":Eval("spjg") %><span style="font-size: 10pt">￥</span> 
+                            <br />
+                         </a>   
+                            
+</div>
+
+        </ItemTemplate>
+        
+
+    </asp:DataList>
+    <asp:Panel ID="Panel1" runat="server">
+
+    <table style="WIDTH: 472px; HEIGHT: 28px" width="472" align="left" border="0">
+<TR>
+<TD vAlign="middle" align="center" width="135" colSpan="2"><asp:label id="lblCurrentPage" runat="server" Width="120px" Font-Size="9pt"></asp:label></TD>
+<TD vAlign="middle" align="right" width="57"><asp:linkbutton id="btnFirst" runat="server" CommandArgument="first" Font-Size="9pt" onclick="PagerButtonClick">首页</asp:linkbutton>&nbsp;</TD>
+<TD vAlign="middle" align="center" width="60"><asp:linkbutton id="btnPrev" runat="server" CommandArgument="prev" Font-Size="9pt" onclick="PagerButtonClick">前一页</asp:linkbutton></TD>
+<TD vAlign="middle" align="left" width="51"><asp:linkbutton id="btnNext" runat="server" CommandArgument="next" Font-Size="9pt" onclick="PagerButtonClick">下一页</asp:linkbutton></TD>
+<TD vAlign="middle" align="left" width="40"><asp:linkbutton id="btnLast" runat="server" CommandArgument="last" Font-Size="9pt" onclick="PagerButtonClick">末页</asp:linkbutton></TD>
+<TD vAlign="middle" align="left" width="53" style="WIDTH: 53px">&nbsp;&nbsp;
+<asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt" Height="28px">转到</asp:label></TD>
+<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt"></asp:textbox></TD>
+<TD vAlign="middle" align="center" width="26"><asp:label id="Label3" runat="server" Font-Size="9pt">页</asp:label></TD>
+<TD vAlign="middle" align="center" width="34">
+<P><asp:button id="Button1" runat="server" Width="44px" Height="20px" 
+        BorderStyle="Groove" Text="确定"
+Font-Size="9pt" onclick="Button1_Click"></asp:button></P>
+</TD>
+</TR>
+</table>
+    </asp:Panel>
+    <asp:Label ID="Label1" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
+
+
+</div>
+</asp:Content>
+

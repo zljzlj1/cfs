@@ -1,0 +1,64 @@
+﻿* {margin: 0;padding: 0;border: 0;list-style-type:none; }
+a,img{border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    text-decoration: none;
+    height: 19px;
+}
+.ul, li{padding: 0px;margin: 0px;border-width: 0px;}
+
+
+.body {background-color: #EEF2FB;left: 0px;top: 0px;right: 0px;bottom: 0px;}
+
+.admin_txt {font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #FFFFFF;text-decoration: none;height: 38px;width: 100%;line-height: 38px;}
+.admin_topbg {background-image: url('../images/top-right.gif');background-repeat: repeat-x;}
+.c{ clear:both;}
+.left{ width:170px;  float:left; }
+.right{ float:left;}
+.left_topbg {background-image: url('../images/content-bg.gif');background-repeat: repeat-x;}
+.table2
+{
+	float:right;
+	width:49%;
+	height:100px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url('../images/top_bt.jpg');
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.tablebg
+{
+	height: 28px;
+	line-height:28px;
+	background: #FFFFCC;
+}
+.tablexian
+{
+margin:0px auto;
+	border-collapse:collapse;
+   width: 98%;
+	margin-top:10px;
+	background:#ffffff;
+  }
+.tablexian td
+{
+	border: 1px solid #E8E8E8;
+	height:22px;
+	padding:3px;
+}
+/* 文本*/
+.s{ BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 0px solid; BORDER-LEFT: #000000 0px solid; BORDER-BOTTOM: #000000 1px solid }
+  /* 下拉框*/
+    .styled { border-radius:5px; width:100px; height:25px; padding:0 0px 0 0px;color:#fff;background-color:#3d69f7; font:14px "微软雅黑"; } 
+
+
+
+
+

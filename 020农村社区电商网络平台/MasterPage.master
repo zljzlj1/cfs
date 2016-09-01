@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Src="~/UserControl/LoginControl.ascx" TagName="LoginControl" TagPrefix="uc1" %>
+<%@ Register Src="~/UserControl/left.ascx" TagName="Left" TagPrefix="uc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>020农村社区电商网络平台</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+        <link href="css/MasterPage.css" rel="Stylesheet" type="text/css" />
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div> 
+      <div style="width:100%; background-image: url('image/banner-1.png'); background-repeat: repeat-x; height: 247px;"> <div style="padding-left: 10px; padding-top: 5px;">
+          <a href="sjdl.aspx" style="font-family: 黑体; font-size: 14px; color: #000000;">商家登录入口</a> | 
+          <a href="sjrzxz.aspx" style="font-family: 黑体; font-size: 14px; color: #000000;">商家入住须知</a> | 
+          <a href="gywm.aspx" style="font-family: 黑体; font-size: 14px; color: #000000;">关于我们</a> </div>
+        <a href='index.aspx' ><img src="image/logo.gif" style="width: 67px; height: 53px; margin-top: 50px; margin-left: 80px;" 
+               alt="图标" /></a><br /><span  style=" padding-left: 85px;">
+          <a  href='index.aspx' style="font-family: 黑体; font-size: 14px; color: #000000;">农村电商</a></span><div   style="font-family: 黑体; font-size: 14px; padding-left: 85%; margin-top: 30px;">商品高品质保证</div>
+                    <div class='dao' style="margin-top: 13px; height: 47px;">
+                    <ul >
+                       <li><a href="index.aspx">首页</a><img src="image/bg1.png"  height="44px" width="2px" /></li>
+                 <li><a href="rmdp.aspx">热门店铺</a><img src="image/bg1.png"  height="44px" width="2px" /></li>
+                    <li><a href="zuixinxinpin.aspx">最新新品</a><img src="image/bg1.png"  height="44px" width="2px" /></li>
+                    <li><a href="remensp.aspx">热门商品</a><img src="image/bg1.png"  height="44px" width="2px" /></li>
+                    </ul> 
+            
+                   </div>
+          </div>
+                       <table style="width: 100%; height: 460px;" >
+                <tr>
+                    <td style="width:370px; background-image: url('/020农村社区电商网络平台/image/bg1.gif'); background-repeat: repeat;" 
+                         >                
+                       <uc1:LoginControl ID="LoginControl1"  runat="server"  />  
+                       <uc2:Left ID="Left1" runat="server"  /> </td>
+                    <td><asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder> </td>
+                </tr>
+                </table>
+          
+            <div style="width:100%;text-align: center; background-image: url('image/lava_bg-11.gif'); background-repeat: repeat;">   
+            <p style="font-family: 黑体; font-size:18px; text-align: center;">  版权所有</p>
+               <a  href="logn.aspx"  
+                    style=" font-family: 黑体; color: #000000; text-decoration: none; ">管理入口</a>
+        
+            
+            
+                
+
+      
+</div>
+           
+    </div>
+    </form>
+</body>
+</html>

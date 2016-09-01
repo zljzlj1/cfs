@@ -1,0 +1,14 @@
+﻿body {}
+* {margin: 0;padding: 0;border: 0;list-style-type:none; }
+a,img{border:0;     text-decoration: none;}
+.ul, li{padding: 0px;margin: 0px;border-width: 0px;}
+
+#logo{ width:100%; background-image:url('../image/wocztop2.png'); height:178px; background-repeat:repeat-x;}
+.tc{ color:Black; font-size:14px; font-family:@楷体;}
+#left{ float:left; background-image:url('../image/7.gif');background-repeat: no-repeat; height:177px; width:203px}
+#right{border-style: groove;border-width: thin;float: left;}
+.c{ clear:both;}
+#middle{ width:100%;}
+
+.z ul li a{ font-size:12px; font-family:@宋体; color:Black;}
+.z ul li{ margin-top:10px; margin-left:10px;}

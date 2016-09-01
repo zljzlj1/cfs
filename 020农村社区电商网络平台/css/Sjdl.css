@@ -1,0 +1,9 @@
+﻿* {margin: 0;padding: 0;border: 0;list-style-type:none; }
+a,img{border:0;     text-decoration: none;}
+.ul, li{padding: 0px;margin: 0px;border-width: 0px;}
+body { background-image:url('../image/sj/bg.png'); background-repeat:repeat;}
+.txt{ background-image :url('../image/sj/bg-dlk.png'); width:154px; height: 38px; background-repeat:no-repeat; padding-left:8px; line-height:38px;}
+.bb{padding-top:290px;}
+.dl{ margin-left:8px;}
+.qx{ margin-left:18px;}
+.bg{background-image: url('../image/sj/sjbg.png'); height: 617px; width: 1014px; margin-left: auto; margin-right: auto;}
