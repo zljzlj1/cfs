@@ -48,53 +48,52 @@
                 html += '	<div class="text" style="font-size:2rem;padding-bottom:10px;border-bottom: 1px solid #DFDFDF;"> 评论 </div>';
                 html += '</div>';
                 $(self).append(html);
-
-                $.each(para.agoComment, function (k, v) {
-
-                    var topStyle = "";
-                    if (k > 0) {
-                        topStyle = "topStyle";
-                    }
-                    var item = '';
-                    item += '<div id="comment' + v.wzplid + '" class="comment">';
-                    //item += '  <input id="hidewzplid ' + v.wzplid + '" name="hidewzplid" type="hidden" value=' + v.wzplid + ' />';
-                    item += '	<a class="avatar">';
-                    item += '		<img src="image/foot.png">';
-                    item += '	</a>';
-                    item += '	<div class="content ' + topStyle + '">';
-                    if (v.sortid == 0) {
-                        item += '		<a class="author"> ' + v.plyhidstr + ' </a>';
-                    } else {
-                        item += '		<a class="author"> ' + v.plyhidstr + '    回复  ' + v.toplyhidstr + '</a>';
-                    }
-                    item += '		<div class="metadata">';
-                    item += '			<span class="date"> ' + v.plsj + ' </span>';
-                    item += '		</div>';
-                    item += '		<div class="text"> ' + v.yhpl + ' </div>';
-                    item += '		<div class="actions">';
-                    item += '			<a class="reply" href="javascript:void(0)" selfID="' + v.wzplid + '" >回复</a>';
-                    item += '		</div>';
-                    item += '	</div>';
-                    item += '</div>';
-                    var wzplid = v.wzplid;
-                    // 判断此条评论是不是子级评论
-                    if (v.sortid == 0) {  // 不是
-                        $("#commentItems").append(item);
-                    } else {  // 否
-                        // 判断父级评论下是不是已经有了子级评论
-                        if ($("#comment" + v.sortid).find(".comments").length == 0) {  // 没有
-                            var comments = '';
-                            comments += '<div id="comments' + v.sortid + '" class="comments">';
-                            comments += item;
-                            comments += '</div>';
-
-                            $("#comment" + v.sortid).append(comments);
-                        } else {  // 有
-                            $("#comments" + v.sortid).append(item);
+                if (para != null && para.agoComment != null) {
+                    $.each(para.agoComment, function (k, v) {
+                        var topStyle = "";
+                        if (k > 0) {
+                            topStyle = "topStyle";
                         }
-                    }
-                });
+                        var item = '';
+                        item += '<div id="comment' + v.wzplid + '" class="comment">';
+                        //item += '  <input id="hidewzplid ' + v.wzplid + '" name="hidewzplid" type="hidden" value=' + v.wzplid + ' />';
+                        item += '	<a class="avatar">';
+                        item += '		<img src="image/foot.png">';
+                        item += '	</a>';
+                        item += '	<div class="content ' + topStyle + '">';
+                        if (v.sortid == 0) {
+                            item += '		<a class="author"> ' + v.plyhidstr + ' </a>';
+                        } else {
+                            item += '		<a class="author"> ' + v.plyhidstr + '    回复  ' + v.toplyhidstr + '</a>';
+                        }
+                        item += '		<div class="metadata">';
+                        item += '			<span class="date"> ' + v.plsj + ' </span>';
+                        item += '		</div>';
+                        item += '		<div class="text"> ' + v.yhpl + ' </div>';
+                        item += '		<div class="actions">';
+                        item += '			<a class="reply" href="javascript:void(0)" selfID="' + v.wzplid + '" >回复</a>';
+                        item += '		</div>';
+                        item += '	</div>';
+                        item += '</div>';
+                        var wzplid = v.wzplid;
+                        // 判断此条评论是不是子级评论
+                        if (v.sortid == 0) {  // 不是
+                            $("#commentItems").append(item);
+                        } else {  // 否
+                            // 判断父级评论下是不是已经有了子级评论
+                            if ($("#comment" + v.sortid).find(".comments").length == 0) {  // 没有
+                                var comments = '';
+                                comments += '<div id="comments' + v.sortid + '" class="comments">';
+                                comments += item;
+                                comments += '</div>';
 
+                                $("#comment" + v.sortid).append(comments);
+                            } else {  // 有
+                                $("#comments" + v.sortid).append(item);
+                            }
+                        }
+                    });
+                }
                 this.createFormCommentHtml();  // 创建发表评论的html
             };
 
@@ -155,7 +154,7 @@
                     fCode = $(this).attr("selfID");
                     // 1.移除之前的取消回复按钮
                     $(self).find(".cancel").remove();
-                    
+
                     // 2.移除所有回复框
                     self.removeAllCommentFrom();
 
@@ -168,18 +167,18 @@
                     // 绑定提交事件
                     $("#publicComment").die("click");
                     $("#publicComment").live("click", function () {
-                            var result = {
-                                "sortid": fCode,
-                                "yhpl": $("#commentContent").val()
-                            };
-                            para.callback(result);
-                            // 1.移除之前的取消回复按钮
-                            $(self).find(".cancel").remove();
-                            // 2.移除所有回复框
-                            self.removeAllCommentFrom();
+                        var result = {
+                            "sortid": fCode,
+                            "yhpl": $("#commentContent").val()
+                        };
+                        para.callback(result);
+                        // 1.移除之前的取消回复按钮
+                        $(self).find(".cancel").remove();
+                        // 2.移除所有回复框
+                        self.removeAllCommentFrom();
 
-                            // 3.添加根下的回复框
-                            self.addRootCommentFrom();
+                        // 3.添加根下的回复框
+                        self.addRootCommentFrom();
                     });
                 });
 

@@ -153,24 +153,26 @@ a {
       
              
              </div>
+
       <div class="c"></div> 
-       <div>
-       <div id="articleComment"></div>
+       <div><div id="articleComment"></div>
 	
 	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="js/zyComment.js"></script>
 	
 	<script type="text/javascript">
 	    $(function () {
+	        //window.setTimeout('abc()', 1000);
 	        getCommentList();
 	    });
 	    function getCommentList() {
+	        
 	        $.ajax({
 	            type: "POST", //要用post方式
 	            //data: "{str1:{str:1,str2:'asdasd'}}",
 	            //"{str:我是,str2:XXX}"
-	            data: "{txtid: 2}",
-	            url: "Comment.aspx/getCommentList", //方法所在页面和方法名
+	            //data: "{txtid: 2}",
+	            url: "wdcz-ckwz.aspx/getCommentList", //方法所在页面和方法名
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (data) {
@@ -187,7 +189,7 @@ a {
 	            //data: "{str1:{str:1,str2:'asdasd'}}",
 	            //"{str:我是,str2:XXX}"
 	            data: last,
-	            url: "Comment.aspx/setComment", //方法所在页面和方法名
+	            url: "wdcz-ckwz.aspx/setComment", //方法所在页面和方法名
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (data) {

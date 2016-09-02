@@ -15,7 +15,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
     public string title = null;
  
     public static string UserID = null;
-
+    public static string Vtxtid = null;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -23,9 +23,11 @@ public partial class wdcz_ckwz : System.Web.UI.Page
         if (Session["UserID"] != null)
         {
             UserID = Session["UserID"].ToString();
+            Vtxtid = Request.QueryString["id"].ToString();
         } 
         int i = 0;
         string vtxtid = Request.QueryString["id"].ToString();
+        Vtxtid = Request.QueryString["id"].ToString();
         string strSj = "select wzdjl from Txtinf where txtid='" + vtxtid + " '";
         OleDbDataReader dr = DBA.GetDataReader(strSj);
         if (dr.Read())
@@ -70,50 +72,54 @@ public partial class wdcz_ckwz : System.Web.UI.Page
    }
 
 
-     [WebMethod]
-    public static Object getCommentList(String txtid)
+    [WebMethod]
+    public static Object getCommentList()
     {
         Maticsoft.Service.Txtplb txtplbService = new Maticsoft.Service.Txtplb();
         Maticsoft.Model.Txtplb model=new Maticsoft.Model.Txtplb();
         //文章ID
-        model.txtid =   int.Parse(txtid);
+        model.txtid = int.Parse(Vtxtid);
         List<Maticsoft.Model.Txtplb> list = txtplbService.searchListByModel(model);
         List<Maticsoft.ToModel.Txtplb> tolist = new List<Maticsoft.ToModel.Txtplb>();
-        for(int i=0;i<list.Count;i++)
+        if (list != null)
         {
-            Maticsoft.Model.Txtplb txtplb = list[i];
-            Maticsoft.Service.User userService = new Maticsoft.Service.User();
-            //查找评论人
-            Maticsoft.Model.User plUsermodel = new Maticsoft.Model.User();
-            plUsermodel.UserID = txtplb.plyhid;
-            Maticsoft.Model.User plUser = userService.searchUserbymodel(plUsermodel);
+            for(int i=0;i<list.Count;i++)
+            {
+                Maticsoft.Model.Txtplb txtplb = list[i];
+                Maticsoft.Service.User userService = new Maticsoft.Service.User();
+                //查找评论人
+                Maticsoft.Model.User plUsermodel = new Maticsoft.Model.User();
+                plUsermodel.UserID = txtplb.plyhid;
+                Maticsoft.Model.User plUser = userService.searchUserbymodel(plUsermodel);
 
-            //查找受评论人
-            Maticsoft.Model.User toPlUsermodel = new Maticsoft.Model.User();
-            toPlUsermodel.UserID = txtplb.toplyhid;
-            Maticsoft.Model.User toPlUser = userService.searchUserbymodel(toPlUsermodel);
+                //查找受评论人
+                Maticsoft.Model.User toPlUsermodel = new Maticsoft.Model.User();
+                toPlUsermodel.UserID = txtplb.toplyhid;
+                Maticsoft.Model.User toPlUser = userService.searchUserbymodel(toPlUsermodel);
 
 
-            //封装返回html的数据
-            Maticsoft.ToModel.Txtplb totxtplb = txtplb.ModelToModel(txtplb);
-            totxtplb.plyhidstr = plUser.Username;
-            totxtplb.toplyhidstr = toPlUser.Username;
-            if (UserID != null) { 
-                int usetid=int.Parse(UserID);
-                //封装评论人
-                if (txtplb.plyhid == usetid)
-                {
-                    totxtplb.plyhidstr= "我";
+                //封装返回html的数据
+                Maticsoft.ToModel.Txtplb totxtplb = txtplb.ModelToModel(txtplb);
+                totxtplb.plyhidstr = plUser.Username;
+                totxtplb.toplyhidstr = toPlUser.Username;
+                if (UserID != null) { 
+                    int usetid=int.Parse(UserID);
+                    //封装评论人
+                    if (txtplb.plyhid == usetid)
+                    {
+                        totxtplb.plyhidstr= "我";
+                    }
+                    //封装受评论人
+                    if (txtplb.toplyhid == usetid)
+                    {
+                        totxtplb.toplyhidstr = "我";
+                    }
                 }
-                //封装受评论人
-                if (txtplb.toplyhid == usetid)
-                {
-                    totxtplb.toplyhidstr = "我";
-                }
+                tolist.Add(totxtplb);
             }
-            tolist.Add(totxtplb);
+            return tolist;
         }
-        return tolist;
+        return null;
     }
 
     [WebMethod]
@@ -138,7 +144,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
                     model.yhpl = yhpl;
                     model.sortid = sortId;
                     //文章ID
-                    model.txtid = 2;
+                    model.txtid = int.Parse(Vtxtid);
                     txtplbService.insertmodel(model);
                 }
                 else
@@ -159,7 +165,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
                     model.yhpl = yhpl;
                     model.sortid = sortId;
                     //文章ID
-                    model.txtid = 2;
+                    model.txtid = int.Parse(Vtxtid);
                     txtplbService.insertmodel(model);
                 }
                 data.Add("result", true);
