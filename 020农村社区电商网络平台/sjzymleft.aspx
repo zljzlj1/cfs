@@ -52,8 +52,8 @@
 	
 		<dl class="statistics">
 			<dt>统计分析<img src="image/sj/left/select_xl01.png"></dt>
-			<dd class="first_dd"><a href="#" target="sjmain">商品占比统计</a></dd>
-            <dd class="first_dd"><a href="#" target="sjmain">商品金额统计</a></dd>
+			<dd class="first_dd"><a href="sptjxx.aspx" target="sjmain">商品占比统计</a></dd>
+            <dd class="first_dd"><a href="spjetjxx.aspx" target="sjmain">商品金额统计</a></dd>
 		</dl>
 	
 	</div>

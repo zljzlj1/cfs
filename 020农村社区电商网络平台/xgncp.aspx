@@ -152,8 +152,7 @@
         </table>
         <br />
         农产品详细信息：<br />
-        <textarea id="content1" runat="server" cols="100" name="S1" rows="8" 
-            style="width:650px;height:200px;visibility:hidden;"></textarea>     <br />
+        <asp:TextBox ID="TextBox5" runat="server" Width="300px" Height="50px" TextMode="MultiLine" Columns="80"  Rows="8"></asp:TextBox>     <br />
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="更新" 
             style="width: 40px; " />&nbsp;
         <asp:Button runat="server" ID="Button3"   

@@ -41,6 +41,17 @@ public partial class xgncpxx : System.Web.UI.Page
             LinkButton19.Visible = false;
             LinkButton20.Visible = false;
         }
+        else
+        {
+
+            Label1.Visible = false;
+            Label9.Visible = true;
+            Label10.Visible = true;
+            LinkButton17.Visible = true;
+            LinkButton18.Visible = true;
+            LinkButton19.Visible = true;
+            LinkButton20.Visible = true;
+        }
         GridView5.DataBind(); Show4();
 
     }
@@ -56,8 +67,8 @@ public partial class xgncpxx : System.Web.UI.Page
     }
     protected void GridView5_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        string vrcpid = GridView5.DataKeys[e.RowIndex].Value.ToString();
-        string st = "delete from Ncpinfor  where rcpid='" + vrcpid + "'";//删除记录
+        string vncpid = GridView5.DataKeys[e.RowIndex].Value.ToString();
+        string st = "delete from Ncpinfor  where ncpid='" + vncpid + "'";//删除记录
         int i = DBA.ExeSqlRows(st);
         if (i == 0)
         {
@@ -75,6 +86,7 @@ public partial class xgncpxx : System.Web.UI.Page
 
         }
 
+        GridView5_content();
 
     }
     protected void GridView5_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -100,7 +112,7 @@ public partial class xgncpxx : System.Web.UI.Page
             e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=c");
             if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
             {
-                ((LinkButton)e.Row.Cells[8].Controls[0]).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text + "\"农产品吗?')");
+                ((LinkButton)e.Row.Cells[7].Controls[0]).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text + "\"农产品吗?')");
             }
 
         }

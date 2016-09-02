@@ -24,8 +24,7 @@ public partial class xgwzxx : System.Web.UI.Page
     }
 
     protected void GridView5_content()
-    {//[User].*,Sf,Adsf.sfid,Ads.sid,Adx.xid,Adz.zid,Adc.cid,sm,cm,zm,xm ,Adsf,Ads,Adx,Adz,Adc where [User].sfid=Adsf.sfid and [User].sid=Ads.sid and [User].xid=Adx.xid and [User].zid=Adz.zid and [User].cid=Adc.cid
-        string strSj = "select txtid,titlername,txtrq ,wtgly ,shsj,txtfbzt from Txtinf,[User] where [User].UserID=Txtinf.UserID and Txtinf.UserID='" + Session["UserID"].ToString() + "' and txtfbzt='False' order by txtrq desc";
+    { string strSj = "select txtid,titlername,txtrq ,wtgly ,shsj,txtfbzt from Txtinf,[User] where [User].UserID=Txtinf.UserID and Txtinf.UserID='" + Session["UserID"].ToString() + "' and txtfbzt='False' order by txtrq desc";
         DataSet ds = DBA.GetDataSet(strSj);
         GridView5.DataSource = ds.Tables["datatable"].DefaultView;
         if (ds.Tables[0].Rows.Count == 0)
@@ -38,6 +37,17 @@ public partial class xgwzxx : System.Web.UI.Page
             LinkButton18.Visible = false;
             LinkButton19.Visible = false;
             LinkButton20.Visible = false;
+        }
+        else
+        {
+            Label1.Visible = false;
+            Label9.Visible = true;
+            Label10.Visible = true;
+            LinkButton17.Visible = true;
+            LinkButton18.Visible = true;
+            LinkButton19.Visible = true;
+            LinkButton20.Visible = true;
+        
         }
         GridView5.DataBind(); Show4();
 
@@ -72,7 +82,7 @@ public partial class xgwzxx : System.Web.UI.Page
             }
 
         }
-
+        GridView5_content();
 
     }
     protected void GridView5_PageIndexChanging(object sender, GridViewPageEventArgs e)

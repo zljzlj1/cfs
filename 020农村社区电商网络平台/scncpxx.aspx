@@ -44,7 +44,7 @@
              </div>
  
      <div id="right">   
-     <iframe src="scncp.aspx" name="ncp"   frameborder="0"  scrolling="no"   
+     <iframe src="scncp.aspx" name="ncp"   frameborder="0"  scrolling="auto"   
              height="500px" width="900px"></iframe>
            
                    </div>

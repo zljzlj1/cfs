@@ -36,8 +36,8 @@
 	<ul >
 		<li ><a href="scwz.aspx" target="wz">上传文章</a></li>
         	
-	<li><a href="xgwzxx.aspx" target="wz">未通过文章(<span style="font-size: 12px; color: #FF0000"><%=w %></span>)</a></li>
-		<li><a href="tgwz.aspx" target="wz">通过文章(<span style="font-size: 12px; "><%=t %></span>)</a></li> 
+	<li><a href="xgwzxx.aspx" target="wz">未通过文章</a></li>
+		<li><a href="tgwz.aspx" target="wz">通过文章</a></li> 
         <li><a href="index.aspx" >返回</a></li> 
 	</ul>
 </div>

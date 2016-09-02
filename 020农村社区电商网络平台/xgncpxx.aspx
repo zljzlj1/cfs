@@ -32,8 +32,7 @@
                 
              
                 <asp:BoundField DataField="price" HeaderText="价格" />
-                <asp:BoundField DataField="ncpname " HeaderText="农产品类别" />
-                <asp:BoundField DataField="rcppic" HeaderText="农产品图片路径" />
+                <asp:BoundField DataField="ncpname" HeaderText="农产品类别" />
       
                 
                        <asp:TemplateField HeaderText="上传日期">
@@ -41,7 +40,7 @@
                 </asp:TemplateField>
             
                    <asp:HyperLinkField FooterText="修改" HeaderText="修改" Text="修改" 
-                    DataNavigateUrlFields="rcpid" 
+                    DataNavigateUrlFields="ncpid" 
                     DataNavigateUrlFormatString="xgncp.aspx?id={0}" >
                 <ItemStyle ForeColor="#DEBA84" />
                 </asp:HyperLinkField>
@@ -82,7 +81,7 @@
         <br />
         <asp:Label ID="Label1" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
 
-        12345678</div>
+       </div>
     </form>
 </body>
 </html>

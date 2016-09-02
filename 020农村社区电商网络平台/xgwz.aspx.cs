@@ -30,7 +30,7 @@ public partial class xgwz : System.Web.UI.Page
         if(dr.Read())
         {
             TextBox1.Text = dr["titlername"].ToString();
-            Label1.Text = dr["txtrq"].ToString();
+            Label1.Text = Convert.ToDateTime(dr["txtrq"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             content1.Value = dr["txt"].ToString();
         
         }

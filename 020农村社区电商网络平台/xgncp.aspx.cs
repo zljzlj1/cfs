@@ -14,8 +14,8 @@ public partial class xgncp : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            dl();
-            gw();
+          gw();
+              dl();
         }
     }
     private void gw()
@@ -25,7 +25,7 @@ public partial class xgncp : System.Web.UI.Page
         OleDbDataReader dr = DBA.GetDataReader(str);
         if (dr.Read())
         {
-            Label1.Text = dr["fbrq"].ToString();
+            Label1.Text = Convert.ToDateTime(dr["fbrq"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             TextBox1.Text = dr["rcpname"].ToString();
             TextBox2.Text = dr["tgsl"].ToString();
             TextBox3.Text = dr["xqdw"].ToString();

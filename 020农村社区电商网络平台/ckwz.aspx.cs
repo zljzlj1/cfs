@@ -28,7 +28,7 @@ public partial class ckwz : System.Web.UI.Page
         {
             Label1.Text = dr["Username"].ToString();
             Label3.Text = dr["wzdjl"].ToString();
-           Label4.Text = dr["shsj"].ToString();
+            Label4.Text = Convert.ToDateTime(dr["shsj"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
            title = dr["titlername"].ToString();
            txt = dr["txt"].ToString();
         }

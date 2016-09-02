@@ -40,6 +40,18 @@ public partial class tgwz : System.Web.UI.Page
             LinkButton19.Visible = false;
             LinkButton20.Visible = false;
         }
+        else
+        {
+            Label1.Visible = false;
+       
+            Label9.Visible =true;
+            Label10.Visible = true;
+            LinkButton17.Visible = true;
+            LinkButton18.Visible = true;
+            LinkButton19.Visible = true;
+            LinkButton20.Visible = true;
+
+        }
         GridView5.DataBind(); Show4();
 
     }
@@ -73,7 +85,7 @@ public partial class tgwz : System.Web.UI.Page
             }
 
         }
-
+        GridView5_content();
 
     }
     protected void GridView5_PageIndexChanging(object sender, GridViewPageEventArgs e)
