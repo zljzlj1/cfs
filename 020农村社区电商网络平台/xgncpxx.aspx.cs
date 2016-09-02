@@ -27,7 +27,7 @@ public partial class xgncpxx : System.Web.UI.Page
     {
 
 
-        string strSj = "select rcpid,rcpname,tgsl,price,fbrq,rcppic,ncpname from Ncpinfor,Ncplb where Ncplb.ncplbid=Ncpinfor.ncplbid and  UserID='" + Session["UserID"].ToString() + "' order by fbrq desc";
+        string strSj = "select ncpid,rcpname,tgsl,price,fbrq,rcppic,ncpname from Ncpinfor,Ncplb where Ncplb.ncplbid=Ncpinfor.ncplbid and  UserID='" + Session["UserID"].ToString() + "' order by fbrq desc";
         DataSet ds = DBA.GetDataSet(strSj);
         GridView5.DataSource = ds.Tables["datatable"].DefaultView;
         if (ds.Tables[0].Rows.Count == 0)

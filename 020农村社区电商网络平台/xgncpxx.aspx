@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
     <div>
       <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" 
-            AllowPaging="True" PageSize="5" Width="100%"  DataKeyNames="rcpid" 
+            AllowPaging="True" PageSize="5" Width="100%"  DataKeyNames="ncpid" 
             onpageindexchanging="GridView5_PageIndexChanging" CellPadding="4" 
             Height="250px" onrowdatabound="GridView5_RowDataBound" 
                   onrowdeleting="GridView5_RowDeleting" GridLines="None" 
@@ -37,7 +37,7 @@
       
                 
                        <asp:TemplateField HeaderText="上传日期">
-                <ItemTemplate><asp:Label ID="Label8" runat="server" Text='<% #Eval("fbrq", "{0:yyyy-MM-dd HH:mm:ss}")%>'></asp:Label></ItemTemplate>
+                <ItemTemplate><asp:Label ID="Label8" runat="server" Text='<%#Eval("fbrq", "{0:yyyy-MM-dd HH:mm:ss}")%>'></asp:Label></ItemTemplate>
                 </asp:TemplateField>
             
                    <asp:HyperLinkField FooterText="修改" HeaderText="修改" Text="修改" 
@@ -82,7 +82,7 @@
         <br />
         <asp:Label ID="Label1" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
 
-        </div>
+        12345678</div>
     </form>
 </body>
 </html>

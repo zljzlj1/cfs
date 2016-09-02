@@ -10,7 +10,7 @@ using System.Data.OleDb;
 public partial class gwc : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
-    public Decimal sum = 0;
+   
     public int b;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,7 +20,7 @@ public partial class gwc : System.Web.UI.Page
               GridView2_content();
       
           }
-         GridView2_content();
+       
     }
    
     protected void GridView2_content()
@@ -51,8 +51,8 @@ public partial class gwc : System.Web.UI.Page
        
 
     }
-    
- 
+
+    public Decimal sum = 0;
     protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
@@ -102,6 +102,14 @@ public partial class gwc : System.Web.UI.Page
             }
            
         }
+       
+            GridView2_content();
+
+
+     
+      
+     
+      
     }
    
   
@@ -126,6 +134,7 @@ public partial class gwc : System.Web.UI.Page
         { Session["sum"] = sum; Response.Redirect("shrxx.aspx?id=sum "); }
         else
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
+        GridView2_content();
     
     }
 }
