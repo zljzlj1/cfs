@@ -10,9 +10,7 @@ using System.Data.OleDb;
 public partial class yhztddgl : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
-    public string order;
-
-    public string sjmc;
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -20,7 +18,7 @@ public partial class yhztddgl : System.Web.UI.Page
             repeat();
 
         }
-        if (chkqr.Checked == true)
+      /*  if (chkqr.Checked == true)
         {
 
             Label13.Text = "已确认";
@@ -53,20 +51,23 @@ public partial class yhztddgl : System.Web.UI.Page
         else
         {
             Label15.Text = "未支付";
-        }
+        }*/
     }
     protected void repeat()
     {
         string vddxqid = Request.QueryString["id"].ToString();
         string vddid = Request.QueryString["oid"].ToString();
-        order = vddid;
-        string strSQ = "select recepost ,receadress,recephone, receman,tyjg, Orderxx.ddid,gmrq,spmc,num,SP.spjg,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and  ddxqid='" + vddxqid + "'   ";
+        string vsjqr;
+        string vfh;
+        string vhd;
+        string vyhsfzf;
+        string strSQ = "select recepost,receadress,recephone,receman,tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and  ddxqid='" + vddxqid + "'   ";
         //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
         OleDbDataReader dr = DBA.GetDataReader(strSQ);
         if (dr.Read())
         {
-            order = dr["ddid"].ToString();
-            sjmc = dr["sjmc"].ToString();
+            Label1.Text = dr["ddid"].ToString();
+            Label2.Text = dr["sjmc"].ToString();
             Label18.Text = Convert.ToDateTime(dr["gmrq"].ToString()).ToString("yyyy-MM-dd hh:mm:ss");
             Label9.Text = dr["spmc"].ToString();
        
@@ -81,7 +82,32 @@ public partial class yhztddgl : System.Web.UI.Page
 
 
 
+            vsjqr = dr["sjqr"].ToString();
+            vfh = dr["fh"].ToString();
+            vhd = dr["ddhd"].ToString();
+            vyhsfzf=dr["yhsfzf"].ToString();
 
+
+            if (vsjqr == "True")
+            { Label13.Text = "已确认"; chkqr.Visible = false; }
+            else
+                Label13.Text = "未确认";
+            if (vfh == "True")
+            { Label14.Text = "已发货"; chkfh.Visible = false; }
+            else
+                Label14.Text = "未发货";
+            if (vhd == "True")
+            { Label15.Text = "已核对"; ;chkhd.Visible = false; }
+            else
+                Label15.Text = "未核对";
+            if(vyhsfzf=="True")
+            { Label19.Text = "已支付"; ;chkzf.Visible = false; }
+            else
+                Label19.Text = "未支付";
+            if (chkqr.Visible == false && chkfh.Visible == false && chkhd.Visible == false&&chkzf.Visible == false)
+            {
+                btnSave.Visible = false;
+            }
 
 
 
@@ -96,12 +122,16 @@ public partial class yhztddgl : System.Web.UI.Page
         string str3;
         if (chkqr.Checked == true)
         {
+
             str = "True";
        
        }
         else
         {
-            str = "False";
+            if (chkqr.Visible == true)
+                str = "False";
+            else
+                str = "True";
    
         }
         if (chkfh.Checked == true)
@@ -111,7 +141,10 @@ public partial class yhztddgl : System.Web.UI.Page
         }
         else
         {
-            str1 = "False";
+            if (chkfh.Visible == true)
+                str1 = "False";
+            else
+                str1 = "True";
         }
         if (chkhd.Checked == true)
         {
@@ -119,7 +152,10 @@ public partial class yhztddgl : System.Web.UI.Page
         }
         else
         {
-            str2 = "False";
+            if (chkhd.Visible == true)
+                str2 = "False";
+            else
+                str2 = "True";
         }
         if (chkzf.Checked == true)
         {
@@ -127,15 +163,18 @@ public partial class yhztddgl : System.Web.UI.Page
         }
         else
         {
+            if (chkzf.Visible == true)
             str3 = "False";
+            else
+                str3 = "True";
         }
+        string vddxqid = Request.QueryString["id"].ToString();
 
         string sql = " update Orderxx set  sjqr='" + str + "',fh='" + str1 + "',ddhd='" + str2 + "',yhsfzf='" + str3 + "' where ddxqid='" + Request.QueryString["id"].ToString() + "' ";
 
-
-
-
-        Response.Write("<script>alert('修改成功！')</script>");
+ DBA.ExeSql(sql);
+ ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", " <script> alert('修改成功！');location.href= 'qrkhdd.aspx';</script> ");
+    
 
     }
 }

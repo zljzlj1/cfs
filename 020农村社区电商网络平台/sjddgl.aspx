@@ -15,10 +15,10 @@
 						<TD vAlign="middle" width="3%"><STRONG><BR>
 							</STRONG>
 						</TD>
-						<TD vAlign="middle" align="left" width="30%">订单号码：<%=order%><br/>
+						<TD vAlign="middle" align="left" width="30%">订单号码：<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br/>
 							下单日期：<asp:Label ID="Label18" runat="server" Text="Label"></asp:Label></TD>
 						<TD  align="left" width="67%">
-						商家名称：<%=sjmc %></TD>
+						商家名称：<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label></TD>
 					</TR>
 				</TBODY>
 			</TABLE>
@@ -178,7 +178,9 @@
 				<tr>
 					<td height="20" align="left" valign="middle">
 				<asp:Button ID="btnSave" Runat="server" Text="修 改" style="BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid"
-							Width="69" Height="22" OnClick="btnSave_Click"></asp:Button>
+							Width="69" Height="22" OnClick="btnSave_Click"></asp:Button>&nbsp;<asp:Button 
+                            ID="Button1" Runat="server" Text="返回" style="BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid"
+							Width="69" Height="22" OnClick="btnSave_Click" PostBackUrl="~/qrkhdd.aspx"></asp:Button>
 						 </td>
 
 				</tr>

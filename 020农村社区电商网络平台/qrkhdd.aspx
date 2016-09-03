@@ -65,7 +65,7 @@
                   <asp:TemplateField HeaderText="订单状态">
                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
-                <ItemTemplate><asp:Label ID="Label6" runat="server" Text='<% #Eval("sjqr"=="False"?"未确认":"已确认")%>'></asp:Label>|<asp:Label ID="Label1" runat="server" Text='<% #Eval("fh"=="False"?"未发货":"已发货")%>'></asp:Label><br /><asp:Label ID="Label7" runat="server" Text='<% #Eval("sfzf"=="False"?"未支付":"已支付")%>'></asp:Label>|<asp:Label ID="Label8" runat="server" Text='<% #Eval("ddhd"=="False"?"未核对":"已核对")%>'></asp:Label></ItemTemplate>
+                <ItemTemplate><asp:Label ID="Label6" runat="server" Text='<% #Eval("sjqr").ToString().Trim()=="False"?"未确认":"已确认"%>'></asp:Label>|<asp:Label ID="Label1" runat="server" Text='<% #Eval("fh").ToString().Trim()=="False"?"未发货":"已发货"%>'></asp:Label><br /><asp:Label ID="Label7" runat="server" Text='<% #Eval("sfzf").ToString().Trim()=="False"?"未支付":"已支付"%>'></asp:Label>|<asp:Label ID="Label8" runat="server" Text='<% #Eval("ddhd").ToString().Trim()=="False"?"未核对":"已核对"%>'></asp:Label></ItemTemplate>
               </asp:TemplateField>
                        <asp:TemplateField HeaderText="管理">
                              <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
@@ -111,7 +111,8 @@
      
                  <font style="color: #000000; font-family: 楷体; font-weight: bold">订单号：</font><asp:TextBox ID="TextBox2" runat="server" Class="s"></asp:TextBox>&nbsp&nbsp
     <asp:ImageButton ID="ImageButton2" runat="server" 
-        ImageUrl="~/admin/images/1.jpg" onclick="ImageButton2_Click" />
+        ImageUrl="~/admin/images/1.jpg" onclick="ImageButton2_Click" 
+             style="height: 22px" />
         <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
             AllowPaging="True" PageSize="4" Width="100%"  DataKeyNames="ddxqid" 
             onpageindexchanging="GridView3_PageIndexChanging" CellPadding="4" 
@@ -149,13 +150,13 @@
                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
                 <ItemTemplate><asp:Label ID="Label10" runat="server" 
-                       Text='<% #Eval("ddhd"=="False"?"未自提":"已自提")%>'></asp:Label>|<asp:Label 
+                       Text='<% #Eval("ddhd").ToString().Trim()=="False"?"未自提":"已自提"%>'></asp:Label>|<asp:Label 
                         ID="Label11" runat="server" 
-                        Text='<% #Eval("sjqr"=="False"?"未确认":"已确认")%>'></asp:Label><br />
+                        Text='<% #Eval("sjqr").ToString().Trim()=="False"?"未确认":"已确认"%>'></asp:Label><br />
                     <asp:Label ID="Label12" runat="server" 
-                       Text='<% #Eval("fh"=="False"?"未发货":"已发货")%>'></asp:Label>|<asp:Label 
+                       Text='<% #Eval("fh").ToString().Trim()=="False"?"未发货":"已发货"%>'></asp:Label>|<asp:Label 
                         ID="Label13" runat="server" 
-                       Text='<% #Eval("yhsfzf"=="False"?"未支付":"已支付")%>'></asp:Label></ItemTemplate>
+                       Text='<% #Eval("yhsfzf").ToString().Trim()=="False"?"未支付":"已支付"%>'></asp:Label></ItemTemplate>
                 </asp:TemplateField>
                        <asp:TemplateField HeaderText="管理">
                              <HeaderStyle HorizontalAlign="Center"></HeaderStyle>

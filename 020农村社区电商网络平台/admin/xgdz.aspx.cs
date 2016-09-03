@@ -42,6 +42,17 @@ public partial class admin_xgdz : System.Web.UI.Page
             LinkButton3.Visible = false;
             LinkButton4.Visible = false;
         }
+        else
+        {
+            Label3.Visible = false;
+        
+            Label1.Visible = true;
+            Label2.Visible = true;
+            LinkButton1.Visible = true;
+            LinkButton2.Visible = true;
+            LinkButton3.Visible = true;
+            LinkButton4.Visible = true;
+        }
         Show();
     }
 
@@ -206,6 +217,7 @@ public partial class admin_xgdz : System.Web.UI.Page
             DataSet ds = DBA.GetDataSet(sql);
             GridView1.DataSource = ds.Tables["datatable"].DefaultView;
             GridView1.DataBind();
+            TextBox1.Text = "";
         }
         else
         GridView1_content();

@@ -58,7 +58,7 @@
             ForeColor="Red"></asp:RequiredFieldValidator>
         <asp:TextBox ID="TextBox4" runat="server" Visible="False"></asp:TextBox>
         <asp:CompareValidator ID="CompareValidator2" runat="server" 
-            ControlToCompare="TextBox1" ControlToValidate="TextBox4" 
+            ControlToCompare="TextBox4" ControlToValidate="TextBox1" 
             ErrorMessage="输入密码错误" ForeColor="Red"></asp:CompareValidator></td>
      </tr>
      <tr>

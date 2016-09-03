@@ -20,15 +20,14 @@ public partial class qrkhdd : System.Web.UI.Page
             GridView3_content();
 
         }
+      //  GridView2_content();
+       // GridView3_content();
     }
     protected void GridView2_content()
     {
        string vsjid=Session["sjid"].ToString();
-      // int sj = Convert.ToInt32(vsjid);
-        //ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd 
-       string strSQ = "select    tyjg, Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + vsjid + "' and zt='False' and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' order by gmrq desc ";
-       //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
-        DataSet ds = DBA.GetDataSet(strSQ);
+      string strSQ = "select tyjg,Orderxx.ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid  and Orderxx.ddid=[Order].ddid and Sj.sjid='" + vsjid + "' and zt='False' and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' order by gmrq desc ";
+     DataSet ds = DBA.GetDataSet(strSQ);
         GridView2.DataSource = ds.Tables["datatable"].DefaultView;
         GridView2.DataBind();
         if (ds.Tables[0].Rows.Count == 0)
@@ -37,6 +36,8 @@ public partial class qrkhdd : System.Web.UI.Page
             Label5.Text = "暂无数据";
    
         }
+        else
+            Label5.Visible = false;
       
     }
     
@@ -104,6 +105,8 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
             }
         }
+        GridView2_content();
+  
     }
    
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,7 +134,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
         //string vsjid = Session["sjid"].ToString();
         //int sj = Convert.ToInt32(vsjid);
         //ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd 
-        string strSQ = "select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + Session["sjid"].ToString() + "'  and ddhd='" + DropDownList3.SelectedItem.Value + "' and zt='True'  order by gmrq desc ";
+        string strSQ = "select Orderxx.ddid,gmrq,spmc,num,spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + Session["sjid"].ToString() + "'  and ddhd='" + DropDownList3.SelectedItem.Value + "' and zt='True'  order by gmrq desc ";
         //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
         DataSet ds = DBA.GetDataSet(strSQ);
         GridView3.DataSource = ds.Tables["datatable"].DefaultView;
@@ -142,10 +145,9 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
             Label2.Text = "暂无数据";
 
         }
-          //ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd 
-       // string strSQ = "select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + sj + "' and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' order by gmrq desc ";
-        //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
-        
+        else
+            Label2.Visible = false;
+ 
     }
     
     protected void ss1()
@@ -155,9 +157,8 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
         if (t != "" && t != null)
         {
-           // string vsjid = Session["sjid"].ToString();
-            //int sj = Convert.ToInt32(vsjid);
-            string sql = " select select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and sjid='" + Session["sjid"].ToString() + "'and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='True' and ddid like '%" + t + "%' order by gmrq desc  ";
+          
+            string sql = "select Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid  and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='True' and  Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
             DataSet ds = DBA.GetDataSet(sql);
             GridView3.DataSource = ds.Tables["datatable"].DefaultView;
             GridView3.DataBind();
@@ -207,13 +208,13 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
             //当鼠标移开时还原背景色
             e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=c");
 
-
-        }
-
- if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
+if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
             {
                 ((LinkButton)e.Row.Cells[8].Controls[0]).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[2].Text + "\"商品吗?')");
             }
+        }
+
+ 
     }
 
     protected void GridView3_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -235,6 +236,8 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
             }
         }
+       
+        GridView3_content();
     }
 
 
@@ -249,9 +252,8 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
         if (t != "" && t != null)
         {
-            // string vsjid = Session["sjid"].ToString();
-            //int sj = Convert.ToInt32(vsjid);
-            string sql = " select select  tyjg, Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and sjid='" + Session["sjid"].ToString() + "'and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='False' and ddid like '%" + t + "%' order by gmrq desc  ";
+
+            string sql = "select tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='False' and Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
             DataSet ds = DBA.GetDataSet(sql);
             GridView2.DataSource = ds.Tables["datatable"].DefaultView;
             GridView2.DataBind();

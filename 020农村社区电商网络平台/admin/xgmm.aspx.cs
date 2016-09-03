@@ -15,8 +15,7 @@ public partial class admin_xgmm : System.Web.UI.Page
         TextBox1.BackColor = System.Drawing.Color.Transparent;
         TextBox2.BackColor = System.Drawing.Color.Transparent;
         TextBox3.BackColor = System.Drawing.Color.Transparent;
-        if (!IsPostBack)
-        {
+       
             string vadminname = Session["adminname"].ToString();
           
 
@@ -29,7 +28,6 @@ public partial class admin_xgmm : System.Web.UI.Page
             }
 
 
-        }
     }
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
@@ -41,7 +39,7 @@ public partial class admin_xgmm : System.Web.UI.Page
 
             string sql = "update  Admin set admm='" + TextBox3.Text + "'where adminid= '" + vadminid + "'";
             DBA.ExeSql(sql);
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('更新成功!');</script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('修改成功!');</script>");
         }
 
     }
