@@ -12,7 +12,8 @@ public partial class wdcz_ncpgx_ckxx : System.Web.UI.Page
     DBAccess1 DBA = new DBAccess1();
     protected void Page_Load(object sender, EventArgs e)
     {
-        Label1.Text = Session["Username"].ToString();
+      
+        Label1.Text = Session["Username"].ToString();  BindRepeater();
         string vncpid = Request["id"].ToString();
         string str = "select rcpname,tgsl,xqdw,price,xxxx,ncpname,fbrq,rcppic,Username,lxdh from Ncpinfor,[User],Ncplb where  Ncpinfor.UserID=[User].UserID and Ncpinfor.ncplbid=Ncplb.ncplbid and ncpid='" + vncpid + "'";
         OleDbDataReader dr = DBA.GetDataReader(str);
@@ -30,5 +31,12 @@ public partial class wdcz_ncpgx_ckxx : System.Web.UI.Page
 
             Image1.ImageUrl = dr["rcppic"].ToString();
         }
+    }
+    public void BindRepeater()
+    { //
+        string sql = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        DataSet ds = DBA.GetDataSet(sql);
+        news.DataSource = ds.Tables["datatable"].DefaultView;
+        news.DataBind();
     }
 }

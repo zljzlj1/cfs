@@ -31,7 +31,7 @@ public partial class bddpaspx : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 8;
+        objPds.PageSize =5;
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
@@ -66,7 +66,7 @@ public partial class bddpaspx : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 8;
+        objPds.PageSize = 5;
 
         int maxPage;//总共有多少页
         if (rowSum == 0)
@@ -131,7 +131,7 @@ public partial class bddpaspx : System.Web.UI.Page
             PagedDataSource objPds = new PagedDataSource();
             objPds.DataSource = ds.Tables[0].DefaultView;
             objPds.AllowPaging = true;
-            objPds.PageSize = 8;
+            objPds.PageSize = 5;
             int maxPage;//总共有多少页
             if (rowSum == 0)
             {

@@ -32,7 +32,7 @@ public partial class xgncp : System.Web.UI.Page
             TextBox4.Text = dr["price"].ToString();
             Image1.ImageUrl = dr["rcppic"].ToString();
             Session["filename"] = dr["rcppic"].ToString();
-            content1.Value = dr["xxxx"].ToString();
+            TextBox5.Text = dr["xxxx"].ToString();
 
             DropDownList1.SelectedValue = dr["ncplbid"].ToString();
         }
@@ -56,13 +56,13 @@ public partial class xgncp : System.Web.UI.Page
         string vrcpname = TextBox1.Text;
         string vtgsl = TextBox2.Text;
         string picture = Session["filename"].ToString();
-        string vxxxx = content1.Value;
+        string vxxxx = TextBox5.Text;
         string vxqdw = TextBox3.Text;
         string vprice = TextBox4.Text;
         string d = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
         decimal b = Convert.ToDecimal(vtgsl);
         decimal a = Convert.ToDecimal(vprice);
-        string strsql = "Update Ncpinfor set ncplbid='" + vncplbid + "',rcpname='" + vrcpname + "', tgsl='" + b + "',xxxx='" + vxxxx + "', xqdw='" + vxqdw + "' rcppic='" + picture + "',fbrq='" + d + "',price='" + a + "'where  ncpid='" + Request["id"].ToString() + "'";
+        string strsql = "Update Ncpinfor set ncplbid='" + vncplbid + "',rcpname='" + vrcpname + "', tgsl='" + b + "',xxxx='" + vxxxx + "', xqdw='" + vxqdw + "' ,rcppic='" + picture + "',fbrq='" + d + "',price='" + a + "'where  ncpid='" + Request["id"].ToString() + "'";
         DBA.ExeSql(strsql);
         ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('修改成功!');</script>");
     }

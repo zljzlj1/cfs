@@ -207,7 +207,10 @@
    </div>
    <div class="you"> <h5 style="margin-top: 8px; margin-left: 20px">招聘信息<a href="#" style="margin-left: 140px"><img src="image/more.gif" /></a></h5>
       <ul class="ss">      <asp:Repeater ID="news" runat="server">
-               <ItemTemplate><li><a><%#Eval("sjmc") %><span ><%#Eval("zpxx") %><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></span></a></li></ItemTemplate></asp:Repeater></ul>
+               <ItemTemplate><li><a href="wdcz-zpxx-ck.aspx?id=<%#Eval("xqid") %>"><%#Eval("sjmc") %>：<%#Eval("zpgw") %><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></a></li>
+               
+               
+               </ItemTemplate></asp:Repeater></ul>
       
       
              

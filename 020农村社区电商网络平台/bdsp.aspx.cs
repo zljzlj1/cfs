@@ -55,9 +55,8 @@ public partial class bdsp : System.Web.UI.Page
 
     public void PagerButtonClick(object sender, EventArgs e)
     {
-        string SQLStr = "select sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
-       // string SQLStr = "select sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "'";
-       
+        string SQLStr = "select Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
+      
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -120,8 +119,8 @@ public partial class bdsp : System.Web.UI.Page
         int vgoto = 1;
         if (TextBox1.Text != "")
         {
-            string SQLStr = "select sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
-       
+            string SQLStr = "select  Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
+          
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();

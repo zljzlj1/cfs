@@ -149,17 +149,29 @@
                 </asp:DropDownList>
             </td>
             </tr>
-        </table>
-        <br />
-        农产品详细信息：
-        <asp:TextBox ID="TextBox5" runat="server" Width="300px" Height="50px" TextMode="MultiLine" Columns="80"  Rows="8"></asp:TextBox>     <br />
-        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="更新" 
-            style="width: 40px; " />&nbsp;
+                   <tr>
+            <td class="style5">
+                   农产品详细信息：</td>
+            <td colspan="2">
+                  <asp:TextBox ID="TextBox5" runat="server" Width="300px" Height="80px" TextMode="MultiLine" Columns="80"  Rows="8"></asp:TextBox>     <br />
+        
+            </td>
+            </tr>
+                   <tr>
+            <td class="style5">
+               </td>
+            <td colspan="2">  
+                <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="更新" 
+            style="width: 40px; height: 21px;" />&nbsp;
         <asp:Button runat="server" ID="Button3"   
             Text="返回" PostBackUrl="~/xgncpxx.aspx" />
         <br />
-        <br />
-        &nbsp;&nbsp;
+           </td>
+            </tr>
+        </table>
+       
+        
+  
           
     </div>
     </form>

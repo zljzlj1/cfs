@@ -11,7 +11,7 @@ public partial class gwc : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
    
-    public int b;
+ public int b=0;
     protected void Page_Load(object sender, EventArgs e)
     {
          
@@ -20,12 +20,12 @@ public partial class gwc : System.Web.UI.Page
               GridView2_content();
       
           }
-       
+          //GridView2_content();
     }
-   
+
     protected void GridView2_content()
     {
-        b = 0;
+         
 
        string strSQ = "select  gwid,spmc,spjg,num,ktfy,jg,sjmc,zt from Sj,Gwc,Sp where Sj.sjid=Gwc.sjid and Gwc.spid=Sp.spid and UserID= '"+Session["UserID"].ToString()+"'";
      
@@ -130,11 +130,17 @@ public partial class gwc : System.Web.UI.Page
 
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
-        if (b != 0)
+        string strSj = "select txtfbzt from [User],Txtinf where [User].UserID=Txtinf.UserID and Txtinf.Userid='" + Session["UserID"].ToString() + "' and txtfbzt='False'";
+        DataSet ds = DBA.GetDataSet(strSj);
+        int rowSum = ds.Tables[0].Rows.Count;
+       
+        if (b> 0)
         { Session["sum"] = sum; Response.Redirect("shrxx.aspx?id=sum "); }
         else
+        {
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
-        GridView2_content();
+            GridView2_content();
+        }
     
     }
 }
