@@ -45,8 +45,8 @@
    <font style="color: #000000; font-family: 楷体; font-weight: bold">文章：</font><asp:DropDownList
        ID="DropDownList1" runat="server" AutoPostBack="True" 
               onselectedindexchanged="DropDownList1_SelectedIndexChanged">
-              <asp:ListItem Value="0">未通过</asp:ListItem>
-              <asp:ListItem Value="1">已通过</asp:ListItem>
+              <asp:ListItem Value="否">未通过</asp:ListItem>
+              <asp:ListItem Value="是">已通过</asp:ListItem>
    </asp:DropDownList><asp:TextBox ID="TextBox5" runat="server" Class="s"></asp:TextBox>
     <asp:ImageButton ID="ImageButton5" runat="server" 
         ImageUrl="~/admin/images/1.jpg" onclick="ImageButton5_Click" />

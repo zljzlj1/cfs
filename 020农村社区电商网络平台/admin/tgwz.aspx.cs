@@ -25,9 +25,7 @@ public partial class admin_tgwz : System.Web.UI.Page
 
     protected void GridView5_content()
     {
-        //string sql = "select titlername,txtrq,adminname,shsj,sftg,wtgly,txtfbzt,shzk from Txtinf,Admin   where Txtinf.adminid=Admin.adminid   and shzk='DropDownList1.SelectedItem.Text' and titlername like '%" + t + "%'";
-        //string strSj = "select txtidtitlername,txtrq,adminname,shsj,sftg,wtgly,txtfbzt,shzk from Txtinf,Admin   where Txtinf.adminid=Admin.adminid   and shzk='" + DropDownList1.SelectedItem.Text + "'";
-        if (DropDownList1.SelectedItem.Text == "未通过")
+     if (DropDownList1.SelectedItem.Text == "未通过")
         {
             string strSj = "select txtid,titlername,txtrq,adminname,shsj,sftg,wtgly,txtfbzt,shzk  from Txtinf,Admin   where Txtinf.adminid=Admin .adminid and shzk='已审核' and sftg='否' order by shsj desc ";
             DataSet ds = DBA.GetDataSet(strSj);
@@ -42,6 +40,17 @@ public partial class admin_tgwz : System.Web.UI.Page
                 LinkButton18.Visible = false;
                 LinkButton19.Visible = false;
                 LinkButton20.Visible = false;
+            }
+            else
+            {
+                Label1.Visible =false;
+            
+                Label9.Visible = true;
+                Label10.Visible = true;
+                LinkButton17.Visible = true;
+                LinkButton18.Visible = true;
+                LinkButton19.Visible = true;
+                LinkButton20.Visible = true;
             }
             GridView5.DataBind(); Show4();
         }
@@ -60,6 +69,16 @@ public partial class admin_tgwz : System.Web.UI.Page
                 LinkButton18.Visible = false;
                 LinkButton19.Visible = false;
                 LinkButton20.Visible = false;
+            }
+            else
+            {
+                Label1.Visible = false;
+                Label9.Visible = true;
+                Label10.Visible = true;
+                LinkButton17.Visible = true;
+                LinkButton18.Visible = true;
+                LinkButton19.Visible = true;
+                LinkButton20.Visible = true;
             }
             GridView5.DataBind(); Show4();
         }
@@ -100,7 +119,7 @@ public partial class admin_tgwz : System.Web.UI.Page
         {
 
 
-            string sql = "select txtid,titlername,txtrq,adminname,shsj,sftg,wtgly,txtfbzt,shzk  from Txtinf,Admin   where Txtinf.adminid=Admin .adminid and shzk='已审核' and sftg='" + DropDownList1.SelectedItem.Text + "' and  titlername like '%" + t + "%' order by shsj desc  ";
+            string sql = "select txtid,titlername,txtrq,adminname,shsj,sftg,wtgly,txtfbzt,shzk  from Txtinf,Admin   where Txtinf.adminid=Admin .adminid and shzk='已审核' and sftg='" + DropDownList1.SelectedItem.Value+ "' and  titlername like '%" + t + "%' order by shsj desc  ";
             DataSet ds = DBA.GetDataSet(sql);
             GridView5.DataSource = ds.Tables["datatable"].DefaultView;
             GridView5.DataBind();
@@ -108,8 +127,8 @@ public partial class admin_tgwz : System.Web.UI.Page
             if (ds.Tables[0].Rows.Count == 0)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('无此文章信息！');", true);
-                GridView5_content();
-
+             
+                TextBox5.Text = "";   GridView5_content();
             }
             else
                 Show4();

@@ -21,7 +21,8 @@ public partial class admin_shwz_sh : System.Web.UI.Page
 
 
 
-        } GridView5_content();
+        }
+        GridView5_content();
     }
     protected void GridView5_content()
     {
@@ -33,7 +34,8 @@ public partial class admin_shwz_sh : System.Web.UI.Page
         {
             Label6.Text = dr["Username"].ToString();
 
-            Label2.Text = dr["txtrq"].ToString();
+            Label2.Text = Convert.ToDateTime(dr["txtrq"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
+          
             title = dr["titlername"].ToString();
             txt = dr["txt"].ToString();
         }

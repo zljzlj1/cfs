@@ -38,6 +38,17 @@ public partial class admin_ncp : System.Web.UI.Page
             LinkButton7.Visible = false;
             LinkButton8.Visible = false;
         }
+        else
+        {
+            Label5.Visible =  false;
+       
+            Label3.Visible =true;
+            Label4.Visible = true;
+            LinkButton5.Visible = true;
+            LinkButton6.Visible = true;
+            LinkButton7.Visible = true;
+            LinkButton8.Visible = true;
+        }
         Show1();
     }
     private void Show1()
@@ -100,10 +111,11 @@ public partial class admin_ncp : System.Web.UI.Page
 
             }
            
-        } if (TextBox2.Text == "" || TextBox2.Text == null)
+        }
+        TextBox2.Text = "";
+        if (TextBox2.Text == "" || TextBox2.Text == null)
                 GridView2_content();
-            else
-                ss1();
+           
     }
     protected void GridView2_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -217,7 +229,7 @@ public partial class admin_ncp : System.Web.UI.Page
                 DBA.ExeSql(sql);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('添加成功！');", true);
                 TextBox1.Text = null;
-
+                GridView2_content();
             }
             else
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('添加失败，该品种已存在！');", true);

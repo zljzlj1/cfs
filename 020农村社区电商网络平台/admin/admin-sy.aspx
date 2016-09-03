@@ -39,7 +39,8 @@
  
 
 
-<div class="right"><iframe src="right.aspx" name="mainFrame" id="mainFrame"  frameborder="0"  scrolling="no"   height="500px" width="900px"></iframe></div>
+<div class="right"><iframe src="right.aspx" name="mainFrame" id="mainFrame"  
+        frameborder="0"  scrolling="yes"   height="500px" width="900px"></iframe></div>
 <div class="c"></div>
 
 </div>

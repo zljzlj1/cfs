@@ -24,8 +24,7 @@ public partial class admin_yhxx : System.Web.UI.Page
     }
 
     protected void GridView5_content()
-    {//[User].*,Sf,Adsf.sfid,Ads.sid,Adx.xid,Adz.zid,Adc.cid,sm,cm,zm,xm ,Adsf,Ads,Adx,Adz,Adc where [User].sfid=Adsf.sfid and [User].sid=Ads.sid and [User].xid=Adx.xid and [User].zid=Adz.zid and [User].cid=Adc.cid
-        string strSj = "select UserID,Username,yb,lxdh,mm,Jtdz,truename from [User]";
+    {  string strSj = "select UserID,Username,yb,lxdh,mm,Jtdz,truename from [User]";
         DataSet ds = DBA.GetDataSet(strSj);
         GridView5.DataSource = ds.Tables["datatable"].DefaultView;
         if (ds.Tables[0].Rows.Count == 0)
@@ -39,6 +38,18 @@ public partial class admin_yhxx : System.Web.UI.Page
             LinkButton19.Visible = false;
             LinkButton20.Visible = false;
         }
+        else
+        {
+            Label1.Visible = false;
+
+            Label9.Visible =  true;
+            Label10.Visible = true;
+            LinkButton17.Visible = true;
+            LinkButton18.Visible = true;
+            LinkButton19.Visible = true;
+            LinkButton20.Visible = true;
+        }
+
         GridView5.DataBind(); Show4();
 
     }
@@ -75,8 +86,7 @@ public partial class admin_yhxx : System.Web.UI.Page
 
         if (t != "" && t != null)
         {
-            //[User].*,Sf,sm,cm,zm,xm ,Adsf,Ads,Adx,Adz,Adc   [User].sfid=Adsf.sfid and [User].sid=Ads.sid and [User].xid=Adx.xid and [User].zid=Adz.zid and [User].cid=Adc.cid and
-            string sql = "select UserID,Username,yb,lxdh,mm,Jtdz,truename  from [User] where  Username like '%" + t + "%'";
+         string sql = "select UserID,Username,yb,lxdh,mm,Jtdz,truename  from [User] where  Username like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
             GridView5.DataSource = ds.Tables["datatable"].DefaultView;
             GridView5.DataBind();
@@ -84,6 +94,7 @@ public partial class admin_yhxx : System.Web.UI.Page
             if (ds.Tables[0].Rows.Count == 0)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('无此用户信息！');", true);
+                TextBox5.Text = "";
                 GridView5_content();
 
             }

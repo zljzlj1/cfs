@@ -40,7 +40,17 @@ public partial class admin_xgzdz : System.Web.UI.Page
             LinkButton14.Visible = false;
             LinkButton13.Visible = false;
         }
+        else
+        {
+            Label1.Visible = false;
         
+            Label7.Visible = true;
+            Label8.Visible = true;
+            LinkButton16.Visible = true; 
+            LinkButton15.Visible = true;
+            LinkButton14.Visible = true;
+            LinkButton13.Visible = true;
+        }
         
         Show3();
     }
@@ -86,10 +96,10 @@ public partial class admin_xgzdz : System.Web.UI.Page
             if (GridView4.PageIndex>1)
             GridView4.PageIndex = GridView4.PageIndex - 1;
         }
+        TextBox4.Text = "";
         if (TextBox4.Text == "" || TextBox4.Text == null)
             GridView4_content();
-        else
-            ss3();
+     
 
 
     }
@@ -110,7 +120,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
           {
               ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('无此镇信息！');", true);
               GridView4_content();
-
+        
           }
           else
               Show3();
@@ -135,6 +145,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
             DataSet ds = DBA.GetDataSet(sql);
             GridView4.DataSource = ds.Tables["datatable"].DefaultView;
             GridView4.DataBind();
+            TextBox4.Text = "";
         }
         else
       GridView4_content();

@@ -35,6 +35,8 @@ public partial class admin_tjgly : System.Web.UI.Page
                    DBA.ExeSql(sql);
 
              ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('管理员添加成功！');", true);
+             TextBox1.Text = "";
+             DropDownList1.SelectedIndex = 0;
 
                }
                else

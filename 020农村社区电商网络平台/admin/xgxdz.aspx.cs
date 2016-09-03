@@ -41,6 +41,17 @@ public partial class admin_xgxdz : System.Web.UI.Page
             LinkButton11.Visible = false;
             LinkButton12.Visible = false;
         }
+        else
+        {
+            Label7.Visible =  false;
+         
+            Label5.Visible =true;
+            Label6.Visible = true;
+            LinkButton9.Visible = true;
+            LinkButton10.Visible = true;
+            LinkButton11.Visible = true;
+            LinkButton12.Visible = true;
+        }
         Show2();
     }
   
@@ -89,10 +100,10 @@ public partial class admin_xgxdz : System.Web.UI.Page
 
             }
         }
+        TextBox3.Text = "";
         if (TextBox3.Text == "" || TextBox3.Text == null)
             GridView3_content();
-        else
-            ss2();
+        
     }
    
     protected void ss2()
@@ -135,6 +146,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
               DataSet ds = DBA.GetDataSet(sql);
               GridView3.DataSource = ds.Tables["datatable"].DefaultView;
               GridView3.DataBind();
+              TextBox3.Text="";
           }
           else
         GridView3_content();

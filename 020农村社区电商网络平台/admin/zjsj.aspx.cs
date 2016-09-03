@@ -128,7 +128,7 @@ public partial class admin_zjsj : System.Web.UI.Page
                if (ds.Tables[0].Rows.Count == 0 || ds.Tables[0].Rows.Count == null)
                {
                    Label1.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
-                   string sql = " insert into Sj (sjmc,rzsj,ssfid,ssid,sxid,szid,scid) values('" + TextBox1.Text + "','" + Label1.Text + "',' " + bind_Province.SelectedItem.Value + " ','" + bind_City.SelectedItem.Value + "','" + bind_Borough.SelectedItem.Value + "','" + bind_zh.SelectedItem.Value + " ','" + bind_cun.SelectedItem.Value + "',')";
+                   string sql = " insert into Sj (sjmc,rzsj,ssfid,ssid,sxid,szid,scid) values('" + TextBox1.Text + "','" + Label1.Text + "',' " + bind_Province.SelectedItem.Value + " ','" + bind_City.SelectedItem.Value + "','" + bind_Borough.SelectedItem.Value + "','" + bind_zh.SelectedItem.Value + " ','" + bind_cun.SelectedItem.Value + "')";
                    DBA.ExeSql(sql);
 
              ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('商家添加成功！');", true);

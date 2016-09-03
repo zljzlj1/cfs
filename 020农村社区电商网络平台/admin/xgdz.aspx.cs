@@ -104,11 +104,10 @@ public partial class admin_xgdz : System.Web.UI.Page
             if (GridView1.PageIndex>1)
             GridView1.PageIndex = GridView1.PageIndex - 1;
         }
+        TextBox1.Text = "";
         if (TextBox1.Text == "" || TextBox1.Text == null)
             GridView1_content();
-        else
-            ss();
-
+       
 
 
 

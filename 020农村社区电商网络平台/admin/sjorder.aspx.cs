@@ -34,6 +34,8 @@ public partial class admin_sjorder : System.Web.UI.Page
             Label5.Text = "暂无数据";
 
         }
+        else
+            Label5.Visible = false;
 
     }
 
@@ -90,13 +92,12 @@ public partial class admin_sjorder : System.Web.UI.Page
         if (t != "" && t != null)
         {
 
-            string sql = " select sjmc,tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and zt='False'  and ddhd='" + DropDownList4.SelectedItem.Value + "'  and Orderxx.ddid like '%" + t + "%'  order by gmrq desc ";
-           
-            DataSet ds = DBA.GetDataSet(sql);
+            string sql = "select sjmc,tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and zt='False'  and ddhd='" + DropDownList4.SelectedItem.Value + "'  and Orderxx.ddid like '%" + t + "%'  order by gmrq desc ";
+           DataSet ds = DBA.GetDataSet(sql);
             GridView2.DataSource = ds.Tables["datatable"].DefaultView;
             GridView2.DataBind();
-
-            if (ds.Tables[0].Rows.Count == 0)
+            TextBox3.Text = "";
+      if (ds.Tables[0].Rows.Count == 0)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('无此订单信息！');", true);
                 GridView2_content();

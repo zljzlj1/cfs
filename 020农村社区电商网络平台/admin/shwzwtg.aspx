@@ -45,7 +45,7 @@
                  <h3>
 &nbsp; 上传时间：<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
                             &nbsp; 发表人：<asp:Label ID="Label6" runat="server" Text="Label6"></asp:Label>
-                               
+                             &nbsp;<a href="tgwz.aspx" style="text-decoration: none; color: #000000">【返回】 </a> 
                                 </h3></td>
        
      </tr>
