@@ -32,7 +32,7 @@
                     if (data.d.result == true) {
                         // $("#articleComment").zyComment("setCommentAfter", data.d.data);
                         $("#main").empty();
-                        getChart(data.d);
+                        getChart(data.d.data);
 
                     } else {
                         html = '你还没有添加商品,<a href="tjsp.aspx">点击</a>进行添加商品';
