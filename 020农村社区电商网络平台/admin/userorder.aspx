@@ -65,12 +65,6 @@
 
 
 
-                  <asp:TemplateField HeaderText="订单状态">
-                   <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
-                <ItemTemplate><asp:Label ID="Label6" runat="server" Text='<% #Eval("sjqr").ToString().Trim()=="False"?"未确认":"已确认"%>'></asp:Label>|<asp:Label ID="Label1" runat="server" Text='<% #Eval("fh").ToString().Trim()=="False"?"未发货":"已发货"%>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
                         <asp:CheckBoxField DataField="sfzf" Text="支付" HeaderText="是否支付" />
                 <asp:CommandField HeaderText="操作" ShowEditButton="True" />
             </Columns>
