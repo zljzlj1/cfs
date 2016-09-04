@@ -15,44 +15,76 @@ namespace Maticsoft.ToModel
         /// <summary>
         /// 图表标题
         /// </summary>
-        private string _title;
+        private string _text;
 
         /// <summary>
         /// 图表标题
         /// </summary>
-        public string title
+        public string text
         {
-            get { return _title; }
-            set { _title = value; }
+            get { return _text; }
+            set { _text = value; }
         }
 
         /// <summary>
-        /// 内容
+        /// 图表介绍
         /// </summary>
-        private List<Maticsoft.ToModel.keyvalue> _context;
+        private string _subtext;
 
         /// <summary>
-        /// 内容
+        /// 图表介绍
         /// </summary>
-        public List<Maticsoft.ToModel.keyvalue> context
+        public string subtext
         {
-            get { return _context; }
-            set { _context = value; }
+            get { return _subtext; }
+            set { _subtext = value; }
         }
 
         /// <summary>
-        /// 总计
+        /// 详请标题
         /// </summary>
-        private string _total;
+        private string _name;
 
         /// <summary>
-        /// 总计
+        /// 详请标题
         /// </summary>
-        public string total
+        public string name
         {
-            get { return _total; }
-            set { _total = value; }
+            get { return _name; }
+            set { _name = value; }
         }
+        /// <summary>
+        /// 数据1
+        /// </summary>
+        private List<string> _data1;
+
+        /// <summary>
+        /// 数据1
+        /// </summary>
+        public List<string> data1
+        {
+            get { return _data1; }
+            set { _data1 = value; }
+        }
+
+        /// <summary>
+        /// 数据2
+        /// </summary>
+        private List<Maticsoft.ToModel.keyvalue> _data2;
+
+        /// <summary>
+        /// 数据2
+        /// </summary>
+        public List<Maticsoft.ToModel.keyvalue> data2
+        {
+            get { return _data2; }
+            set { _data2 = value; }
+        }
+
+    
+
+
+    
 
         #endregion Model
 

@@ -6,17 +6,19 @@
 <head runat="server">
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jsapi.js"></script>
-<script type="text/javascript" src="js/corechart.js"></script>		
-<script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+<script type="text/javascript" src="js/1-6-10.esl.js"></script>
 </head>
 <body>
-	<div style="width:600px;margin:0 auto;" id="map">
-	</div>
-    
+	 <div id="main" style="height:400px; width:1000px;margin:0 auto;"></div>
+     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                'echarts': 'js/echarts',
+                'echarts/chart/pie': 'js/echarts'
+            }
+        });
         getdata();
         function getdata() {
             $.ajax({
@@ -27,53 +29,63 @@
                 success: function (data) {
                     console.info("填写内容返回值：");
                     console.info(data);
-                    kk(data.d);
+                    getChart(data.d);
                 },
                 error: function (err) {
                     alert("发生错误");
                 }
             });
         }
-        function kk(table) {
-			var html = '';
-			html += ' <table id=myTable0 > ';
-			html += '       <caption> ' + table.title + ' </caption> ';
-			var context = table.context;
-			var thead = '';
-			var tbody = '';
-			thead += ' <thead> ';
-			thead += '    <tr>';
-			thead += '        <th></th>';
-			tbody += ' <tbody>';
-			tbody += '    <tr>';
-			tbody += '        <th>' + table.total + '</th>';
-			for (var k in context) {
-			    thead += '        <th>' + context[k].name + '</th>';
-			    tbody += '        <td>' + context[k].value + '</td>';
-			}
-			thead += '    </tr>';
-			thead += ' </thead> ';
-			tbody += '    </tr>';
-			tbody += ' </tbody>';
-			html = html + thead + tbody;
-			html += ' </table> ';
-			$("#map").append(html);
-			inst();        }
-        function inst() {
-            gvChartInit();
-            $(document).ready(function () {
-                $('#myTable0').gvChart({
-                    chartType: 'PieChart',
-                    gvSettings: {
-                        vAxis: { title: 'No of players' },
-                        hAxis: { title: 'Month' },
-                        width: 600,
-                        height: 350
-                    }
-                });
-            });
-        }
-	</script>
+        function getChart(todata) {
+            // 使用
+            require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+                var option = {
+                    title: {
+                        text: todata.text,
+                        subtext: todata.subtext,
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                        data: todata.data1
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    calculable: true,
+                    series: [
+                        {
+                            name: todata.name,
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            data: todata.data2
+                        }
+                    ]
+                   };
+                myChart.setOption(option);
+            }
+        );
+       }
+    </script>      
 
 </body>
 </html>
