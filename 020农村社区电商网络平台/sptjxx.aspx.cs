@@ -10,9 +10,10 @@ using System.Web.Services; //引入命名空间
 
 public partial class sptjxx : System.Web.UI.Page
 {
+    public static int Vsjid ;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Vsjid = 1;
     }
 
     [WebMethod]
@@ -24,7 +25,7 @@ public partial class sptjxx : System.Web.UI.Page
         toSptjxx.name = "数据来源";
         Maticsoft.Service.Sp spService = new Maticsoft.Service.Sp();
         Maticsoft.Model.Sp model = new Maticsoft.Model.Sp();
-        model.sjid = 1;
+        model.sjid = Vsjid;
         model.spzt = true;
         List<Maticsoft.Model.Sp> spModelList = spService.searchListByModel(model);
 
