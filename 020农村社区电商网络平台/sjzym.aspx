@@ -32,7 +32,7 @@
   <div class="left"><iframe src="sjzymleft.aspx"   frameborder="0"  scrolling="no"   height="572px" width="170px"></iframe></div>
 <div class="right">
     <iframe src="sjzymright.aspx" name="sjmain" frameborder="0"  
-        scrolling="auto"  height="572px" width="900px"   ></iframe></div>
+        scrolling="auto"  height="572px" width="1000px"   ></iframe></div>
     <div class="c"></div> </div>
     </div>
     </form>

@@ -10,10 +10,10 @@ using System.Web.Services; //引入命名空间
 
 public partial class sptjxx : System.Web.UI.Page
 {
-    public static int Vsjid ;
+    public static int Vsjid; public static string Vsjmc;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Vsjid = int.Parse(Session["sjid"].ToString());
+        Vsjid = int.Parse(Session["sjid"].ToString()); Vsjmc = Session["sjmc"].ToString();
     }
 
     [WebMethod]
@@ -22,7 +22,7 @@ public partial class sptjxx : System.Web.UI.Page
         Dictionary<string, Object> data = new Dictionary<string, Object>();
 
         Maticsoft.ToModel.sptjxx toSptjxx = new Maticsoft.ToModel.sptjxx();
-        toSptjxx.text = "商品购买数量统计";
+        toSptjxx.text = Vsjmc + "商品购买数量统计";
         toSptjxx.subtext = "为了增加销售量,需要把商品的购买的数量进行统计";
         toSptjxx.name = "数据来源";
         Maticsoft.Service.Sp spService = new Maticsoft.Service.Sp();

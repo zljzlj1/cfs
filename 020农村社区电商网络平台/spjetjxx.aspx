@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/1-6-10.esl.js"></script>
 </head>
 <body>
-     <div id="main" style="height:400px; width:1000px;margin:0 auto;"></div>
+     <div id="main" style="height:400px; width:800px;margin:0 auto;"></div>
      <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
         // 路径配置
