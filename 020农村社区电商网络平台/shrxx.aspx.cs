@@ -13,6 +13,8 @@ public partial class shrxx : System.Web.UI.Page
    
     protected void Page_Load(object sender, EventArgs e)
     {
+    
+    
         if (!IsPostBack)
         {
             string SQLStr = " select Username,lxdh,yb,Jtdz from [User] where UserID='" + Session["UserID"] + "'";
@@ -31,8 +33,8 @@ public partial class shrxx : System.Web.UI.Page
         Session.Timeout = 60;
          string dd =null;
       string d= DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
-    
-     decimal a=Convert.ToDecimal(Session["sum"].ToString()); 
+
+      decimal a = Convert.ToDecimal(Session["sum"].ToString()); 
       string strsql = "insert into [Order] (UserID,gmrq,totalprice,receman,recephone,receadress,recepost) values('" + Session["UserID"] + "','" + d + "', '"+a+"','" + TextBox1.Text + "','" + TextBox4.Text + "','" + TextBox7.Text + "','" + TextBox5.Text + "')";
         DBA.ExeSql(strsql);
         ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('下单成功!');location.href= 'ddhao.aspx ' ; </script>");
@@ -62,7 +64,7 @@ public partial class shrxx : System.Web.UI.Page
   }*/
 string SQLSt = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='"+ Session["UserID"]+ "'";
   OleDbDataReader da = DBA.GetDataReader(SQLSt);
-  for (int i = 0; i < da.FieldCount; i++)
+ // for (int i = 0; i < da.FieldCount; i++)
   while (da.Read())
   {
       
