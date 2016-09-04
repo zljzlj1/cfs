@@ -7,6 +7,7 @@
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/1-6-10.esl.js"></script>
+  <style type="text/css">a{ color:Black} </style>
 </head>
 <body>
 	 <div id="main" style="height:400px; width:800px;margin:0 auto;"></div>
