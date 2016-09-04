@@ -52,19 +52,42 @@ public partial class shrxx : System.Web.UI.Page
  
 
 
-  /*string strSQ = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='" + Session["UserID"] + "'";
+ string strSQ = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='" + Session["UserID"] + "'";
   DataSet ds = DBA.GetDataSet(strSQ);
   int rowSum = ds.Tables[0].Rows.Count;
   for (int i = 0; i < rowSum; i++)
   {
-     
+      
+      string strsq = "insert into Orderxx (UserID,num,tyjg,spid,sjid,zt,ddid) values ('" + Convert.ToInt32(ds.Tables[0].Rows[i]["UserID"].ToString()) + "','" + Convert.ToDecimal(ds.Tables[0].Rows[i]["num"].ToString()) + "','" + Convert.ToDecimal(ds.Tables[0].Rows[i]["jg"].ToString()) + "','" + Convert.ToInt32(ds.Tables[0].Rows[i]["spid"].ToString()) + "','" + Convert.ToInt32(ds.Tables[0].Rows[i]["sjid"].ToString()) + "','" + ds.Tables[0].Rows[i]["zt"] + "','" + dd + "')";
+      DBA.ExeSql(strsq);
+      string strs = "select kcsl from Sp where spid='" + Convert.ToInt32(ds.Tables[0].Rows[i]["spid"].ToString()) + "'";//kc
+      OleDbDataReader ddd = DBA.GetDataReader(strs);
+      if (ddd.Read())
+      {
+          string s = ddd["kcsl"].ToString();
+          decimal kc = Convert.ToDecimal(s);
+          decimal vkc = kc - Convert.ToDecimal(ds.Tables[0].Rows[i]["num"].ToString());
+          string sq = "update Sp set kcsl='" + vkc + "' where spid='" + Convert.ToInt32(ds.Tables[0].Rows[i]["spid"].ToString()) + "' ";
+          DBA.ExeSql(sq);
+      }
 
-  
-  
-  }*/
-string SQLSt = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='"+ Session["UserID"]+ "'";
+      string SQStr = " select xssl from Sp where  spid='" + Convert.ToInt32(ds.Tables[0].Rows[i]["spid"].ToString()) + "'";//xssl
+      OleDbDataReader dq = DBA.GetDataReader(SQStr);
+      if (dq.Read())
+      {
+          decimal vxssl = Convert.ToDecimal(dq["xssl"].ToString());
+          decimal vvnum = vxssl + Convert.ToDecimal(ds.Tables[0].Rows[i]["num"].ToString());
+          string strss = "update Sp set xssl= '" + vvnum + "' where spid='" + Convert.ToInt32(ds.Tables[0].Rows[i]["spid"].ToString()) + "'";
+          DBA.ExeSql(strss);
+      }
+
+
+  }
+        string strSQl = "delete from Gwc where UserID='" + Session["UserID"].ToString() + "'";//删除记录
+  DBA.ExeSql(strSQl);
+/*string SQLSt = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='"+ Session["UserID"]+ "'";
   OleDbDataReader da = DBA.GetDataReader(SQLSt);
- // for (int i = 0; i < da.FieldCount; i++)
+
   while (da.Read())
   {
       
@@ -73,7 +96,7 @@ string SQLSt = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='"+ Se
       decimal tyjg = da.GetDecimal(da.GetOrdinal("jg"));
       int spid = da.GetInt32(da.GetOrdinal("spid"));
       int sjid = da.GetInt32(da.GetOrdinal("sjid"));
-     bool zt = da.GetBoolean(da.GetOrdinal("zt"));*/
+     bool zt = da.GetBoolean(da.GetOrdinal("zt"));
 
       int UserID =Convert.ToInt32( da["UserID"].ToString());
       decimal num =Convert.ToDecimal( da["num"].ToString());
@@ -83,69 +106,70 @@ string SQLSt = " select num,jg,spid,sjid,zt,UserID from Gwc where UserID ='"+ Se
       bool zt =Convert.ToBoolean( da["zt"].ToString());
            string strsq = "insert into Orderxx (UserID,num,tyjg,spid,sjid,zt,ddid) values ('"+UserID + "','" + num + "','" + tyjg + "','" + spid + "','" + sjid + "','" + zt + "','" + dd + "')";
         DBA.ExeSql(strsq);
+}*/
+    //whilr   
+
+ 
 
 
-
-
-
-        string strs = "select kcsl from Sp where spid='" + spid + "'";//kc
-        OleDbDataReader ddd = DBA.GetDataReader(strs);
-        if (ddd.Read())
-        {
-            string s = ddd["kcsl"].ToString();
-            decimal kc = Convert.ToDecimal(s);
-            decimal vkc = kc - num;
-            string sq = "update Sp set kcsl='" + vkc + "' where spid='" + spid + "' ";
-            DBA.ExeSql(sq);
-        }
-
-        string SQStr = " select xssl from Sp where  spid='" + spid + "'";//xssl
-        OleDbDataReader dq = DBA.GetDataReader(SQStr);
-        if (dq.Read())
-        {
-            decimal vxssl = Convert.ToDecimal(dq["xssl"].ToString());
-            decimal vvnum = vxssl + num;
-            string strss = "update Sp set xssl= '" + vvnum + "' where spid='" + spid + "'";
-            DBA.ExeSql(strss);
-        }
-
-        
       
-       
+        /*
+          string strs = "select kcsl from Sp where spid='" + spid + "'";//kc
+          OleDbDataReader ddd = DBA.GetDataReader(strs);
+          if (ddd.Read())
+          {
+              string s = ddd["kcsl"].ToString();
+              decimal kc = Convert.ToDecimal(s);
+              decimal vkc = kc - num;
+              string sq = "update Sp set kcsl='" + vkc + "' where spid='" + spid + "' ";
+              DBA.ExeSql(sq);
+          }
 
-    }//whilr   
-
- 
-
-
-        string strSQ = "delete from Gwc where UserID='" + Session["UserID"].ToString() + "'";//删除记录
-  DBA.ExeSql(strSQ);      
-/*
-  string strs = "select kcsl from Sp where spid='" + spid + "'";//kc
-  OleDbDataReader ddd = DBA.GetDataReader(strs);
-  if (ddd.Read())
-  {
-      string s = ddd["kcsl"].ToString();
-      decimal kc = Convert.ToDecimal(s);
-      decimal vkc = kc - num;
-      string sq = "update Sp set kcsl='" + vkc + "' where spid='" + spid + "' ";
-      DBA.ExeSql(sq);
-  }
-
-  string SQStr = " select xssl from Sp where  spid='" + spid + "'";//xssl
-  OleDbDataReader dq = DBA.GetDataReader(SQStr);
-  if (dq.Read())
-  {
-      decimal vxssl = Convert.ToDecimal(dq["xssl"].ToString());
-      decimal vvnum = vxssl + num;
-      string strss = "update Sp set xssl= '" + vvnum + "' where spid='" + spid + "'";
-      DBA.ExeSql(strss);
-  }
-        */
-
+          string SQStr = " select xssl from Sp where  spid='" + spid + "'";//xssl
+          OleDbDataReader dq = DBA.GetDataReader(SQStr);
+          if (dq.Read())
+          {
+              decimal vxssl = Convert.ToDecimal(dq["xssl"].ToString());
+              decimal vvnum = vxssl + num;
+              string strss = "update Sp set xssl= '" + vvnum + "' where spid='" + spid + "'";
+              DBA.ExeSql(strss);
+          }
+      
+         * 
  
  
-  
+ 
+              string strs = "select kcsl from Sp where spid='" + spid + "'";//kc
+                OleDbDataReader ddd = DBA.GetDataReader(strs);
+                if (ddd.Read())
+                {
+                    string s = ddd["kcsl"].ToString();
+                    decimal kc = Convert.ToDecimal(s);
+                    decimal vkc = kc - num;
+                    string sq = "update Sp set kcsl='" + vkc + "' where spid='" + spid + "' ";
+                    DBA.ExeSql(sq);
+                }
+
+                string SQStr = " select xssl from Sp where  spid='" + spid + "'";//xssl
+                OleDbDataReader dq = DBA.GetDataReader(SQStr);
+                if (dq.Read())
+                {
+                    decimal vxssl = Convert.ToDecimal(dq["xssl"].ToString());
+                    decimal vvnum = vxssl + num;
+                    string strss = "update Sp set xssl= '" + vvnum + "' where spid='" + spid + "'";
+                    DBA.ExeSql(strss);
+                }
+
+ 
+ 
+ 
+ 
+ 
+         */
+
+
+
+
 
     }
 }

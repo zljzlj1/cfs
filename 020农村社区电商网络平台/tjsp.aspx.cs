@@ -74,6 +74,7 @@ public partial class tjsp : System.Web.UI.Page
         { decimal b = Convert.ToDecimal(TextBox2.Text);
       decimal a = Convert.ToDecimal(TextBox4.Text);
             string picture = Session["filename"].ToString();
+            //重名
             string SQLStr = "insert into Sp(sjid,kcsl,spmc,sptp,spjg,spxx,splbid,xsdw,spsjsj,spzt)values ('" + Session["sjid"].ToString() + "','" +b + "','" + TextBox1.Text + "','" + picture + "','" + a + "','" + TextBox5.Text + "','" + DropDownList1.SelectedItem.Value + "','" + TextBox3.Text + "','" + d + "','True')";
             DBA.ExeSql(SQLStr);
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", " <script> alert('商品上传成功！');</script> ");

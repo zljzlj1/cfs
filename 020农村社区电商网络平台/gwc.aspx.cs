@@ -39,6 +39,8 @@ public partial class gwc : System.Web.UI.Page
             Label5.Text = "暂无数据";
            
         }
+        else
+            Label5.Visible =false;
          b = ds.Tables[0].Rows.Count;
     
     }
@@ -138,15 +140,15 @@ public partial class gwc : System.Web.UI.Page
 
         if (rowSum > 0)
         {
-           // string s= ((HiddenField)FindControl("HiddenField4")).Value;
-            //decimal a=Convert.ToDecimal(s);
+           
             Response.Redirect("shrxx.aspx");
         }
         else
         {
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); </script>");
         
         }
     
     }
+    
 }

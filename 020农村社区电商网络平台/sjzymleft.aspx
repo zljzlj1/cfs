@@ -21,7 +21,7 @@
 			<dd><a href="sjgg.aspx" target="sjmain">发布信息</a></dd>
             <dd><a href="xgsjggxx.aspx" target="sjmain">修改发布信息</a></dd>
             	<dd><a href="ckgx.aspx" target="sjmain">查看供需</a></dd>
-                <dd><a href="Default2.aspx" target="sjmain">cs</a></dd>
+               
              
 	
 		</dl>

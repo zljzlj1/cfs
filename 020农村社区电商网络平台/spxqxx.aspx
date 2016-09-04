@@ -66,8 +66,8 @@
 							<tr>
 								<td align="left" class="style2">取货：<asp:DropDownList ID="DropDownList1" 
                                         runat="server" CssClass="styled">
-                                    <asp:ListItem Value="False">不自提</asp:ListItem>
-                                    <asp:ListItem Value="True">自提</asp:ListItem>
+                              
+                                    <asp:ListItem Value="True">自提</asp:ListItem>      <asp:ListItem Value="False">不自提</asp:ListItem>
                                     </asp:DropDownList>
                               &nbsp;&nbsp;&nbsp;运费：<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
                                     元</td>
