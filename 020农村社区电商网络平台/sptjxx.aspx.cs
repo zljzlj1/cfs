@@ -13,12 +13,14 @@ public partial class sptjxx : System.Web.UI.Page
     public static int Vsjid ;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Vsjid = 1;
+        Vsjid = int.Parse(Session["sjid"].ToString());
     }
 
     [WebMethod]
     public static Object getdata()
     {
+        Dictionary<string, Object> data = new Dictionary<string, Object>();
+
         Maticsoft.ToModel.sptjxx toSptjxx = new Maticsoft.ToModel.sptjxx();
         toSptjxx.text = "商品购买数量统计";
         toSptjxx.subtext = "为了增加销售量,需要把商品的购买的数量进行统计";
@@ -45,10 +47,17 @@ public partial class sptjxx : System.Web.UI.Page
                 keyvalue.value = spModel.xssl.ToString();
                 data2.Add(keyvalue);
             }
+            toSptjxx.data1 = data1;
+            toSptjxx.data2 = data2;
+            data.Add("result", true);
+            data.Add("data", toSptjxx);
+            return data;
         }
-        toSptjxx.data1 = data1;
-        toSptjxx.data2 = data2;
-        return toSptjxx;
+        else {
+            data.Add("result", false);
+            return data;
+        }
+      
     }
 
 }

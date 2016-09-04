@@ -29,7 +29,17 @@
                 success: function (data) {
                     console.info("填写内容返回值：");
                     console.info(data);
-                    getChart(data.d);
+                    if (data.d.result == true) {
+                        // $("#articleComment").zyComment("setCommentAfter", data.d.data);
+                        $("#main").empty();
+                        getChart(data.d);
+
+                    } else {
+                        html = '你还没有添加商品,<a href="tjsp.aspx">点击</a>进行添加商品';
+                        $("#main").empty();
+                        $("#main").append(html);
+                    }
+
                 },
                 error: function (err) {
                     alert("发生错误");
