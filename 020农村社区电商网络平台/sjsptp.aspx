@@ -11,6 +11,7 @@
 * {margin: 0;padding: 0;border: 0;list-style-type:none; }
 a,img{border:0;  color:Black;    text-decoration: none;}
 .ul, li{padding: 0px;margin: 0px;border-width: 0px;}
+.s{ border: Silver 1px solid;  }
 </style>
 </head>
 <body>
@@ -66,7 +67,7 @@ a,img{border:0;  color:Black;    text-decoration: none;}
 <asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt">转到</asp:label>
 
     <asp:textbox id="TextBox1" runat="server" Width="31px" Height="15px" 
-         Font-Size="9pt" CssClass="txt"></asp:textbox>
+         Font-Size="9pt" CssClass="s"></asp:textbox>
 <asp:label id="Label3" runat="server" Font-Size="9pt" CssClass="lable">页</asp:label>
 
                   

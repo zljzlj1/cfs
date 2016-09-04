@@ -16,14 +16,13 @@ public partial class sjsptp : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            DataList1_content(); //可实现分页的数据源绑定DataList1的函数
+            DataList1_content(); 
          
         }
     }
     public void PagerButtonClick(object sender, EventArgs e)
     {
-        // string sql = "select txtid,titlername   from Txtinf where  sftg='是'order by shsj desc ";
-
+     
         string SQLStr = "select spid,spmc,sptp,spzt,spsjsj  from Sp where sjid='" + Session["sjid"].ToString() + "' and spzt='True' order by spsjsj desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 

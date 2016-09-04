@@ -87,7 +87,6 @@
        &nbsp; &nbsp; 
     <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/image/qkgwc.png" 
            Height="25px" onclick="ImageButton5_Click"/>
-       <asp:Label ID="Label10" runat="server" Text="Label"></asp:Label>
     </div>
 
 

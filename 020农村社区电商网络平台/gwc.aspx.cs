@@ -133,9 +133,9 @@ public partial class gwc : System.Web.UI.Page
         string strSj = "select txtfbzt from [User],Txtinf where [User].UserID=Txtinf.UserID and Txtinf.Userid='" + Session["UserID"].ToString() + "' and txtfbzt='False'";
         DataSet ds = DBA.GetDataSet(strSj);
         int rowSum = ds.Tables[0].Rows.Count;
-       
-        if (b> 0)
-        { Session["sum"] = sum; Response.Redirect("shrxx.aspx?id=sum "); }
+
+        if (rowSum > 0)
+        { Session["sum"] = sum; Response.Redirect("shrxx.aspx");}
         else
         {
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
