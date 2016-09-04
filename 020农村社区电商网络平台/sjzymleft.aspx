@@ -52,9 +52,10 @@
 	
 		<dl class="statistics">
 			<dt>统计分析<img src="image/sj/left/select_xl01.png"></dt>
-			<dd class="first_dd"><a href="sptjxx.aspx" target="sjmain">商品占比统计</a></dd>
+			<dd class="first_dd"><a href="sptjxx.aspx" target="sjmain">商品销售统计</a></dd>
             <dd class="first_dd"><a href="spjetjxx.aspx" target="sjmain">商品金额统计</a></dd>
                    <dd class="first_dd"><a target="sjmain" href="spdjl.aspx">商品点击量统计</a></dd>
+                       <dd class="first_dd"><a target="spkc" href="spdjl.aspx">商品点击量统计</a></dd>
 		</dl>
 	
 	</div>
