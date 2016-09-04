@@ -77,7 +77,7 @@
         </asp:GridView>
  合计：<%=sum %>
       
-       元<br />
+       元<asp:HiddenField ID="HiddenField3" runat="server" Value='<%=sum %>' /><br />
        商品数量：<%=b %><br />
       &nbsp;  &nbsp; &nbsp;<asp:ImageButton ID="ImageButton1" runat="server" 
            Height="25px" ImageUrl="~/image/下一步.png" 

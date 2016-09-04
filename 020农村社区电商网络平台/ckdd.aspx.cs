@@ -35,6 +35,8 @@ public partial class ckdd : System.Web.UI.Page
             Label5.Text = "暂无数据";
 
         }
+        else
+            Label5.Visible = false;
 
     }
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -64,7 +66,8 @@ public partial class ckdd : System.Web.UI.Page
             Label2.Text = "暂无数据";
 
         }
-
+        else
+            Label2.Visible =false;
     }
   
 }

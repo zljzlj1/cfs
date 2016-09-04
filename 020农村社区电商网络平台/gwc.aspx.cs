@@ -51,10 +51,11 @@ public partial class gwc : System.Web.UI.Page
        
 
     }
-
+  
     public Decimal sum = 0;
     protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
     {
+      
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
 
@@ -121,7 +122,7 @@ public partial class gwc : System.Web.UI.Page
         string strSQ = "delete from Gwc where UserID='" + Session["UserID"].ToString() + "'";//删除记录
         DBA.ExeSql(strSQ);
         ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('清空成功!'); ; </script>");
-    
+        GridView2_content();
     }
 
 
@@ -130,16 +131,19 @@ public partial class gwc : System.Web.UI.Page
 
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
-        string strSj = "select txtfbzt from [User],Txtinf where [User].UserID=Txtinf.UserID and Txtinf.Userid='" + Session["UserID"].ToString() + "' and txtfbzt='False'";
-        DataSet ds = DBA.GetDataSet(strSj);
+        string strSQ = "select gwid,spmc,spjg,num,ktfy,jg,sjmc,zt from Sj,Gwc,Sp where Sj.sjid=Gwc.sjid and Gwc.spid=Sp.spid and UserID= '" + Session["UserID"].ToString() + "'";
+        DataSet ds = DBA.GetDataSet(strSQ);
         int rowSum = ds.Tables[0].Rows.Count;
 
         if (rowSum > 0)
-        { Session["sum"] = sum; Response.Redirect("shrxx.aspx");}
+        {
+            decimal a=((HiddenField)FindControl("HiddenField3")).Value;
+            Session["sum"] = a.ToString(); Response.Redirect("shrxx.aspx");
+        }
         else
         {
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
-            GridView2_content();
+           // GridView2_content();
         }
     
     }
