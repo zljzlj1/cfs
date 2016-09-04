@@ -5,12 +5,95 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript" src="js/1-6-10.esl.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
+     <div id="main" style="height:400px; width:1000px;margin:0 auto;"></div>
+     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                'echarts': 'js/echarts',
+                'echarts/chart/pie': 'js/echarts'
+            }
+        });
+        getdata();
+        function getdata() {
+            $.ajax({
+                type: "POST",
+                url: "spjetjxx.aspx/getdata", //方法所在页面和方法名
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.info("填写内容返回值：");
+                    console.info(data);
+                    if (data.d.result == true) {
+                        // $("#articleComment").zyComment("setCommentAfter", data.d.data);
+                        $("#main").empty();
+                        getChart(data.d.data);
+
+                    } else {
+                        html = '你还没有添加商品,<a href="tjsp.aspx">点击</a>进行添加商品';
+                        $("#main").empty();
+                        $("#main").append(html);
+                    }
+
+                },
+                error: function (err) {
+                    alert("发生错误");
+                }
+            });
+        }
+        function getChart(todata) {
+            // 使用
+            require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+                var option = {
+                    title: {
+                        text: todata.text,
+                        subtext: todata.subtext,
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                        data: todata.data1
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    calculable: true,
+                    series: [
+                        {
+                            name: todata.name,
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            data: todata.data2
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+        );
+        }
+    </script>      
 </body>
 </html>
