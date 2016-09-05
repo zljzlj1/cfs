@@ -81,7 +81,9 @@ public partial class spxqxx : System.Web.UI.Page
             string strSQ = "insert into Spplb(UserID,sppjxx,sppltime,spid)values('" + Session["UserID"] + "','" + TextBox3.Text + "','" + d + "','" + vspid + "')";
             DBA.ExeSql(strSQ);
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('发表成功!'); </script>");
-            TextBox3.Text = "";}
+            TextBox3.Text = "";
+            Repeater();
+            }
             else
                 ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('输入评论内容!'); </script>");
           
