@@ -26,7 +26,7 @@ public partial class index : System.Web.UI.Page
 
 
 
-        string SQLStr = "select top(4)Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True'  order by spsjsj desc";
+        string SQLStr = "select top(5)Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True'  order by spsjsj desc";
         DataSet ds = DBA.GetDataSet(SQLStr);
           DLnew.DataSource = ds.Tables[0].DefaultView; ;
         DLnew.DataBind();
@@ -40,7 +40,7 @@ public partial class index : System.Web.UI.Page
 
 
 
-        string SQLStr = "select top(4)Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True'  order by spdjl desc";
+        string SQLStr = "select top(5)Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True'  order by spdjl desc";
         DataSet ds = DBA.GetDataSet(SQLStr);
         DLbest.DataSource = ds.Tables[0].DefaultView; ;
         DLbest.DataBind();

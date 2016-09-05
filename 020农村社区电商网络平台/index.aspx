@@ -5,8 +5,7 @@
     <style type="text/css">a{ color:Black;}</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-   <table style="width: 100%">
+    <div style="height: 520px"  > <table style="width: 100%">
             
             <tr>
                 <td style="width: 103px; height: 12px; background-image: url('image/bg11.png'); background-repeat: repeat-x;">
@@ -14,10 +13,11 @@
             </tr>
             <tr>
                 <td style="width: 103px; height: 97px">
-                    <asp:DataList ID="DLnew" runat="server" RepeatColumns="4" Width="144px"  RepeatDirection="Horizontal">
+                    <asp:DataList ID="DLnew" runat="server" RepeatColumns="5" Width="144px"  
+                        RepeatDirection="Horizontal">
                         <ItemTemplate>
                             <div style="text-align: center">
-                                <table style="width: 157px; height: 286px">
+                                <table style="width: 157px; height: 215px">
                                     <tr>
                                         <td style="width: 100px; height: 100px">
                                                                    <a href="spxqxx.aspx?id=<%#Eval("spid") %>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid")%>"  >    <asp:Image ID="Image1" runat="server"  ImageUrl='<%#DataBinder.Eval(Container.DataItem,"sptp") %>'  Height="162px" Width="156px"/>  </a></td>
@@ -59,10 +59,11 @@
             </tr>
             <tr>
                 <td style="width: 103px; height: 7px;">
-                    <asp:DataList ID="DLbest" runat="server" RepeatColumns="4" RepeatDirection="Horizontal">
+                    <asp:DataList ID="DLbest" runat="server" RepeatColumns="5" 
+                        RepeatDirection="Horizontal">
                      <ItemTemplate>
                             <div style="text-align: center">
-                                <table style="width: 157px; height: 286px">
+                                <table style="width: 157px; height: 215px">
                                     <tr>
                                         <td style="width: 100px; height: 100px">
                                            <a href="spxqxx.aspx?id=<%#Eval("spid") %>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid")%>"  >  
@@ -101,6 +102,7 @@
             </tr>
            
            
-        </table>
+        </table></div>
+  
   </asp:Content>
 

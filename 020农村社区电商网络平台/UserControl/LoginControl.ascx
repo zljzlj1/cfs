@@ -11,7 +11,8 @@
 
  
 <table border="0" cellpadding="1" cellspacing="0" id="table1" runat=server  
-    style="border: thin dotted #000000; width: 394px; border-collapse: collapse; height: 2px; " >
+    
+    style="border: thin dotted #000000; width: 394px; border-collapse: collapse; height: 2px; margin-top: 0px;" >
    
  
     <tr>
