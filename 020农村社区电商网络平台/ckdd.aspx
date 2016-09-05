@@ -14,16 +14,16 @@
         
         
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-            AllowPaging="True" PageSize="3" Width="100%"  DataKeyNames="ddid" 
+            AllowPaging="True" Width="100%"  DataKeyNames="ddid" 
             onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" 
-                     Height="250px" ForeColor="#333333" 
-            GridLines="None" >
+                     ForeColor="#333333" 
+            GridLines="None" PageSize="12" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                <asp:TemplateField HeaderText="订单号">
                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
-                <ItemTemplate><a href="userddxqlb.aspx?id=<%#Eval("ddid") %>"><%#Eval("ddid") %></a>
+                <ItemTemplate><a href="userddxqlb.aspx?id=<%#Eval("ddid")%>&&oid=<%#Eval("gmrq")%>&&jg=<%#Eval("totalprice") %>"><%#Eval("ddid") %></a>
               </ItemTemplate>
               </asp:TemplateField>
 
@@ -48,7 +48,10 @@
 
                   <asp:BoundField DataField="recepost" HeaderText="收货人邮编" />
                 <asp:BoundField DataField="receadress" HeaderText="收货人地址" />
-                <asp:BoundField DataField="sfzf" HeaderText="支付" />
+              
+                         <asp:TemplateField HeaderText="支付">
+                <ItemTemplate><asp:Label ID="Label8" runat="server" Text='<% #Eval("sfzf").ToString().Trim()=="True"?"已支付":"未支付"%>'></asp:Label></ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="#990000" ForeColor="White" Font-Bold="True" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -72,16 +75,16 @@
         </asp:GridView>
    <font style="color: #000000; font-family: 楷体; font-weight: bold"> 自提订单:</font><asp:Label ID="Label2" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
         <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
-            AllowPaging="True" PageSize="3" Width="100%"  DataKeyNames="ddxqid" 
+            AllowPaging="True" PageSize="12" Width="100%"  DataKeyNames="ddid" 
             onpageindexchanging="GridView3_PageIndexChanging" CellPadding="4" 
-                     Height="250px" ForeColor="#333333" 
+                     ForeColor="#333333" 
             GridLines="None" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
             <asp:TemplateField HeaderText="订单号">
                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
-                <ItemTemplate><a href="userddxqlb.aspx?id=<%#Eval("ddid") %>"><%#Eval("ddid") %></a>
+                <ItemTemplate><a href="userddztxq.aspx?id=<%#Eval("ddid") %>&&oid=<%#Eval("gmrq")%>"><%#Eval("ddid") %></a>
               </ItemTemplate>
               </asp:TemplateField>
 
@@ -94,18 +97,18 @@
 
 
 
-                <asp:BoundField HeaderText="收货人姓名" />
+                <asp:BoundField HeaderText="收货人姓名" DataField="receman" />
              
 
 
 
-<asp:BoundField HeaderText="收货人电话"></asp:BoundField>
+<asp:BoundField HeaderText="收货人电话" DataField="recephone"></asp:BoundField>
 
 
 
 
-                  <asp:BoundField HeaderText="收货人邮编" />
-                <asp:BoundField HeaderText="收货人地址" />
+                  <asp:BoundField HeaderText="收货人邮编" DataField="recepost" />
+                <asp:BoundField HeaderText="收货人地址" DataField="receadress" />
             </Columns>
             <FooterStyle BackColor="#990000" ForeColor="White" Font-Bold="True" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

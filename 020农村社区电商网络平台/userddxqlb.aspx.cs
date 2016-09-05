@@ -12,33 +12,25 @@ public partial class userddxqlb : System.Web.UI.Page
     DBAccess1 DBA = new DBAccess1();
     protected void Page_Load(object sender, EventArgs e)
     {
-
-
+      
         if (!IsPostBack)
-        {
-            string dd
-
-            GridView2_content();
+        {  Label2.Text = Request.QueryString["id"].ToString();
+        Label3.Text = Convert.ToDateTime(Request.QueryString["oid"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
+        Label4.Text = Request.QueryString["jg"].ToString();
+           GridView2_content();
       
 
         }
     }
     protected void GridView2_content()
     {
-        string vUserID = Session["UserID"].ToString();
-
-        string strSQ = "select receman,Orderxx.ddid,gmrq,spmc,ddxqid,sjqr,fh,sfzf,ddhd,recephone,receadress from Sp,Orderxx,[Order] where Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and [Order].UserID='" + vUserID + "' and zt='False' order by gmrq desc ";
+        string vid = Request.QueryString["id"].ToString();
+        string strSQ = "select spmc,ddxqid,sjqr,fh,sfzf,ddhd,ktfy,sjmc,num,spjg,tyjg from Sj,Sp,Orderxx,[Order] where Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and Sj.sjid=Orderxx.sjid and zt='False' and Orderxx.ddid='" + vid + "' ";
+  
         DataSet ds = DBA.GetDataSet(strSQ);
         GridView2.DataSource = ds.Tables["datatable"].DefaultView;
         GridView2.DataBind();
-        if (ds.Tables[0].Rows.Count == 0)
-        {
-            Label5.Visible = true;
-            Label5.Text = "暂无数据";
-
-        }
-        else
-            Label5.Visible = false;
+     
 
     }
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -48,7 +40,9 @@ public partial class userddxqlb : System.Web.UI.Page
         GridView2_content();
 
     }
-   
-   
+
+
+
+
   
 }

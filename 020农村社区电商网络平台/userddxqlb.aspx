@@ -11,15 +11,18 @@
               <font style="color: #000000; font-family: 楷体; font-weight: bold"> 订单号：</font>    <asp:Label ID="Label2" runat="server" Text="Label"  Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
 
       <br />  <font style="color: #000000; font-family: 楷体; font-weight: bold"> 购买时间：</font>     <asp:Label ID="Label3" runat="server" Text="Label"  Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
+            <br />  <font style="color: #000000; font-family: 楷体; font-weight: bold"> 订单总价格：</font>     <asp:Label ID="Label4" runat="server" Text="Label"  Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
+
 
 
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
             AllowPaging="True" Width="100%"  DataKeyNames="ddxqid" 
-            onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" 
-                     Height="250px" onrowdatabound="GridView2_RowDataBound" ForeColor="#333333" 
-            GridLines="None" onrowdeleting="GridView2_RowDeleting" >
+            onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" ForeColor="#333333" 
+            GridLines="None" PageSize="12" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+             
+                      <asp:BoundField DataField="sjmc" HeaderText="商家名称" />
              
                       <asp:BoundField DataField="spmc" HeaderText="商品"  />
              
@@ -64,11 +67,8 @@
 <SortedDescendingHeaderStyle BackColor="#820000"></SortedDescendingHeaderStyle>
         </asp:GridView>
  
-          
-                 <asp:Label ID="Label5" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Names="楷体" ForeColor="Black"></asp:Label>
 
-
-
+ <a href="ckdd.aspx"  style="text-decoration: none; color: #808080; font-family: 黑体; font-size: 14px;  ">返回</a>
 
 </div>
 </asp:Content>
