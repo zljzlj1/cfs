@@ -35,7 +35,8 @@ public partial class bdsp : System.Web.UI.Page
         {
             Panel1.Visible = false; Label1.Visible = true; Label1.Text = "暂无数据";
             return;
-        }//如果没有数据，退出过程
+        }
+        else { Panel1.Visible = true; Label1.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -71,7 +72,7 @@ public partial class bdsp : System.Web.UI.Page
         {
             Panel1.Visible = false; Label1.Visible = true; Label1.Text = "暂无数据"; return;//如果没有数据，退出过程
         }
-
+        else { Panel1.Visible = true; Label1.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -118,13 +119,11 @@ public partial class bdsp : System.Web.UI.Page
 
         int vgoto = 1;
         if (TextBox1.Text != "")
-        {
-            string SQLStr = "select  Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and scid='" + Session["cid"].ToString() + "' order by spdjl desc";
-          
-            vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
+        { vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-            DataSet ds = DBA.GetDataSet(SQLStr);
+            string SQLStr = "select  Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and scid='" + Session["cid"].ToString() + "' order by spdjl desc";
+          DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();
             objPds.DataSource = ds.Tables[0].DefaultView;
@@ -136,6 +135,7 @@ public partial class bdsp : System.Web.UI.Page
                 Panel1.Visible = false; Label1.Visible = true; Label1.Text = "暂无数据"; 
                 return;//如?果?没?有瓺数簓据Y，?退?出?过y程ì
             }
+            else { Panel1.Visible = true; Label1.Visible = false; }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -148,10 +148,13 @@ public partial class bdsp : System.Web.UI.Page
             CurPage = vgoto;
             Session["CurPage"] = CurPage;//*****************************************************
             objPds.CurrentPageIndex = CurPage - 1;
-            lblCurrentPage.Text = "第 " + CurPage.ToString() + " 页 (共" + maxPage.ToString() + "页)";
-            DataList1.DataSource = objPds;
-            DataList1.DataBind();
+               if (maxPage < vgoto){  ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请重新输入！');", true); }
+            else{ lblCurrentPage.Text = "第 " + CurPage.ToString() + " 页 (共" + maxPage.ToString() + "页)";
+                DataList1.DataSource = objPds;
+                DataList1.DataBind(); }
+        }
+        else
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "test","alert('请输入数据！');", true);
         }
 
     }
-}
