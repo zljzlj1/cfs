@@ -122,10 +122,22 @@ public partial class gwc : System.Web.UI.Page
 
     protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
     {
-        string strSQ = "delete from Gwc where UserID='" + Session["UserID"].ToString() + "'";//删除记录
-        DBA.ExeSql(strSQ);
+         string strSQ = "select gwid,spmc,spjg,num,ktfy,jg,sjmc,zt from Sj,Gwc,Sp where Sj.sjid=Gwc.sjid and Gwc.spid=Sp.spid and UserID= '" + Session["UserID"].ToString() + "'";
+        DataSet ds = DBA.GetDataSet(strSQ);
+        int rowSum = ds.Tables[0].Rows.Count;
+
+        if (rowSum > 0)
+        { 
+          string strSQl = "delete from Gwc where UserID='" + Session["UserID"].ToString() + "'";//删除记录
+        DBA.ExeSql(strSQl);
         ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('清空成功!'); ; </script>");
         GridView2_content();
+        
+        }
+        else
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请购物!'); ; </script>");
+       
+      
     }
 
 

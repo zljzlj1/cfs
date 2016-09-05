@@ -25,7 +25,7 @@ public partial class ckdd : System.Web.UI.Page
     {
         string vUserID = Session["UserID"].ToString();
 
-        string strSQ = "select totalprice,recepost,receman,[Order].ddid,gmrq,sfzf,recephone,receadress from [Order] left join Orderxx on Orderxx.ddid=[Order].ddid and [Order].UserID='" + vUserID + "' and zt='False' order by gmrq desc ";
+        string strSQ = "select distinct[Order].ddid,totalprice,recepost,receman,gmrq,sfzf,recephone,receadress from [Order],Orderxx where Orderxx.ddid=[Order].ddid and [Order].UserID='" + vUserID + "' and zt='False' order by gmrq desc ";
        DataSet ds = DBA.GetDataSet(strSQ);
         GridView2.DataSource = ds.Tables["datatable"].DefaultView;
         GridView2.DataBind();
@@ -56,7 +56,7 @@ public partial class ckdd : System.Web.UI.Page
     protected void GridView3_content()
     {
         string vUserID = Session["UserID"].ToString();
-        string strSQ = "select [Order].ddid,gmrq,recepost,receman,recephone,receadress from Orderxx,[Order] where  Orderxx.ddid=[Order].ddid  and [Order].UserID='" + vUserID + "' and zt='True' order by gmrq desc ";
+        string strSQ = "select distinct[Order].ddid,gmrq,recepost,receman,recephone,receadress from Orderxx,[Order] where  Orderxx.ddid=[Order].ddid  and [Order].UserID='" + vUserID + "' and zt='True' order by gmrq desc ";
         DataSet ds = DBA.GetDataSet(strSQ);
         GridView3.DataSource = ds.Tables["datatable"].DefaultView;
         GridView3.DataBind();
