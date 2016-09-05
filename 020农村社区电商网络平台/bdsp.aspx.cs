@@ -29,11 +29,11 @@ public partial class bdsp : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 8;
+        objPds.PageSize =8;
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
-            Panel1.Visible = false;  Label1.Visible = true; Label1.Text = "暂无数据"; 
+            Panel1.Visible = false; Label1.Visible = true; Label1.Text = "暂无数据";
             return;
         }//如果没有数据，退出过程
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
@@ -55,7 +55,7 @@ public partial class bdsp : System.Web.UI.Page
 
     public void PagerButtonClick(object sender, EventArgs e)
     {
-        string SQLStr = "select Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
+        string SQLStr = "select Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and scid='" + Session["cid"].ToString() + "' order by spdjl desc";
       
         DataSet ds = DBA.GetDataSet(SQLStr);
 
@@ -119,7 +119,7 @@ public partial class bdsp : System.Web.UI.Page
         int vgoto = 1;
         if (TextBox1.Text != "")
         {
-            string SQLStr = "select  Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and sscid='" + Session["cid"].ToString() + "' order by spdjl desc";
+            string SQLStr = "select  Sj.sjid,spid,sptp,spjg,spmc,spdjl,sjdjl from Sp,Sj where Sp.sjid=Sj.sjid and spzt='True' and scid='" + Session["cid"].ToString() + "' order by spdjl desc";
           
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
