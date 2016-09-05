@@ -49,7 +49,10 @@ public partial class scncp : System.Web.UI.Page
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", " <script> alert('农产品上传成功！');</script> ");
             TextBox1.Text = "";
             TextBox2.Text = "";
+            TextBox4.Text = "";
+            TextBox3.Text = "";
              TextBox5.Text = "";
+             Image1.ImageUrl = "";
             DropDownList1.SelectedIndex = 0;
         }
         else

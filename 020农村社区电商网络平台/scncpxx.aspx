@@ -45,7 +45,7 @@
  
      <div id="right">   
      <iframe src="scncp.aspx" name="ncp"   frameborder="0"  scrolling="auto"   
-             height="500px" width="900px"></iframe>
+             height="500px" width="1000px"></iframe>
            
                    </div>
                  
