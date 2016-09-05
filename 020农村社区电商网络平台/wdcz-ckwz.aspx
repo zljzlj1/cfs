@@ -162,12 +162,11 @@ a {
 	
 	<script type="text/javascript">
 	    $(function () {
-	        setInterval("getCommentList();", 1000);
-	        
+	        //window.setTimeout('abc()', 1000);
+	        getCommentList();
 	    });
-
 	    function getCommentList() {
-	        $("#articleComment").empty();
+	        
 	        $.ajax({
 	            type: "POST", //要用post方式
 	            //data: "{str1:{str:1,str2:'asdasd'}}",
