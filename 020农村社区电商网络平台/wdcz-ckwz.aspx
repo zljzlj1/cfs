@@ -166,7 +166,6 @@ a {
 	        getCommentList();
 	    });
 	    function getCommentList() {
-	        
 	        $.ajax({
 	            type: "POST", //要用post方式
 	            //data: "{str1:{str:1,str2:'asdasd'}}",
