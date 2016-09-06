@@ -28,18 +28,14 @@ public partial class wdcz_ckwz : System.Web.UI.Page
         int i = 0;
         string vtxtid = Request.QueryString["id"].ToString();
         Vtxtid = Request.QueryString["id"].ToString();
-        string strSj = "select wzdjl from Txtinf where txtid='" + vtxtid + " '";
-        OleDbDataReader dr = DBA.GetDataReader(strSj);
-        if (dr.Read())
-        {
-          
-             i = Convert.ToInt32(dr["wzdjl"].ToString());
+    
+        if (!IsPostBack)
+        {   
+            string vwzdjl = Request.QueryString["oid"].ToString();
+        i = Convert.ToInt32(vwzdjl);
             i = i + 1;
-        }
         string strsql = "Update Txtinf set wzdjl='" + i + "' where txtid='" + Request["id"].ToString() + "'";
         DBA.ExeSql(strsql);
-        if (!IsPostBack)
-        {
             GridView5_content();
             repeat();
         }
@@ -57,7 +53,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
             Label3.Text = dr["wzdjl"].ToString();
             Label4.Text = Convert.ToDateTime(dr["shsj"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             title = dr["titlername"].ToString();
-           txt = dr["txt"].ToString();
+            Label5.Text = dr["txt"].ToString();
       
             
         }
@@ -65,7 +61,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
 
    protected void repeat()
    {
-       string sql = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+       string sql = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and scid='"+Session["cid"].ToString()+"' and qb='True' order by  fbsj desc  ";
        DataSet ds = DBA.GetDataSet(sql);
         news.DataSource = ds.Tables["datatable"].DefaultView;
         news.DataBind();

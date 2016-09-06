@@ -114,7 +114,7 @@
 </div>
      <div id="right">   
      <h5 style="margin-top: 8px; margin-left: 50px">最新文章排行</h5>
-           <ul class="s"><asp:Repeater ID="news1" runat="server"><ItemTemplate><li><a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
+           <ul class="s"><asp:Repeater ID="news1" runat="server"><ItemTemplate><li><a href="wdcz-ckwz.aspx?id=<%#Eval("txtid")%>&&oid=<%#Eval("wzdjl") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
                    </div>
                  
      <div class="c"></div>

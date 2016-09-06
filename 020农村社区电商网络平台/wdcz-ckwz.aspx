@@ -58,8 +58,9 @@ a {
 
 #articleComment {
 	width: 600px;
-	margin:0 auto;
+ margin-left:30px;
 }
+
 </style> 
 
 
@@ -139,7 +140,8 @@ a {
                    
                        <td  style="padding-top: 50px">
 
-                                 <div style="margin-left: 30px;width:1000px;"  ><%=txt %></div> 
+                                 <div style="margin-left: 30px;width:1000px;"  >
+                                     <asp:Label ID="Label5" runat="server" Text="Label"  Width="1000px"></asp:Label></div> 
 
 
                        </td>
