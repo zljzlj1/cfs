@@ -110,7 +110,7 @@
   <div id="mid">
  <h5 style="margin-top: 8px; margin-left: 25px">商家需求信息<a href="wdcz-xqxx.aspx" 
          style="margin-left: 20px"><img src="image/more.gif" /></a></h5>
-  <ul class="sss"><asp:Repeater ID="news2" runat="server"><ItemTemplate><li><a href="wdcz-xqxxck.aspx?id=<%#Eval("xqid") %>">商家:<%#Eval("sjmc") %>  农产品:<%#Eval("rcpxqmc")%> 需求数量：<%#Eval("rcpxqsl")%><%#Eval("xqdw")%>价格:<%#Eval("jg")=="0"?"面议":Eval("jg")%> (元/<%#Eval("xqdw") %>)发布时间:<span style="margin-left: 20px"><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></span></a></li></ItemTemplate></asp:Repeater></ul>
+  <ul class="sss"><asp:Repeater ID="news2" runat="server"><ItemTemplate><li><a href="wdcz-xqxxck.aspx?id=<%#Eval("xqid") %>">商家:<%#Eval("sjmc") %>  农产品:<%#Eval("rcpxqmc")%> 需求数量：<%#Eval("rcpxqsl")%><%#Eval("xqdw")%>价格:<%#Eval("jg").ToString().Trim()=="0"?"面议":Eval("jg")%> (元/<%#Eval("xqdw") %>)发布时间:<span style="margin-left: 20px"><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></span></a></li></ItemTemplate></asp:Repeater></ul>
 </div>
      <div id="right">   
      <h5 style="margin-top: 8px; margin-left: 50px">最新文章排行</h5>

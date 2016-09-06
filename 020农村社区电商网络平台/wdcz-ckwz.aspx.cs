@@ -31,7 +31,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
     
         if (!IsPostBack)
         {   
-            string vwzdjl = Request.QueryString["id"].ToString();
+            string vwzdjl = Request.QueryString["oid"].ToString();
         i = Convert.ToInt32(vwzdjl);
             i = i + 1;
         string strsql = "Update Txtinf set wzdjl='" + i + "' where txtid='" + Request["id"].ToString() + "'";
