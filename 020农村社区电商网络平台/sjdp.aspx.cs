@@ -66,7 +66,8 @@ public partial class sjdp : System.Web.UI.Page
         {
             Label7.Visible = true; Label7.Text = "暂无数据"; return;
         }//如果没有数据，退出过程
-
+        else
+            Label7.Visible = false; 
 
         DataList1.DataSource = ds.Tables[0].DefaultView; ;
         DataList1.DataBind();

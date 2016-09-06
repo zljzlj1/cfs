@@ -41,7 +41,7 @@
                                                     <td style="width: 100px">
                                                         <span style="font-size: 10pt">单价:</span></td>
                                                     <td style="width: 106px">
-                                                          <a href="spxqxx.aspx?id=<%#Eval("spid")%>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid") %>"><asp:Label ID="Label2" runat="server" Font-Size="Smaller" Text=' <%#Eval("spjg").ToString()=="0.00"?"面议":Eval("spjg") %>'></asp:Label></a><span
+                                                          <a href="spxqxx.aspx?id=<%#Eval("spid")%>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid") %>"><asp:Label ID="Label2" runat="server" Font-Size="Smaller" Text=' <%#Eval("spjg").ToString().Trim()=="0.00"?"面议":Eval("spjg") %>'></asp:Label></a><span
                                                             style="font-size: 10pt">￥</span></td>
                                                 </tr>
                                             </table>
@@ -88,7 +88,7 @@
                                                     <td style="width: 100px">
                                                         <span style="font-size: 10pt">单价:</span></td>
                                                     <td style="width: 106px">
-                                                         <a href="spxqxx.aspx?id=<%#Eval("spid")%>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid") %>"> <asp:Label ID="Label2" runat="server" Font-Size="Smaller" Text=' <%#Eval("spjg").ToString()=="0.00"?"面议":Eval("spjg") %>'></asp:Label></a><span
+                                                         <a href="spxqxx.aspx?id=<%#Eval("spid")%>&&spdjl=<%#Eval("spdjl") %>&&sjdjl=<%#Eval("sjdjl")%>&&sjid=<%#Eval("sjid") %>"> <asp:Label ID="Label2" runat="server" Font-Size="Smaller" Text=' <%#Eval("spjg").ToString().Trim()=="0.00"?"面议":Eval("spjg") %>'></asp:Label></a><span
                                                             style="font-size: 10pt">￥</span></td>
                                                 </tr>
                                             </table>

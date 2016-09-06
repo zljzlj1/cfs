@@ -17,7 +17,7 @@
                             <br />
                            <%#DataBinder.Eval(Container.DataItem,"spmc" )%>
                             <br />
-                            <%#Eval("spjg").ToString()=="0.00"?"面议":Eval("spjg") %><span style="font-size: 10pt">￥</span> 
+                            <%#Eval("spjg").ToString().Trim() == "0.00" ? "面议" : Eval("spjg")%><span style="font-size: 10pt">￥</span> 
                             <br />
                          </a>   
                             
@@ -37,7 +37,9 @@
 <TD vAlign="middle" align="left" width="40"><asp:linkbutton id="btnLast" runat="server" CommandArgument="last" Font-Size="9pt" onclick="PagerButtonClick">末页</asp:linkbutton></TD>
 <TD vAlign="middle" align="left" width="53" style="WIDTH: 53px">&nbsp;&nbsp;
 <asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt" Height="28px">转到</asp:label></TD>
-<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt"></asp:textbox></TD>
+<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" 
+        runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt" 
+        CssClass="s"></asp:textbox></TD>
 <TD vAlign="middle" align="center" width="26"><asp:label id="Label3" runat="server" Font-Size="9pt">页</asp:label></TD>
 <TD vAlign="middle" align="center" width="34">
 <P><asp:button id="Button1" runat="server" Width="44px" Height="20px" 

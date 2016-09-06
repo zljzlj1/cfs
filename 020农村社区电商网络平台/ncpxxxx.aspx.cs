@@ -22,6 +22,10 @@ public partial class ncpxxxx : System.Web.UI.Page
             Label2.Text = dr["rcpname"].ToString();
             Label3.Text = dr["tgsl"].ToString();
             Label4.Text = dr["ncpname"].ToString();
+            string t = dr["price"].ToString();
+            if(t=="0.00")
+                Label5.Text = "面议";
+            else
             Label5.Text = dr["price"].ToString();
             Label6.Text = dr["Username"].ToString();
             Label7.Text = dr["lxdh"].ToString();

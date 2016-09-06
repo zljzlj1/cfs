@@ -4,12 +4,15 @@
       <link href="css/MasterPage.css" rel="Stylesheet" type="text/css" />
       <style type="text/css">a{ color:Black}     
          .zczz   td{  border: 2px ridge #808080;}
-
+         .f{ margin-left:3px;}
 </style>
       </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div style="height: 500px"  >
-
+<div style="height: 500px; ">
+<div style="background-image: url('image/bg11.png'); background-repeat: repeat-x; height: 32px;">
+<div style="background-image: url('image/class.png'); background-repeat: no-repeat;height: 32px;"  > <asp:Label ID="Label4" runat="server" Text="热门店铺" ForeColor="White" 
+        Font-Size="20px" Font-Names="黑体" Font-Bold="True" CssClass="f"></asp:Label></div></div>
+   
 <asp:DataList ID="DataList1" runat="server" CellPadding="4" RepeatColumns="1" 
          Width="100%" HorizontalAlign="Center">
         <ItemTemplate>
@@ -48,7 +51,9 @@
 <TD vAlign="middle" align="left" width="40"><asp:linkbutton id="btnLast" runat="server" CommandArgument="last" Font-Size="9pt" onclick="PagerButtonClick">末页</asp:linkbutton></TD>
 <TD vAlign="middle" align="left" width="53" style="WIDTH: 53px">&nbsp;&nbsp;
 <asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt" Height="28px">转到</asp:label></TD>
-<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt"></asp:textbox></TD>
+<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" 
+        runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt" 
+        CssClass="s"></asp:textbox></TD>
 <TD vAlign="middle" align="center" width="26"><asp:label id="Label3" runat="server" Font-Size="9pt">页</asp:label></TD>
 <TD vAlign="middle" align="center" width="34">
 <P><asp:button id="Button1" runat="server" Width="44px" Height="20px" 

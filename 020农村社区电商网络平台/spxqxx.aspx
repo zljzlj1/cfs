@@ -61,7 +61,7 @@
 							<tr>
 								<td align="left">价格:
 								
-										<asp:label id="lblPFPrice" Runat="server"></asp:label>元</td>
+										<asp:label id="lblPFPrice" Runat="server"></asp:label>（元）</td>
 							</tr>
 							<tr>
 								<td align="left" class="style2">取货：<asp:DropDownList ID="DropDownList1" 

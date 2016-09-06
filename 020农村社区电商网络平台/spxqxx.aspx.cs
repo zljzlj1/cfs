@@ -69,7 +69,7 @@ public partial class spxqxx : System.Web.UI.Page
         {
             Repeater();
         }
-        Repeater();
+       // Repeater();
     }
     protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
     {

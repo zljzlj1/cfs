@@ -30,7 +30,7 @@
     <asp:Panel ID="Panel1" runat="server">
     
     <table style="WIDTH: 472px; HEIGHT: 28px" width="472" align="left" border="0">
-<TR>
+<TR class="s">
 <TD vAlign="middle" align="center" width="135" colSpan="2"><asp:label id="lblCurrentPage" runat="server" Width="120px" Font-Size="9pt"></asp:label></TD>
 <TD vAlign="middle" align="right" width="57"><asp:linkbutton id="btnFirst" runat="server" CommandArgument="first" Font-Size="9pt" onclick="PagerButtonClick">首页</asp:linkbutton>&nbsp;</TD>
 <TD vAlign="middle" align="center" width="60"><asp:linkbutton id="btnPrev" runat="server" CommandArgument="prev" Font-Size="9pt" onclick="PagerButtonClick">前一页</asp:linkbutton></TD>

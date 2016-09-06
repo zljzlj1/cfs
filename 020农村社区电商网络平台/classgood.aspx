@@ -5,7 +5,7 @@
   <style type="text/css">a{ color:Black; text-decoration:none;}.f{ margin-left:5px;}</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div style="height: 500px"  >
+<div style="height: 500px; background-image: url('image/bg11.png'); background-repeat: repeat-x; margin-top: 0px;"  >
 <div style="background-image: url('image/class.png'); background-repeat: no-repeat"  >
 
     <asp:Label ID="Label4" runat="server" Text="Laggbel" ForeColor="White" 
@@ -32,7 +32,7 @@
     </asp:DataList><asp:Panel ID="Panel1" runat="server">
    
     <table style="WIDTH: 472px; HEIGHT: 28px" width="472" align="left" border="0">
-<TR>
+<TR class="s">
 <TD vAlign="middle" align="center" width="135" colSpan="2"><asp:label id="lblCurrentPage" runat="server" Width="120px" Font-Size="9pt"></asp:label></TD>
 <TD vAlign="middle" align="right" width="57"><asp:linkbutton id="btnFirst" runat="server" CommandArgument="first" Font-Size="9pt" onclick="PagerButtonClick">首页</asp:linkbutton>&nbsp;</TD>
 <TD vAlign="middle" align="center" width="60"><asp:linkbutton id="btnPrev" runat="server" CommandArgument="prev" Font-Size="9pt" onclick="PagerButtonClick">前一页</asp:linkbutton></TD>
@@ -40,7 +40,9 @@
 <TD vAlign="middle" align="left" width="40"><asp:linkbutton id="btnLast" runat="server" CommandArgument="last" Font-Size="9pt" onclick="PagerButtonClick">末页</asp:linkbutton></TD>
 <TD vAlign="middle" align="left" width="53" style="WIDTH: 53px">&nbsp;&nbsp;
 <asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt" Height="28px">转到</asp:label></TD>
-<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt"></asp:textbox></TD>
+<TD vAlign="middle" align="center" width="34"><asp:textbox id="TextBox1" 
+        runat="server" Width="33px" Height="20px" BorderStyle="Groove" Font-Size="9pt" 
+        CssClass="s"></asp:textbox></TD>
 <TD vAlign="middle" align="center" width="26"><asp:label id="Label3" runat="server" Font-Size="9pt">页</asp:label></TD>
 <TD vAlign="middle" align="center" width="34">
 <P><asp:button id="Button1" runat="server" Width="44px" Height="20px" 
