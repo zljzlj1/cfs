@@ -31,7 +31,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
     
         if (!IsPostBack)
         {   
-            string vwzdjl = Request.QueryString["oid"].ToString();
+            string vwzdjl = Request.QueryString["id"].ToString();
         i = Convert.ToInt32(vwzdjl);
             i = i + 1;
         string strsql = "Update Txtinf set wzdjl='" + i + "' where txtid='" + Request["id"].ToString() + "'";
@@ -96,6 +96,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
 
                 //封装返回html的数据
                 Maticsoft.ToModel.Txtplb totxtplb = txtplb.ModelToModel(txtplb);
+                totxtplb.plsj = totxtplb.plsj.Replace("/","-");
                 totxtplb.plyhidstr = plUser.Username;
                 totxtplb.toplyhidstr = toPlUser.Username;
                 if (UserID != null) { 
