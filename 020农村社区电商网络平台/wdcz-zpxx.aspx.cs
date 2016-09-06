@@ -24,7 +24,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
         //string sql = "select top(5) xqid,zpxx from Sjxqxx where qb='True' order by  fbsj desc ";
 
 
-        string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='" + Session["cid"].ToString() + "' order by  fbsj desc  ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -35,10 +35,8 @@ public partial class wdcz_zpxx : System.Web.UI.Page
         objPds.PageSize = 10;
 
         int maxPage;//总共有多少页
-        if (rowSum == 0)
-        {
-            return;//如果没有数据，退出过程
-        }
+        if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible = false; }
+
 
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
@@ -82,7 +80,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
 
     private void DataList1_content()
     {
-        string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='"+Session["cid"].ToString()+"' order by  fbsj desc  ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -91,10 +89,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
         objPds.AllowPaging = true;
         objPds.PageSize = 10;
         int maxPage;//总共有多少页
-        if (rowSum == 0)
-        {
-            lblCurrentPage.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; btnFirst.Visible = false; btnPrev.Visible = false; btnNext.Visible = false; btnLast.Visible = false; return;
-        }//如果没有数据，退出过程
+        if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -120,7 +115,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-            string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+            string SQLStr = "select  xqid,zpgw,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='" + Session["cid"].ToString() + "' order by  fbsj desc  ";
             DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();
@@ -129,7 +124,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
             objPds.PageSize = 10;
             int maxPage;//总共有多少页
 
-            if (rowSum == 0) return;
+            if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible =false;  }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -163,7 +158,9 @@ public partial class wdcz_zpxx : System.Web.UI.Page
     }
     public void BindRepeater()
     { //
-        string sql = "select top(12) txtid,titlername, shsj   from Txtinf where  sftg='是'order by shsj desc ";
+       // string sql = "select top(12) txtid,titlername,shsj,wzdjl   from Txtinf where  sftg='是'order by shsj desc ";
+        string sql = "select top(12) txtid,titlername,wzdjl  from Txtinf,[User] where Txtinf.UserID=[User].UserID and cid='" + Session["cid"].ToString() + "'and sftg='是'order by shsj desc ";
+        
         DataSet ds = DBA.GetDataSet(sql);
         news1.DataSource = ds.Tables["datatable"].DefaultView;
         news1.DataBind();

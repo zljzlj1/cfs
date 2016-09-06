@@ -140,7 +140,7 @@ Font-Size="9pt" onclick="Button1_Click"></asp:button>
     
    
            <ul class="sq"><asp:Repeater ID="news1" runat="server"><ItemTemplate><li>
-           <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>" target="a"><%#Eval("titlername")%></a></li>
+           <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>&&oid=<%#Eval("wzdjl") %>" target="a"><%#Eval("titlername")%></a></li>
            </ItemTemplate></asp:Repeater></ul>
           
              
