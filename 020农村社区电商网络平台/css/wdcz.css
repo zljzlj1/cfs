@@ -17,7 +17,7 @@ body {
 #mid{float:left; background-image:url(../image/4.png); background-repeat: no-repeat; width:880px;height:500px;}
 #left{float: left;background-image: url(../image/5.png);background-repeat: no-repeat;width: 203px;height: 500px; margin-left:5px;} 
 #right{ float:left; background-image: url(../image/8.gif);background-repeat: no-repeat;width: 203px;height: 500px; margin-left:10px;}
-.c{ clear:left;}
+.c{ clear:both;}
 #middle{height:500px; margin-top:4px; width:1323px;}
  .s{ margin-top:10px;  margin-left:50px; width:180px; }
  

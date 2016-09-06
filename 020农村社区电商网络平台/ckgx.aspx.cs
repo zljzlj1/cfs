@@ -11,25 +11,23 @@ using System.Data.OleDb;
 public partial class ckgx : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
-    public int a = 0;
+    public static int a=0;
     protected void Page_Load(object sender, EventArgs e)
     {
 
 
         if (!IsPostBack)
-        {
-            string SQLStr = "select  scid from Sj where sjmc='" + Session["sjmc"] + "' ";
+        {  string SQLStr = "select  scid from Sj where sjmc='" + Session["sjmc"] + "' ";
             OleDbDataReader dr = DBA.GetDataReader(SQLStr);
             if (dr.Read())
                 a = Convert.ToInt32(dr["scid"].ToString());
-     
+            dl();
           
-           //dl();
-             DataList1_content(); //可实现分页的数据源绑定DataList1的函数
+     DataList1_content(); //可实现分页的数据源绑定DataList1的函数
         }
      
     }
-  /*  private void dl()
+   private void dl()
     {
 
         string SQL = "select * from Ncplb";//查询语句
@@ -41,12 +39,12 @@ public partial class ckgx : System.Web.UI.Page
         DropDownList1.DataBind();
 
 
-    }*/
+    }
     public void PagerButtonClick(object sender, EventArgs e)
     {
        // and  Ncplb.ncplbid='" + DropDownList1.SelectedItem.Value + "' 
 
-        string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a+ "'   order by fbrq desc ";
+        string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'  order by fbrq desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -59,9 +57,11 @@ public partial class ckgx : System.Web.UI.Page
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
-            Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; 
+            Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据";
             return;//如果没有数据，退出过程
         }
+        else
+        { Panel1.Visible = true; Label4.Visible = false; }
 
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
@@ -105,8 +105,9 @@ public partial class ckgx : System.Web.UI.Page
 
     private void DataList1_content()
     {
-       //string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a + "' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
-        string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a+ "'   order by fbrq desc ";
+      string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
+        //string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a+ "'   order by fbrq desc ";
+       // string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21'   order by fbrq desc ";
      
         DataSet ds = DBA.GetDataSet(SQLStr);
 
@@ -120,6 +121,8 @@ public partial class ckgx : System.Web.UI.Page
         {
             Panel1.Visible = false;  Label4.Visible = true; Label4.Text = "暂无数据"; return;
         }//如果没有数据，退出过程
+        else
+        { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -145,9 +148,7 @@ public partial class ckgx : System.Web.UI.Page
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-           // string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a + "' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'order by fbrq desc ";
-            string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" +a + "'   order by fbrq desc ";
-     
+            string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
             DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();
@@ -157,6 +158,8 @@ public partial class ckgx : System.Web.UI.Page
             int maxPage;//总共有多少页
 
             if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; }
+            else
+            { Panel1.Visible = true; Label4.Visible = false; }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -169,25 +172,22 @@ public partial class ckgx : System.Web.UI.Page
             CurPage = vgoto;
             Session["CurPage"] = CurPage;//*****************************************************
             objPds.CurrentPageIndex = CurPage - 1;
-            if (maxPage< vgoto)
-            {
-               // ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请重新输入!'); </script>");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请重新输入！');", true);
-       
-            }
-
-            else
-            {
-                lblCurrentPage.Text = "第 " + CurPage.ToString() + " 页 (共" + maxPage.ToString() + "页)";
+            if (maxPage < vgoto)
+{ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请重新输入！');", true); }
+  else{ 
+lblCurrentPage.Text = "第 " + CurPage.ToString() + " 页 (共" +maxPage.ToString() + "页)";
                 DataList1.DataSource = objPds;
-                DataList1.DataBind();
-            }
-
+                DataList1.DataBind(); }
         }
-        else
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入数据！');", true);
-       
+
+ else
+      ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入数据！');", true);
+        }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DataList1_content(); 
     }
+}
   
    
-}

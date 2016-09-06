@@ -36,10 +36,11 @@ public partial class sjsptp : System.Web.UI.Page
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
-            Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; 
+            Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据";
             return;//如果没有数据，退出过程
         }
-
+        else
+        { Panel1.Visible = true; Label4.Visible =false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -97,6 +98,8 @@ public partial class sjsptp : System.Web.UI.Page
         {
             Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return;
         }//如果没有数据，退出过程
+        else
+        { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -133,6 +136,8 @@ public partial class sjsptp : System.Web.UI.Page
             int maxPage;//总共有多少页
 
             if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; }
+            else
+            { Panel1.Visible = true; Label4.Visible = false; }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1

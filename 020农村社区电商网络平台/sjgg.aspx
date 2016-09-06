@@ -70,7 +70,9 @@
                 <asp:TextBox ID="TextBox2" runat="server" CssClass="s"></asp:TextBox>
                 <asp:RangeValidator ID="RangeValidator1" runat="server"  ControlToValidate="TextBox2" MaximumValue="9999.99" MinimumValue="0.00" Type="Currency" Font-Size="12px" ForeColor="#CC0000">请正确输入（格式：0-9999.99）</asp:RangeValidator>&nbsp;&nbsp;&nbsp;
                 需求单位<asp:TextBox ID="TextBox4" runat="server" CssClass="s"></asp:TextBox>
-             </td>
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                    ControlToValidate="TextBox4" Display="Dynamic" ErrorMessage="请输入不超过5个字" 
+                    Font-Size="12px" ForeColor="Red" ValidationExpression="\S{1,5}"></asp:RegularExpressionValidator></td>
      </tr>
          <tr>
          <td align="right" style="width: 100px" >
@@ -98,7 +100,7 @@
                     <asp:TextBox ID="TextBox5" runat="server" CssClass="s"></asp:TextBox>
                 <asp:regularexpressionvalidator id="code"  ControlToValidate="TextBox5" 
                     Display="Dynamic" ValidationExpression="\S{1,20}" ErrorMessage="请输入正确的字数,长度为1-20" 
-                    runat="server" ForeColor="Red"></asp:regularexpressionvalidator></td>
+                   Font-Size="12px" runat="server" ForeColor="Red"></asp:regularexpressionvalidator></td>
         </tr>
          <tr>
          <td align="right" style="width: 100px">

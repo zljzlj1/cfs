@@ -64,6 +64,10 @@
               农产品名称</td>
          <td align="left">
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="s"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                    ControlToValidate="TextBox1" Display="Dynamic" ErrorMessage="请输入不超过10个字" 
+                    Font-Size="12px" ForeColor="Red" ValidationExpression="\S{1,10}"></asp:RegularExpressionValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 农产品类别<asp:DropDownList ID="DropDownList1" runat="server" Height="20px" 
                     Width="95px">
                 </asp:DropDownList>
@@ -74,7 +78,13 @@
                 需求数量</td>
          <td align="left">
                 <asp:TextBox ID="TextBox2" runat="server" CssClass="s"></asp:TextBox>
-                需求单位<asp:TextBox ID="TextBox4" runat="server" CssClass="s"></asp:TextBox>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                    ControlToValidate="TextBox2" Font-Size="12px" ForeColor="#CC0000" 
+                    MaximumValue="9999.99" MinimumValue="0.00" Type="Currency">请正确输入（格式：0-9999.99）</asp:RangeValidator>
+                &nbsp;&nbsp;&nbsp;需求单位<asp:TextBox ID="TextBox4" runat="server" CssClass="s"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                    ControlToValidate="TextBox4" Display="Dynamic" ErrorMessage="请输入不超过5个字" 
+                    Font-Size="12px" ForeColor="Red" ValidationExpression="\S{1,5}"></asp:RegularExpressionValidator>
              </td>
      </tr>
          <tr>
@@ -82,6 +92,10 @@
                 价格</td>
          <td align="left" class="style2">
                 <asp:TextBox ID="TextBox3" runat="server" CssClass="s"></asp:TextBox>
+                <span style="font-size: 12px; color: #FF0000;">如需面议价格为0</span><asp:RangeValidator 
+                    ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox3" 
+                    Font-Size="12px" ForeColor="#CC0000" MaximumValue="9999.99" MinimumValue="0.00" 
+                    Type="Currency">请正确输入（格式：0-9999.99）</asp:RangeValidator>
                 </td>
      </tr>
          <tr >
@@ -99,6 +113,9 @@
             <td align="center"  >
                 招聘岗位</td><td>
                 <asp:TextBox ID="TextBox5" runat="server" CssClass="s"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="code" runat="server" 
+                    ControlToValidate="TextBox5" Display="Dynamic" ErrorMessage="请输入正确的字数,长度为1-20" 
+                    Font-Size="12px" ForeColor="Red" ValidationExpression="\S{1,20}"></asp:RegularExpressionValidator>
                 </td>
         </tr>
          <tr>

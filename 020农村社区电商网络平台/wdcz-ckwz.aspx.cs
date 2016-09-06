@@ -13,7 +13,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
     public string title = null;
- 
+    public string txt = null;
     public static string UserID = null;
     public static string Vtxtid = null;
     protected void Page_Load(object sender, EventArgs e)
@@ -57,7 +57,7 @@ public partial class wdcz_ckwz : System.Web.UI.Page
             Label3.Text = dr["wzdjl"].ToString();
             Label4.Text = Convert.ToDateTime(dr["shsj"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             title = dr["titlername"].ToString();
-            Label6.Text = dr["txt"].ToString();
+           txt = dr["txt"].ToString();
       
             
         }

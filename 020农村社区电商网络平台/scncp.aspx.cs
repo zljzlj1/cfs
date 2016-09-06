@@ -14,6 +14,8 @@ public partial class scncp : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+           // Session["filenamel"] = "~/UploadFiles/sj\\" + "1.jpg";
+            Session["sfilename"] = "~/UploadFiles/ncp\\" + "1.jpg";
             dl();
         }
     }
@@ -39,7 +41,7 @@ public partial class scncp : System.Web.UI.Page
         string d= DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
         if (TextBox1.Text != "" && TextBox2.Text != "" && TextBox3.Text != "" && TextBox4.Text != "" )
         {  decimal vtgsl =Convert.ToDecimal(TextBox2.Text);
-   decimal vprice = Convert.ToDecimal(TextBox4.Text);  string picture = Session["filename"].ToString();
+   decimal vprice = Convert.ToDecimal(TextBox4.Text);  string picture = Session["sfilename"].ToString();
         string vxxxx = TextBox5.Text;
         string vxqdw = TextBox3.Text;
             string ncplbid = DropDownList1.SelectedItem.Value;
@@ -67,9 +69,9 @@ public partial class scncp : System.Web.UI.Page
         if (FileUpload1.HasFile == true)
         {
             string filename = FileUpload1.FileName;
-            Session["filename"] = "~/UploadFiles/ncp\\" + filename;
+            Session["sfilename"] = "~/UploadFiles/ncp\\" + filename;
             FileUpload1.PostedFile.SaveAs(Server.MapPath("~/UploadFiles/ncp\\" + filename));
-            Image1.ImageUrl = Session["filename"].ToString();
+            Image1.ImageUrl = Session["sfilename"].ToString();
             int filesize = FileUpload1.PostedFile.ContentLength;
 
             if (filesize > 1024 * 1024)

@@ -17,6 +17,7 @@
                height: 13px;
            }
 a,img{border:0;  color:Black;    text-decoration: none;}
+.s{ border: Silver 1px solid;  }
 
 </style>
 </head>
@@ -24,7 +25,9 @@ a,img{border:0;  color:Black;    text-decoration: none;}
     <form id="form1" runat="server">
  
      <div style=" height: 500px; width: 850px;">
-       
+       农产品种类<asp:DropDownList ID="DropDownList1" runat="server" 
+             AutoPostBack="True" onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+         </asp:DropDownList>
      <table  >
              <tr>
                        <asp:DataList ID="DataList1" runat="server" CellPadding="4" RepeatColumns="2" 
@@ -89,7 +92,7 @@ a,img{border:0;  color:Black;    text-decoration: none;}
 <asp:label id="Label2" runat="server" Width="30px" Font-Size="9pt">转到</asp:label>
 
     <asp:textbox id="TextBox1" runat="server" Width="31px" Height="15px" 
-         Font-Size="9pt" CssClass="txt"></asp:textbox>
+         Font-Size="9pt" CssClass="s"></asp:textbox>
 <asp:label id="Label3" runat="server" Font-Size="9pt" CssClass="lable">页</asp:label>
 
                   

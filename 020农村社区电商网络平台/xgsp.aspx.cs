@@ -115,6 +115,7 @@ public partial class xgsp : System.Web.UI.Page
             TextBox4.Text = "";
             TextBox5.Text = "";
             DropDownList1.SelectedIndex = 0;
+            Image1.ImageUrl = "";
         }
         else
         {

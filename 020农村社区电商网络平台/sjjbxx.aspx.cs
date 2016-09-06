@@ -48,6 +48,7 @@ public partial class sjjbxx : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+     
         if (FileUpload1.HasFile == true)
         {
             string filename = FileUpload1.FileName;

@@ -38,6 +38,17 @@ public partial class xgspxx : System.Web.UI.Page
             LinkButton7.Visible = false;
             LinkButton8.Visible = false;
         }
+        else
+        {
+            Label5.Visible = false;
+        
+            Label3.Visible = true;
+            Label4.Visible = true;
+            LinkButton5.Visible = true;
+            LinkButton6.Visible = true;
+            LinkButton7.Visible = true;
+            LinkButton8.Visible = true;
+        }
         Show1();
     }
     private void Show1()
@@ -129,7 +140,7 @@ public partial class xgspxx : System.Web.UI.Page
         string vkcsl = ((TextBox)(GridView2.Rows[e.RowIndex].Cells[4].Controls[0])).Text.Trim();
          decimal b = Convert.ToDecimal(vspjg);
        decimal a = Convert.ToDecimal(vkcsl);
-        string sql = " update Sp set spmc='" + vspmc + "',spjg='" + b + "',splbid ='" + vsplbid + "'  , kcsl ='" + a + "' where spid='" + k + "' ";
+        string sql = " update Sp set spmc='" + vspmc + "',spjg='" + b + "',splbid ='" + vsplbid + "', kcsl ='" + a + "' where spid='" + k + "' ";
         DataSet ds = DBA.GetDataSet(sql);
          
        

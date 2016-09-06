@@ -36,6 +36,17 @@ public partial class xgxjsp : System.Web.UI.Page
             LinkButton7.Visible = false;
             LinkButton8.Visible = false;
         }
+        else
+        {
+            Label5.Visible = false;
+         
+            Label3.Visible = true;
+            Label4.Visible = true;
+            LinkButton5.Visible = true;
+            LinkButton6.Visible = true;
+            LinkButton7.Visible = true;
+            LinkButton8.Visible = true;
+        }
         Show1();
     }
     private void Show1()

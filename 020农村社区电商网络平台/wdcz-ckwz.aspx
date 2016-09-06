@@ -117,7 +117,7 @@ a {
   <div class="zhong1">
   <div class="zhon"> 
   
-   <table style="width: 100%; margin-top: 20px; margin-left: -30px;">
+   <table style="width: 1000px; margin-top: 20px; margin-left: -30px;">
                         <tr>
                             <td align="center" class="style1">
                               <h1><%=title %></h1>
@@ -139,7 +139,7 @@ a {
                    
                        <td  style="padding-top: 50px">
 
-                                 <div style="margin-left: 30px"  ><asp:Label ID="Label6" runat="server" Text="Label" CssClass="ls"></asp:Label></div> 
+                                 <div style="margin-left: 30px;width:1000px;"  ><%=txt %></div> 
 
 
                        </td>

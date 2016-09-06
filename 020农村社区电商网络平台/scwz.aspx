@@ -45,6 +45,9 @@
                     文章标题：</td>
                 <td>
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                        ControlToValidate="TextBox1" Display="Dynamic" ErrorMessage="请输入不超过10个字" 
+                        Font-Size="12px" ForeColor="Red" ValidationExpression="\S{1,10}"></asp:RegularExpressionValidator>
                 </td>
             </tr>
      
@@ -60,7 +63,7 @@
                 <td class="style1">
                     文章内容：</td>
                 <td>
-                    <textarea id="content1" cols="100" rows="60" 
+                    <textarea id="content1" cols="100" rows="80" 
                         style="width:619px; height:380px;visibility:hidden;" runat="server"> </textarea>
 </td>
             </tr>

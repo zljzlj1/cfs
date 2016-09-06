@@ -45,7 +45,7 @@
              </div>
  
      <div id="right">   
-     <iframe src="scwz.aspx" name="wz"   frameborder="0"  scrolling="no"   
+     <iframe src="scwz.aspx" name="wz"   frameborder="0"  scrolling="auto"   
              height="500px" width="900px"></iframe>
            
                    </div>

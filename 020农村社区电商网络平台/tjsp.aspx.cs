@@ -15,6 +15,7 @@ public partial class tjsp : System.Web.UI.Page
         if (!IsPostBack)
         {
             dl();
+            Session["filenamel"] = "~/UploadFiles/sj\\" + "1.jpg";
         }
 
     }
@@ -34,12 +35,13 @@ public partial class tjsp : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+       
         if (FileUpload1.HasFile == true)
         {
             string filename = FileUpload1.FileName;
-            Session["filename"] = "~/UploadFiles/sj\\" + filename;
+            Session["filenamel"] = "~/UploadFiles/sj\\" + filename;
             FileUpload1.PostedFile.SaveAs(Server.MapPath("~/UploadFiles/sj\\" + filename));
-            Image1.ImageUrl = Session["filename"].ToString();
+            Image1.ImageUrl = Session["filenamel"].ToString();
             int filesize = FileUpload1.PostedFile.ContentLength;
 
             if (filesize > 1024 * 1024)
@@ -73,7 +75,7 @@ public partial class tjsp : System.Web.UI.Page
         if (TextBox1.Text != "" && TextBox2.Text != "" && TextBox3.Text != "" && TextBox4.Text != "" )
         { decimal b = Convert.ToDecimal(TextBox2.Text);
       decimal a = Convert.ToDecimal(TextBox4.Text);
-            string picture = Session["filename"].ToString();
+            string picture = Session["filenamel"].ToString();
             //重名
             string SQLStr = "insert into Sp(sjid,kcsl,spmc,sptp,spjg,spxx,splbid,xsdw,spsjsj,spzt)values ('" + Session["sjid"].ToString() + "','" +b + "','" + TextBox1.Text + "','" + picture + "','" + a + "','" + TextBox5.Text + "','" + DropDownList1.SelectedItem.Value + "','" + TextBox3.Text + "','" + d + "','True')";
             DBA.ExeSql(SQLStr);

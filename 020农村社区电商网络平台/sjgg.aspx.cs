@@ -45,8 +45,12 @@ public partial class sjgg : System.Web.UI.Page
             string sql = "insert into Sjxqxx(sjid,rcpxqmc,rcpxqsl,jg,fbsj,xqdw,ncplbid,qb) values('" + Session["sjid"].ToString() + "','" + TextBox1.Text + "','" + TextBox2.Text + "','" + TextBox3.Text + "','"+d+"','" + TextBox4.Text + "','" + DropDownList1.SelectedItem.Value + "','False')";
                     DBA.ExeSql(sql);
                  ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('发布成功!');</script>");
-   
-        }
+                 TextBox1.Text = "";
+                 TextBox2.Text = "";
+                 TextBox3.Text = "";
+                 TextBox4.Text = "";
+       
+      }
         else
                    ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写错误!');</script>");
    
@@ -54,15 +58,16 @@ public partial class sjgg : System.Web.UI.Page
     protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
     {
         string d = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
-        if (  TextBox1.Text == "" && TextBox2.Text == "" && TextBox3.Text =="" && TextBox4.Text == "" && TextBox5.Text!= "")
+        if (TextBox1.Text == "" && TextBox2.Text == "" && TextBox3.Text == "" && TextBox4.Text == "" && TextBox5.Text != "" && content1.Value!="")
         {
             string sql = "insert into Sjxqxx (zpxx,sjid,fbsj,qb,zpgw) values('" + content1.Value + "','" + Session["sjid"].ToString() + "','" + d + "','True','" + TextBox5.Text + "')";
             DBA.ExeSql(sql);
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('发布成功!');</script>");
-   
+            content1.Value = "";
+            TextBox5.Text = "";
         }
         else
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写招聘信息!');</script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写招聘信息或填写错误!');</script>");
    
     }
 }

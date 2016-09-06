@@ -17,12 +17,12 @@ public partial class scwz : System.Web.UI.Page
     
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string vtitlername = TextBox1.Text;
-   string d = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        string vtxt = content1.Value;
+      
         if (TextBox1.Text != "" && content1.Value != "")
-        {
-            string SQLStr = "insert into Txtinf(titlername,txt,UserID,txtrq)values('" + vtitlername + "','" + vtxt + "','" + Session["UserID"].ToString() + "','" + d + "')";
+        {  string vtitlername = TextBox1.Text;
+   string d = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+   string SQLStr = "insert into Txtinf(titlername,txt,UserID,txtrq)values('" + vtitlername + "','" + content1.Value+ "','" + Session["UserID"].ToString() + "','" + d + "')";
 
             DBA.ExeSql(SQLStr);
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", " <script> alert('文章添加成功！');</script> ");
