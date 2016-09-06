@@ -85,8 +85,7 @@
 						<table id="Table6" width="100%">
 							<tr>
 								<td>定单状态：<asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>&nbsp;<asp:Label
-                                    ID="Label14" runat="server" Text="Label"></asp:Label>&nbsp;<asp:Label ID="Label15" runat="server"
-                                        Text="Label"></asp:Label>
+                                    ID="Label14" runat="server" Text="Label"></asp:Label>
                                    &nbsp; <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>
                                 </td>
 							</tr>
@@ -170,8 +169,8 @@
 				<tr>
 					<td>
                         <asp:CheckBox ID="chkqr" runat="server" Text="是否已确认" AutoPostBack="True"/>
-                      <asp:CheckBox ID="chkfh" runat="server" Text="是否已发货" AutoPostBack="True" />
-                        <asp:CheckBox ID="chkhd" runat="server"  Text="是否自提" AutoPostBack="True"/>
+                      <asp:CheckBox ID="chkfh" runat="server" Text="是否已取货" AutoPostBack="True" />
+                      
                              <asp:CheckBox ID="chkzf" runat="server"  Text="是否支付" AutoPostBack="True"/>
 							</td>
 				</tr>

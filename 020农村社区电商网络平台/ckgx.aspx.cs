@@ -43,8 +43,8 @@ public partial class ckgx : System.Web.UI.Page
     public void PagerButtonClick(object sender, EventArgs e)
     {
        // and  Ncplb.ncplbid='" + DropDownList1.SelectedItem.Value + "' 
-
-        string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'  order by fbrq desc ";
+    
+        string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='"+a+"' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'  order by fbrq desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -57,11 +57,12 @@ public partial class ckgx : System.Web.UI.Page
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
+            DataList1.Visible = false;
             Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据";
             return;//如果没有数据，退出过程
         }
         else
-        { Panel1.Visible = true; Label4.Visible = false; }
+        { DataList1.Visible = true; Panel1.Visible = true; Label4.Visible = false; }
 
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
@@ -105,7 +106,7 @@ public partial class ckgx : System.Web.UI.Page
 
     private void DataList1_content()
     {
-      string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
+      string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='"+a+"' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
         //string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='" + a+ "'   order by fbrq desc ";
        // string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21'   order by fbrq desc ";
      
@@ -119,10 +120,11 @@ public partial class ckgx : System.Web.UI.Page
         int maxPage;//总共有多少页
         if (rowSum == 0)
         {
+            DataList1.Visible = false;
             Panel1.Visible = false;  Label4.Visible = true; Label4.Text = "暂无数据"; return;
         }//如果没有数据，退出过程
         else
-        { Panel1.Visible = true; Label4.Visible = false; }
+        { DataList1.Visible = true; Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -148,7 +150,7 @@ public partial class ckgx : System.Web.UI.Page
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-            string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='21' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
+            string SQLStr = "select  ncpid,rcppic,rcpname,tgsl,xqdw,fbrq,price,Username,ncpname from Ncpinfor,[User],Ncplb  where Ncpinfor.UserID=[User].UserID and Ncplb.ncplbid=Ncpinfor.ncplbid and [User].cid='"+a+"' and  Ncpinfor.ncplbid='" + DropDownList1.SelectedItem.Value + "'   order by fbrq desc ";
             DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();
@@ -157,9 +159,9 @@ public partial class ckgx : System.Web.UI.Page
             objPds.PageSize = 8;
             int maxPage;//总共有多少页
 
-            if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; }
+            if (rowSum == 0) { DataList1.Visible = false; Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; }
             else
-            { Panel1.Visible = true; Label4.Visible = false; }
+            { DataList1.Visible = true; Panel1.Visible = true; Label4.Visible = false; }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1

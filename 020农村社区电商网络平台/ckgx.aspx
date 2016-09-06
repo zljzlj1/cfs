@@ -18,6 +18,7 @@
            }
 a,img{border:0;  color:Black;    text-decoration: none;}
 .s{ border: Silver 1px solid;  }
+  .styled { border-radius:5px; width:100px; height:25px; padding:0 0px 0 0px;color:#fff;background-color:#3d69f7; font:14px "微软雅黑"; } 
 
 </style>
 </head>
@@ -26,7 +27,7 @@ a,img{border:0;  color:Black;    text-decoration: none;}
  
      <div style=" height: 500px; width: 850px;">
        农产品种类<asp:DropDownList ID="DropDownList1" runat="server" 
-             AutoPostBack="True" onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+             AutoPostBack="True" onselectedindexchanged="DropDownList1_SelectedIndexChanged" CssClass="styled">
          </asp:DropDownList>
      <table  >
              <tr>

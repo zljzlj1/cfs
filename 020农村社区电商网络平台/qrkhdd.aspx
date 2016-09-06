@@ -10,7 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="border-style: dashed; border-width: thin; width: 850px; height: 860px">
+    <div style="border-style: dashed; border-width: thin; width: 850px; height: 500px">
          <font style="color: #000000; font-family: 楷体; font-weight: bold"> 订单状态：</font><asp:DropDownList 
             ID="DropDownList1" runat="server" AutoPostBack="True" 
             onselectedindexchanged="DropDownList1_SelectedIndexChanged">
@@ -33,9 +33,11 @@
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
             AllowPaging="True" PageSize="4" Width="100%"  DataKeyNames="ddxqid" 
             onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" 
-                     Height="250px" onrowdatabound="GridView2_RowDataBound" ForeColor="#333333" 
+                     onrowdatabound="GridView2_RowDataBound" ForeColor="#333333" 
             GridLines="None" onrowdeleting="GridView2_RowDeleting" >
             <AlternatingRowStyle BackColor="White" />
+
+
             <Columns>
          <asp:BoundField DataField="ddid" HeaderText="订单号" ReadOnly="True" />
        
@@ -116,7 +118,7 @@
         <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
             AllowPaging="True" PageSize="4" Width="100%"  DataKeyNames="ddxqid" 
             onpageindexchanging="GridView3_PageIndexChanging" CellPadding="4" 
-                     Height="250px" onrowdatabound="GridView3_RowDataBound" ForeColor="#333333" 
+                      onrowdatabound="GridView3_RowDataBound" ForeColor="#333333" 
             GridLines="None" onrowdeleting="GridView3_RowDeleting" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -149,14 +151,8 @@
                   <asp:TemplateField HeaderText="订单状态">
                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 									<ItemStyle HorizontalAlign="Center" ></ItemStyle>
-                <ItemTemplate><asp:Label ID="Label10" runat="server" 
-                       Text='<% #Eval("ddhd").ToString().Trim()=="False"?"未自提":"已自提"%>'></asp:Label>|<asp:Label 
-                        ID="Label11" runat="server" 
-                        Text='<% #Eval("sjqr").ToString().Trim()=="False"?"未确认":"已确认"%>'></asp:Label><br />
-                    <asp:Label ID="Label12" runat="server" 
-                       Text='<% #Eval("fh").ToString().Trim()=="False"?"未发货":"已发货"%>'></asp:Label>|<asp:Label 
-                        ID="Label13" runat="server" 
-                       Text='<% #Eval("yhsfzf").ToString().Trim()=="False"?"未支付":"已支付"%>'></asp:Label></ItemTemplate>
+                <ItemTemplate>
+                  <asp:Label ID="Label11" runat="server" Text='<% #Eval("sjqr").ToString().Trim()=="False"?"未确认":"已确认"%>'></asp:Label>|<asp:Label ID="Label12" runat="server"  Text='<% #Eval("fh").ToString().Trim()=="False"?"未取货":"已取货"%>'></asp:Label><br /><asp:Label  ID="Label13" runat="server"  Text='<% #Eval("yhsfzf").ToString().Trim()=="False"?"未支付":"已支付"%>'></asp:Label></ItemTemplate>
                 </asp:TemplateField>
                        <asp:TemplateField HeaderText="管理">
                              <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
