@@ -32,7 +32,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 10;
+        objPds.PageSize = 8;
 
         int maxPage;//总共有多少页
         if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible = false; }
@@ -87,7 +87,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 10;
+        objPds.PageSize = 8;
         int maxPage;//总共有多少页
         if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
@@ -121,7 +121,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
             PagedDataSource objPds = new PagedDataSource();
             objPds.DataSource = ds.Tables[0].DefaultView;
             objPds.AllowPaging = true;
-            objPds.PageSize = 10;
+            objPds.PageSize = 8;
             int maxPage;//总共有多少页
 
             if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible =false;  }
@@ -159,7 +159,7 @@ public partial class wdcz_zpxx : System.Web.UI.Page
     public void BindRepeater()
     { //
        // string sql = "select top(12) txtid,titlername,shsj,wzdjl   from Txtinf where  sftg='是'order by shsj desc ";
-        string sql = "select top(12) txtid,titlername,wzdjl  from Txtinf,[User] where Txtinf.UserID=[User].UserID and cid='" + Session["cid"].ToString() + "'and sftg='是'order by shsj desc ";
+        string sql = "select top(8) txtid,titlername,wzdjl  from Txtinf,[User] where Txtinf.UserID=[User].UserID and cid='" + Session["cid"].ToString() + "'and sftg='是'order by shsj desc ";
         
         DataSet ds = DBA.GetDataSet(sql);
         news1.DataSource = ds.Tables["datatable"].DefaultView;

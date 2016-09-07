@@ -24,6 +24,9 @@ public partial class wdcz_ncpxq_ckxx : System.Web.UI.Page
             Label3.Text = dr["rcpxqmc"].ToString();
             Label4.Text = dr["rcpxqsl"].ToString();
             Label5.Text = dr["ncpname"].ToString();
+            string t = dr["jg"].ToString();
+            if (t == "0") Label6.Text = "面议";
+            else
             Label6.Text = dr["jg"].ToString();
             Label7.Text = dr["sjmc"].ToString();
             Label8.Text = dr["lxdh"].ToString();
@@ -37,7 +40,7 @@ public partial class wdcz_ncpxq_ckxx : System.Web.UI.Page
     }
     public void BindRepeater()
     { //
-        string SQLStr = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        string SQLStr = "select top(8) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='"+Session["cid"].ToString()+"' order by  fbsj desc  ";
         DataSet ds = DBA.GetDataSet(SQLStr);
         news.DataSource = ds.Tables["datatable"].DefaultView;
         news.DataBind();

@@ -152,7 +152,7 @@
              </tr>    
               <tr>
                                      <td >
-                               <a href="wdcz-ncpxq-ckxx.aspx?id=<%#Eval("xqid") %>">农产品价格： <%#Eval("jg")=="0"?"面议":Eval("jg")%> (元/<%#Eval("xqdw") %>) </a> 发布日期:<%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></td>
+                               <a href="wdcz-ncpxq-ckxx.aspx?id=<%#Eval("xqid") %>">农产品价格： <%#Eval("jg").ToString().Trim()=="0"?"面议":Eval("jg")%> (元/<%#Eval("xqdw") %>) </a> 发布日期:<%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></td>
              </tr>
                              </table>
                          </td>

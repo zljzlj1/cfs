@@ -43,7 +43,7 @@ public partial class wdcz_ncpgx : System.Web.UI.Page
         {
             Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return;//如果没有数据，退出过程
         }
-
+        else { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -99,6 +99,7 @@ public partial class wdcz_ncpgx : System.Web.UI.Page
         {
             Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据";
         }//如果没有数据，退出过程
+        else { Panel1.Visible = true; Label4.Visible = false; }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -133,7 +134,7 @@ public partial class wdcz_ncpgx : System.Web.UI.Page
             objPds.PageSize = 8;
             int maxPage;//总共有多少页
 
-            if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; }
+            if (rowSum == 0) { Panel1.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; return; } else { Panel1.Visible = true; Label4.Visible = false; }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -168,7 +169,7 @@ public partial class wdcz_ncpgx : System.Web.UI.Page
 
     public void BindRepeater()
     { //
-        string SQLStr = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        string SQLStr = "select top(8) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='"+Session["cid"].ToString()+"' order by  fbsj desc  ";
         DataSet ds = DBA.GetDataSet(SQLStr);
         news.DataSource = ds.Tables["datatable"].DefaultView;
         news.DataBind();

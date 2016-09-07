@@ -108,7 +108,7 @@
             RepeatDirection="Horizontal" Font-Size="Small" Width="950px" 
           height="400px">
         <ItemTemplate>
-          <div class="ssss">    <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>"  target="a">   <%#Eval("titlername")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击量：<%#Eval("wzdjl")%></a></div>
+          <div class="ssss">    <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid")%>&&oid=<%#Eval("wzdjl") %>"  target="a">   <%#Eval("titlername")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击量：<%#Eval("wzdjl")%></a></div>
             </ItemTemplate>
             
    </asp:DataList>

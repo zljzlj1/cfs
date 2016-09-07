@@ -152,7 +152,7 @@ a {
    <div class="you"> <h5 style="margin-top: 8px; margin-left: 20px">文章信息<a 
            href="wdcz-rdwz.aspx" style="margin-left: 140px"><img src="image/more.gif" /></a></h5>
       <ul class="ss">      <asp:Repeater ID="news" runat="server">
-               <ItemTemplate><li> <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
+               <ItemTemplate><li> <a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>&&oid=<%#Eval("wzdjl") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
       
         
              

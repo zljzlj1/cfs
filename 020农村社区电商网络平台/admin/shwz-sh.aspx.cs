@@ -53,7 +53,7 @@ public partial class admin_shwz_sh : System.Web.UI.Page
         {
             string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='是' , txtfbzt='True'  where txtid = '" + vtxtid + "'";
             DBA.ExeSql(sql);
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');</script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');location='admin/shwz.aspx';</script>");
         }
        if (DropDownList1.SelectedItem.Text == "否")
         {

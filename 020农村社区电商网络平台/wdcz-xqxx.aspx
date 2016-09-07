@@ -107,7 +107,7 @@
             RepeatDirection="Horizontal" Font-Size="Small" Width="950px" 
           height="400px">
         <ItemTemplate>
-          <div class="ssss">    <a href="wdcz-xqxxck.aspx?id=<%#Eval("xqid") %>">商家:<%#Eval("sjmc") %>  农产品:<%#Eval("rcpxqmc")%> 需求数量：<%#Eval("rcpxqsl")%><%#Eval("xqdw")%>价格:<%#Eval("jg")=="0.00"?"面议":Eval("jg")%>(元/<%#Eval("xqdw") %>) 发布时间:<span style="margin-left: 20px"><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></span></a></div>
+          <div class="ssss">    <a href="wdcz-xqxxck.aspx?id=<%#Eval("xqid") %>">商家:<%#Eval("sjmc") %>  农产品:<%#Eval("rcpxqmc")%> 需求数量：<%#Eval("rcpxqsl")%><%#Eval("xqdw")%>价格:<%#Eval("jg").ToString().Trim()=="0"?"面议":Eval("jg")%>(元/<%#Eval("xqdw") %>) 发布时间:<span style="margin-left: 20px"><%#Eval("fbsj", "{0:yyyy-MM-dd HH:mm:ss}")%></span></a></div>
             </ItemTemplate>
             
    </asp:DataList>
@@ -137,7 +137,7 @@ Font-Size="9pt" onclick="Button1_Click"></asp:button>
    </div>
    <div class="you"> <h5 style="margin-top: 8px; margin-left: 20px">文章信息<a href="wdcz-rdwz.aspx" style="margin-left: 140px"><img src="image/more.gif" /></a></h5>
       <ul class="ss">      <asp:Repeater ID="news" runat="server">
-               <ItemTemplate><li><a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
+               <ItemTemplate><li><a href="wdcz-ckwz.aspx?id=<%#Eval("txtid") %>&&oid=<%#Eval("wzdjl") %>" target="a"><%#Eval("titlername")%></a></li></ItemTemplate></asp:Repeater></ul>
       
       
              

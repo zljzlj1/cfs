@@ -21,9 +21,9 @@ public partial class wdcz_rdwz : System.Web.UI.Page
     }
     public void PagerButtonClick(object sender, EventArgs e)
     {
-       // string sql = "select txtid,titlername   from Txtinf where  sftg='是'order by shsj desc ";
-
-        string SQLStr = "select  txtid,titlername,wzdjl  from Txtinf  where sftg='是'order by wzdjl desc ";
+      
+          
+        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -31,7 +31,7 @@ public partial class wdcz_rdwz : System.Web.UI.Page
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize = 10;
+        objPds.PageSize = 8;
 
         int maxPage;//总共有多少页
         if (rowSum == 0)
@@ -39,6 +39,11 @@ public partial class wdcz_rdwz : System.Web.UI.Page
             lblCurrentPage.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; btnFirst.Visible = false; btnPrev.Visible = false; btnNext.Visible = false; btnLast.Visible = false;
             return;//如果没有数据，退出过程
         }
+        else
+        {
+            lblCurrentPage.Visible = true; Label4.Visible = false; btnFirst.Visible = true; btnPrev.Visible = true; btnNext.Visible = true; btnLast.Visible = true;
+     }
+
 
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
@@ -82,17 +87,21 @@ public partial class wdcz_rdwz : System.Web.UI.Page
 
     private void DataList1_content()
     {
-        string SQLStr = "select  txtid,titlername,wzdjl  from Txtinf  where sftg='是'order by wzdjl desc";
+        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
         PagedDataSource objPds = new PagedDataSource();
         objPds.DataSource = ds.Tables[0].DefaultView;
         objPds.AllowPaging = true;
-        objPds.PageSize =10;
+        objPds.PageSize =8;
         int maxPage;//总共有多少页
         if (rowSum == 0) { lblCurrentPage.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据";btnFirst.Visible=false;btnPrev.Visible=false;btnNext.Visible=false;btnLast.Visible = false; return;
-        }//如果没有数据，退出过程
+        }
+        else
+        {
+            lblCurrentPage.Visible = true; Label4.Visible = false; btnFirst.Visible = true; btnPrev.Visible = true; btnNext.Visible = true; btnLast.Visible = true;
+        }
         if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
         {
             maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -118,16 +127,23 @@ public partial class wdcz_rdwz : System.Web.UI.Page
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-            string SQLStr = "select  txtid,titlername,wzdjl  from Txtinf  where sftg='是'order by wzdjl desc";
+            string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
             DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();
             objPds.DataSource = ds.Tables[0].DefaultView;
             objPds.AllowPaging = true;
-            objPds.PageSize = 10;
+            objPds.PageSize = 8;
             int maxPage;//总共有多少页
 
-            if (rowSum == 0)return;
+            if (rowSum == 0)
+            {
+                lblCurrentPage.Visible = false; Label4.Visible = true; Label4.Text = "暂无数据"; btnFirst.Visible = false; btnPrev.Visible = false; btnNext.Visible = false; btnLast.Visible = false; return;
+            }
+            else
+            {
+                lblCurrentPage.Visible = true; Label4.Visible = false; btnFirst.Visible = true; btnPrev.Visible = true; btnNext.Visible = true; btnLast.Visible = true;
+            }
             if (rowSum % objPds.PageSize > 0)//计算出浏览数据的总页数
             {
                 maxPage = rowSum / objPds.PageSize + 1;//有余数要加1
@@ -161,7 +177,7 @@ public partial class wdcz_rdwz : System.Web.UI.Page
     }
     public void BindRepeater()
     { //
-        string sql = "select top(12) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' order by  fbsj desc  ";
+        string sql = "select top(8) xqid,zpgw,sjmc,fbsj from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and qb='True' and scid='"+Session["cid"].ToString()+"' order by  fbsj desc  ";
         DataSet ds = DBA.GetDataSet(sql);
         news.DataSource = ds.Tables["datatable"].DefaultView;
         news.DataBind();

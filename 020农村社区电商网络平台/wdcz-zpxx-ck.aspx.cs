@@ -24,7 +24,7 @@ public partial class wdcz_zpxx_ck : System.Web.UI.Page
 
     }
     public void BindRepeater()
-    { // Request.QueryString["splbid"].ToString();
+    { 
         string vxqid=Request.QueryString["id"].ToString();
         string sql = "select zpxx,lxrxm,lxdh,fbsj,sjmc from Sjxqxx,Sj where Sjxqxx.sjid=Sj.sjid and xqid='" + vxqid + "' ";
         OleDbDataReader dr = DBA.GetDataReader(sql);
@@ -41,7 +41,7 @@ public partial class wdcz_zpxx_ck : System.Web.UI.Page
     protected void Repeate()
     {
 
-        string sql = "select top(12)txtid,titlername  from Txtinf where  sftg='是'order by shsj desc ";
+        string sql = "select top(8) txtid,titlername,wzdjl  from Txtinf,[User] where Txtinf.UserID=[User].UserID and cid='" + Session["cid"].ToString() + "'and sftg='是'order by shsj desc ";
         DataSet ds = DBA.GetDataSet(sql);
         news.DataSource = ds.Tables["datatable"].DefaultView;
         news.DataBind();
