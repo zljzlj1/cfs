@@ -91,7 +91,7 @@
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="TextBox3" Display="Dynamic" ErrorMessage="请输入正确的长度" 
                     ForeColor="Red" ValidationExpression="\S{1,6}"></asp:RegularExpressionValidator>
-                `</td>
+                </td>
      </tr>
 
        <tr>

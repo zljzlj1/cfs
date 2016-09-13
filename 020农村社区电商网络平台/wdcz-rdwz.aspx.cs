@@ -23,7 +23,7 @@ public partial class wdcz_rdwz : System.Web.UI.Page
     {
       
           
-        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
+        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + "' order by wzdjl desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -87,7 +87,7 @@ public partial class wdcz_rdwz : System.Web.UI.Page
 
     private void DataList1_content()
     {
-        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
+        string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + "' order by wzdjl desc ";
         DataSet ds = DBA.GetDataSet(SQLStr);
 
         int rowSum = ds.Tables[0].Rows.Count;
@@ -127,7 +127,7 @@ public partial class wdcz_rdwz : System.Web.UI.Page
             vgoto = Convert.ToInt32(TextBox1.Text.ToString().Trim());
             Session["vgoto"] = vgoto;
             TextBox1.Text = Session["vgoto"].ToString().Trim();
-            string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + " order by wzdjl desc ";
+            string SQLStr = "select txtid,titlername,wzdjl from Txtinf,[User] where Txtinf.UserID=[User].UserID and sftg='是' and cid='" + Session["cid"].ToString() + "' order by wzdjl desc ";
             DataSet ds = DBA.GetDataSet(SQLStr);
             int rowSum = ds.Tables[0].Rows.Count;
             PagedDataSource objPds = new PagedDataSource();

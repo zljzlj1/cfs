@@ -24,8 +24,8 @@ public partial class spjetjxx : System.Web.UI.Page
         Dictionary<string, Object> data = new Dictionary<string, Object>();
 
         Maticsoft.ToModel.sptjxx toSptjxx = new Maticsoft.ToModel.sptjxx();
-        toSptjxx.text = Vsjmc+"商品购买金额统计";
-        toSptjxx.subtext = "为了增加销售量,需要把商品的购买的金额进行统计";
+        toSptjxx.text = Vsjmc+"商品销售金额统计";
+        toSptjxx.subtext = "商品销售金额发布状况";
         toSptjxx.name = "数据来源";
         Maticsoft.Service.Sp spService = new Maticsoft.Service.Sp();
         Maticsoft.Model.Sp model = new Maticsoft.Model.Sp();

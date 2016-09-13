@@ -89,7 +89,7 @@ public partial class admin_sjorder : System.Web.UI.Page
 
         string t = TextBox3.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
 
             string sql = "select sjmc,tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and zt='False'  and ddhd='" + DropDownList4.SelectedItem.Value + "'  and Orderxx.ddid like '%" + t + "%'  order by gmrq desc ";
@@ -105,7 +105,7 @@ public partial class admin_sjorder : System.Web.UI.Page
             }
 
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView2_content();

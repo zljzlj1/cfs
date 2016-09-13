@@ -24,7 +24,7 @@ public partial class admin_userorder : System.Web.UI.Page
     protected void GridView2_content()
     {
 
-        string strSQ = "select totalprice,[Order].ddid,gmrq,sfzf,Username from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid  and [Order].UserID=[User].UserID  and zt='False'  and sfzf='" + DropDownList1.SelectedItem.Value + "'  order by gmrq desc ";
+        string strSQ = "select distinct[Order].ddid,totalprice,gmrq,sfzf,Username from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid  and [Order].UserID=[User].UserID  and zt='False'  and sfzf='" + DropDownList1.SelectedItem.Value + "'  order by gmrq desc ";
        DataSet ds = DBA.GetDataSet(strSQ);
         GridView2.DataSource = ds.Tables["datatable"].DefaultView;
         GridView2.DataBind();
@@ -117,7 +117,7 @@ public partial class admin_userorder : System.Web.UI.Page
     protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {//
         string k = GridView2.DataKeys[e.RowIndex].Value.ToString();
-        CheckBox ck = (CheckBox)GridView2.Rows[e.RowIndex].Cells[5].Controls[0];
+        CheckBox ck = (CheckBox)GridView2.Rows[e.RowIndex].Cells[4].Controls[0];
         string str;
         if (ck.Checked == true)
         {

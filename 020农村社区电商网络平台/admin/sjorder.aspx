@@ -37,7 +37,7 @@
              ID="TextBox3" runat="server" Class="s"></asp:TextBox> <asp:ImageButton ID="ImageButton1" runat="server" 
         ImageUrl="~/admin/images/1.jpg" onclick="ImageButton1_Click" />
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-            AllowPaging="True" PageSize="4" Width="100%"  DataKeyNames="ddxqid" 
+            AllowPaging="True" Width="100%"  DataKeyNames="ddxqid" 
             onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" 
                      Height="250px" onrowdatabound="GridView2_RowDataBound" ForeColor="#333333" 
             GridLines="None" >
