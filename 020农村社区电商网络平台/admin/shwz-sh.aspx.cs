@@ -62,7 +62,7 @@ public partial class admin_shwz_sh : System.Web.UI.Page
              
                 string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='否' , txtfbzt='False' , wtgly='" + TextBox1.Text + "' where txtid = '" + vtxtid + "'";
                 DBA.ExeSql(sql);
-                TextBox1.Text = null;
+                TextBox1.Text = "";
                 ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核成功!');</script>");
             }
             else

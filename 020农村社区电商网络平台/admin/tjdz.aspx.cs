@@ -74,7 +74,7 @@ public partial class admin_tjdz : System.Web.UI.Page
     }
     protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
     {
-        if (TextBox1.Text == "" || TextBox1.Text == null)
+        if (TextBox1.Text == "" )
         {
             Label1.Visible = true;
             Label1.Text = "请输入省份，长度1-15";
@@ -107,7 +107,7 @@ public partial class admin_tjdz : System.Web.UI.Page
             Label2.Visible = true;
          Label2.Text = "请选择省份";
         } 
-      else if (TextBox2.Text == "" || TextBox2.Text == null)
+      else if (TextBox2.Text == "" )
         {
             Label2.Visible = true;
             Label2.Text = "请输入市名，长度1-15";
@@ -147,7 +147,7 @@ public partial class admin_tjdz : System.Web.UI.Page
         
         }
 
-        else if (TextBox3.Text == "" || TextBox3.Text == null)
+        else if (TextBox3.Text == "" )
         {
             Label3.Visible = true;
             Label3.Text = "请输入县名,长度为1-15";
@@ -184,7 +184,7 @@ public partial class admin_tjdz : System.Web.UI.Page
             Label4.Visible = true;
             Label4.Text = "请输入县名";
         }
-        else if (TextBox4.Text == "" || TextBox4.Text == null)
+        else if (TextBox4.Text == "" )
         {
             Label4.Visible = true;
             Label4.Text = "请输入镇名,长度为1-15";
@@ -220,7 +220,7 @@ public partial class admin_tjdz : System.Web.UI.Page
             Label5.Text = "请输入镇名";
         }
 
-        else if (TextBox5.Text == "" || TextBox5.Text == null)
+        else if (TextBox5.Text == "" )
         {
             Label5.Visible = true;
             Label5.Text = "请输入村名,长度为1-15";

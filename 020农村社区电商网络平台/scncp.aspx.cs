@@ -16,6 +16,7 @@ public partial class scncp : System.Web.UI.Page
         {
            // Session["filenamel"] = "~/UploadFiles/sj\\" + "1.jpg";
             Session["sfilename"] = "~/UploadFiles/ncp\\" + "1.jpg";
+            Image1.ImageUrl = "~/UploadFiles/ncp\\" + "1.jpg";
             dl();
         }
     }

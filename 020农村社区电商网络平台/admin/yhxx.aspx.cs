@@ -67,7 +67,7 @@ public partial class admin_yhxx : System.Web.UI.Page
     protected void GridView5_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string c = TextBox5.Text;
-        if (c != "" || c != null)
+        if (c != "" )
         {
             GridView5.PageIndex = e.NewPageIndex;
             ss4();
@@ -84,7 +84,7 @@ public partial class admin_yhxx : System.Web.UI.Page
 
         string t = TextBox5.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
          string sql = "select UserID,Username,yb,lxdh,mm,Jtdz,truename  from [User] where  Username like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
@@ -101,7 +101,7 @@ public partial class admin_yhxx : System.Web.UI.Page
             else
                 Show4();
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView5_content();
@@ -154,7 +154,7 @@ public partial class admin_yhxx : System.Web.UI.Page
                 break;
         }
 
-        if (TextBox5.Text == "" || TextBox5.Text == null)
+        if (TextBox5.Text == "" )
             GridView5_content();
         else
             ss4();

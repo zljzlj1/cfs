@@ -62,7 +62,7 @@ public partial class admin_ncp : System.Web.UI.Page
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox2.Text;
-        if (s != "" || s != null)
+        if (s != "" )
         {
             GridView2.PageIndex = e.NewPageIndex;
             ss1();
@@ -113,7 +113,7 @@ public partial class admin_ncp : System.Web.UI.Page
            
         }
         TextBox2.Text = "";
-        if (TextBox2.Text == "" || TextBox2.Text == null)
+        if (TextBox2.Text == "" )
                 GridView2_content();
            
     }
@@ -121,7 +121,7 @@ public partial class admin_ncp : System.Web.UI.Page
     {
 
         GridView2.EditIndex = (int)e.NewEditIndex;
-        if (TextBox2.Text != "" || TextBox2.Text != null)
+        if (TextBox2.Text != "" )
         {
             string t = TextBox2.Text;
 
@@ -182,7 +182,7 @@ public partial class admin_ncp : System.Web.UI.Page
                 break;
         }
 
-        if (TextBox2.Text == "" || TextBox2.Text == null)
+        if (TextBox2.Text == "" )
             GridView2_content();
         else
             ss1();
@@ -192,7 +192,7 @@ public partial class admin_ncp : System.Web.UI.Page
 
         string t = TextBox2.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
             string sql = "select * from Ncplb  where ncpname like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
@@ -208,7 +208,7 @@ public partial class admin_ncp : System.Web.UI.Page
             else
                 Show1();
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView2_content();
@@ -228,7 +228,7 @@ public partial class admin_ncp : System.Web.UI.Page
                 string sql = "insert into Ncplb (ncpname) values('" + TextBox1.Text + "')";
                 DBA.ExeSql(sql);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('添加成功！');", true);
-                TextBox1.Text = null;
+                TextBox1.Text = "";
                 GridView2_content();
             }
             else

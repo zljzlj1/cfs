@@ -42,7 +42,7 @@ public partial class admin_sjorder : System.Web.UI.Page
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox3.Text;
-        if (s != "" || s != null)
+        if (s != "" )
         {
             GridView2.PageIndex = e.NewPageIndex;
             ss();

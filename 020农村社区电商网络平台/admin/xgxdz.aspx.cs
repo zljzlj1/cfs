@@ -69,7 +69,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
     {
         string x = TextBox3.Text;
 
-        if (x != "" || x != null)
+        if (x != "" )
         {
             GridView3.PageIndex = e.NewPageIndex;
             ss2();
@@ -101,7 +101,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
             }
         }
         TextBox3.Text = "";
-        if (TextBox3.Text == "" || TextBox3.Text == null)
+        if (TextBox3.Text == "" )
             GridView3_content();
         
     }
@@ -111,7 +111,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
 
         string t = TextBox3.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
             string sql = "select xm,xid,sm from Ads,Adx  where Adx.sid=Ads.sid and Adx.xm  like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
@@ -127,7 +127,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
             else
                 Show2();
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView3_content();
@@ -140,7 +140,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
         GridView3.EditIndex = (int)e.NewEditIndex;
           string t = TextBox3.Text;
 
-          if (t != "" && t != null)
+          if (t != "" )
           {
               string sql = "select xm,xid,sm from Ads,Adx  where Adx.sid=Ads.sid and Adx.xm  like '%" + t + "%'";
               DataSet ds = DBA.GetDataSet(sql);
@@ -210,7 +210,7 @@ public partial class admin_xgxdz : System.Web.UI.Page
                 break;
         }
 
-        if (TextBox3.Text == "" || TextBox3.Text == null)
+        if (TextBox3.Text == "" )
             GridView3_content();
         else
             ss2();

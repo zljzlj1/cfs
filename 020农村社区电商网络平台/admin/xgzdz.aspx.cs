@@ -68,7 +68,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
     {
         string z = TextBox4.Text;
 
-        if (z != "" || z != null)
+        if (z != "" )
         {
             GridView4.PageIndex = e.NewPageIndex;
             ss3();
@@ -97,7 +97,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
             GridView4.PageIndex = GridView4.PageIndex - 1;
         }
         TextBox4.Text = "";
-        if (TextBox4.Text == "" || TextBox4.Text == null)
+        if (TextBox4.Text == "" )
             GridView4_content();
      
 
@@ -109,7 +109,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
 
       string t = TextBox4.Text;
 
-      if (t != "" && t != null)
+      if (t != "")
       {
           string sql = "select zm,zid,xm from Adz,Adx  where Adx.xid=Adz.zid and Adz.zm  like '%" + t + "%'";
           DataSet ds = DBA.GetDataSet(sql);
@@ -125,7 +125,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
           else
               Show3();
       }
-      else if (t == "" || t == null)
+      else if (t == "" )
       {
           ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
           GridView4_content();
@@ -139,7 +139,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
       GridView4.EditIndex = (int)e.NewEditIndex;
         string t = TextBox4.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
             string sql = "select zm,zid,xm from Adz,Adx  where Adx.xid=Adz.zid and Adz.zm  like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
@@ -209,7 +209,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
               break;
       }
 
-      if (TextBox4.Text == "" || TextBox4.Text == null)
+      if (TextBox4.Text == "" )
           GridView4_content();
       else
           ss3();

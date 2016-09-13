@@ -15,7 +15,7 @@ public partial class tjsp : System.Web.UI.Page
         if (!IsPostBack)
         {
             dl();
-            Session["filenamel"] = "~/UploadFiles/sj\\" + "1.jpg";
+            Session["filenamel"] = "~/UploadFiles/sj\\" + "1.jpg";  Image1.ImageUrl="~/UploadFiles/sj\\" + "1.jpg";
         }
 
     }

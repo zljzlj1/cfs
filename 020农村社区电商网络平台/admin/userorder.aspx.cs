@@ -44,7 +44,7 @@ public partial class admin_userorder : System.Web.UI.Page
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox3.Text;
-        if (s != "" || s != null)
+        if (s != "")
         {
             GridView2.PageIndex = e.NewPageIndex;
             ss();
@@ -101,7 +101,7 @@ public partial class admin_userorder : System.Web.UI.Page
         GridView2.EditIndex = (int)e.NewEditIndex;
           string t = TextBox3.Text;
 
-          if (t != "" && t != null)
+          if (t != "" )
           {
               string sql = "select [Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid and [Order].UserID=[User].UserID  and zt='False' and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
               DataSet ds = DBA.GetDataSet(sql);
@@ -151,7 +151,7 @@ public partial class admin_userorder : System.Web.UI.Page
 
         string t = TextBox3.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
             string sql = "select [Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid  and [Order].UserID=[User].UserID  and zt='False'  and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
           DataSet ds = DBA.GetDataSet(sql);
@@ -166,7 +166,7 @@ public partial class admin_userorder : System.Web.UI.Page
             }
 
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView2_content();

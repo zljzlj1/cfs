@@ -61,7 +61,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox2.Text;
-        if (s != "" || s != null)
+        if (s != "" )
         {
             GridView2.PageIndex = e.NewPageIndex;
             ss1();
@@ -109,7 +109,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
 
             }
             TextBox2.Text = ""; 
-            if (TextBox2.Text == "" || TextBox2.Text == null)
+            if (TextBox2.Text == "" )
                 GridView2_content();
            
         }
@@ -120,7 +120,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
         GridView2.EditIndex = (int)e.NewEditIndex;
          string t = TextBox2.Text;
 
-         if (t != "" && t != null)
+         if (t != "" )
          {
              string sql = "select sm,sid,Sf from Ads,Adsf  where Adsf.sfid=Ads.sfid and Ads.sm  like '%" + t + "%'";
 
@@ -182,7 +182,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
                 break;
         }
 
-        if (TextBox2.Text == "" || TextBox2.Text == null)
+        if (TextBox2.Text == "" )
             GridView2_content();
         else
             ss1();
@@ -192,7 +192,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
 
         string t = TextBox2.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
             string sql = "select sm,sid,Sf from Ads,Adsf  where Adsf.sfid=Ads.sfid and Ads.sm  like '%" + t + "%'";
 
@@ -211,7 +211,7 @@ public partial class admin_xgsdz : System.Web.UI.Page
             else
                 Show1();
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView2_content();
