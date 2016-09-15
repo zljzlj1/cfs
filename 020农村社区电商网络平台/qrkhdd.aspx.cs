@@ -44,7 +44,7 @@ public partial class qrkhdd : System.Web.UI.Page
     protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox3.Text;
-        if (s != "" || s != null)
+        if (s != "" )
         {
             GridView2.PageIndex = e.NewPageIndex;
             ss();
@@ -134,7 +134,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
         //string vsjid = Session["sjid"].ToString();
         //int sj = Convert.ToInt32(vsjid);
         //ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd 
-        string strSQ = "select Orderxx.ddid,gmrq,spmc,num,spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + Session["sjid"].ToString() + "'  and ddhd='" + DropDownList3.SelectedItem.Value + "' and zt='True'  order by gmrq desc ";
+        string strSQ = "select Orderxx.ddid,gmrq,spmc,num,spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + Session["sjid"].ToString() + "'  and yhsfzf='" + DropDownList3.SelectedItem.Value + "' and zt='True'  order by gmrq desc ";
         //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
         DataSet ds = DBA.GetDataSet(strSQ);
         GridView3.DataSource = ds.Tables["datatable"].DefaultView;
@@ -155,7 +155,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
         string t = TextBox2.Text;
 
-        if (t != "" && t != null)
+        if (t != "")
         {
           
             string sql = "select Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid  and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='True' and  Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
@@ -171,7 +171,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
             }
            
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView3_content();
@@ -186,7 +186,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
     protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         string s = TextBox2.Text;
-        if (s != "" || s != null)
+        if (s != "" )
         {
             GridView3.PageIndex = e.NewPageIndex;
             ss1();
@@ -250,7 +250,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
 
         string t = TextBox3.Text;
 
-        if (t != "" && t != null)
+        if (t != "" )
         {
 
             string sql = "select tyjg,Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and sjqr='" + DropDownList1.SelectedItem.Value + "'and fh='" + DropDownList2.SelectedItem.Value + "' and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='False' and Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
@@ -266,7 +266,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
             }
 
         }
-        else if (t == "" || t == null)
+        else if (t == "" )
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "test", "alert('请输入搜索关键字！');", true);
             GridView2_content();

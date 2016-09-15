@@ -93,11 +93,11 @@
             <br />
             <asp:HyperLink ID="Hyperscwzxx" runat="server" 
                 NavigateUrl="~/scwzxx.aspx" Font-Size="Small"  Font-Names="楷体" Font-Underline="False" 
-                ForeColor="Black">上传文章信息</asp:HyperLink>
+                ForeColor="Black">文章信息</asp:HyperLink>
 
             <br /><asp:HyperLink ID="Hyperscncpxx" runat="server" Font-Size="Small"  
                 Font-Names="楷体" Font-Underline="False" 
-                ForeColor="Black" NavigateUrl="~/scncpxx.aspx">上传农产品信息</asp:HyperLink>
+                ForeColor="Black" NavigateUrl="~/scncpxx.aspx">农产品信息</asp:HyperLink>
 
             <br />
 

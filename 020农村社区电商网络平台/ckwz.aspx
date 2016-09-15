@@ -31,7 +31,7 @@
                         
                        <tr>
                    
-                       <td  style="padding-top: 50px">
+                       <td  style=" padding-left: 30px;">
 
                                <h2><%=txt %></h2> 
 

@@ -13,7 +13,7 @@
         
         
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-            AllowPaging="True" PageSize="5" Width="100%"  DataKeyNames="gwid" 
+            AllowPaging="True" PageSize="8" Width="100%"  DataKeyNames="gwid" 
             onpageindexchanging="GridView2_PageIndexChanging" CellPadding="4" 
                      Height="250px" ForeColor="#333333" 
             GridLines="None" 
