@@ -103,7 +103,7 @@ public partial class admin_userorder : System.Web.UI.Page
 
           if (t != "" )
           {
-              string sql = "select [Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid and [Order].UserID=[User].UserID  and zt='False' and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
+              string sql = "select distinct[Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid and [Order].UserID=[User].UserID  and zt='False' and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
               DataSet ds = DBA.GetDataSet(sql);
               GridView2.DataSource = ds.Tables["datatable"].DefaultView;
               GridView2.DataBind();
@@ -153,7 +153,7 @@ public partial class admin_userorder : System.Web.UI.Page
 
         if (t != "" )
         {
-            string sql = "select [Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid  and [Order].UserID=[User].UserID  and zt='False'  and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
+            string sql = "select distinct[Order].ddid,gmrq,sjqr,fh,sfzf,Username,totalprice from Orderxx,[Order],[User] where  Orderxx.ddid=[Order].ddid  and [Order].UserID=[User].UserID  and zt='False'  and sfzf='" + DropDownList1.SelectedItem.Value + "'   and [Order].ddid like '%" + t + "%' order by gmrq desc  ";
           DataSet ds = DBA.GetDataSet(sql);
             GridView2.DataSource = ds.Tables["datatable"].DefaultView;
             GridView2.DataBind();

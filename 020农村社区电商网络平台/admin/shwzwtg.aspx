@@ -50,7 +50,7 @@
        
      </tr>
          <tr>
-         <td  class="tablebg" colspan="2" style="padding-top: 50px" align="center">
+         <td  class="tablebg" colspan="2" style="padding-top: 20px" >
                  <div> <%=txt %></div></td>
       
      </tr>

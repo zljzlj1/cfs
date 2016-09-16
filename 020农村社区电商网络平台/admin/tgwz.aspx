@@ -71,7 +71,7 @@
                 </asp:HyperLinkField>
                 
              
-                <asp:TemplateField HeaderText="文章上传日期">
+                <asp:TemplateField HeaderText="上传日期">
                 <ItemTemplate><asp:Label ID="Label8" runat="server" Text='<% #Eval("txtrq", "{0:yyyy-MM-dd HH:mm:ss}")%>'></asp:Label></ItemTemplate>
                 </asp:TemplateField>
                 
@@ -87,12 +87,12 @@
                      <ItemTemplate> <asp:Label ID="Label7" runat="server" Text='<%#Eval("sftg").ToString().Trim()=="否"?"否":"是"  %>'></asp:Label>
                 </ItemTemplate>
                 </asp:TemplateField>
-                   <asp:TemplateField HeaderText="文章发布状态">
+                   <asp:TemplateField HeaderText="文章状态">
                      <ItemTemplate> <asp:Label ID="Label7" runat="server" Text='<%#Eval("txtfbzt").ToString().Trim()=="False"?"否":"是"  %>'></asp:Label>
                 </ItemTemplate>
                 </asp:TemplateField>
              
-                <asp:BoundField DataField="wtgly" HeaderText="未通过理由" />
+                <asp:BoundField DataField="wtgly" HeaderText="理由" />
                 <asp:BoundField DataField="shzk" HeaderText="审核状况" />
               <asp:HyperLinkField FooterText="查看" HeaderText="查看" Text="查看" 
                     DataNavigateUrlFields="txtid,sftg" 

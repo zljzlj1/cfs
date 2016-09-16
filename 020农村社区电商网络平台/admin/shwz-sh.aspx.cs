@@ -10,11 +10,11 @@ using System.Data.OleDb;
 public partial class admin_shwz_sh : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
-    public string title = null;
-    public string txt = null;
+    public static string title = null;
+    public static string txt = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        TextBox1.Text = null;
+     
         if (!IsPostBack)
         {
             GridView5_content();
@@ -22,7 +22,7 @@ public partial class admin_shwz_sh : System.Web.UI.Page
 
 
         }
-        GridView5_content();
+      
     }
     protected void GridView5_content()
     {
@@ -51,26 +51,25 @@ public partial class admin_shwz_sh : System.Web.UI.Page
 
        if (DropDownList1.SelectedItem.Text == "是")
         {
-            string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='是' , txtfbzt='True'  where txtid = '" + vtxtid + "'";
+            string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='是', txtfbzt='True'  where txtid = '" + vtxtid + "'";
             DBA.ExeSql(sql);
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');location='admin/shwz.aspx';</script>");
+            TextBox1.Text = "";
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');location='shwz.aspx';</script>");
         }
-       if (DropDownList1.SelectedItem.Text == "否")
+       else //(DropDownList1.SelectedItem.Text == "否")
         {
-            if (TextBox1.Text !="")
-            {
-             
-                string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='否' , txtfbzt='False' , wtgly='" + TextBox1.Text + "' where txtid = '" + vtxtid + "'";
-                DBA.ExeSql(sql);
-                TextBox1.Text = "";
-                ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核成功!');</script>");
-            }
+            if (TextBox1.Text =="") ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请输入理由!');</script>");
+           
             else
             {
-                ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('请输入理由!');</script>");
-          
+
+                string sqll = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='否', txtfbzt='False',wtgly='" + TextBox1.Text + "' where txtid = '" + vtxtid + "'";
+                DBA.ExeSql(sqll);
+                TextBox1.Text = "";
+                ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核成功!');location='shwz.aspx'</script>");
             }
-        
+       
+          
         }
     }
 }

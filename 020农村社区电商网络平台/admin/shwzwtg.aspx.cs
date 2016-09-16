@@ -10,11 +10,11 @@ using System.Data.OleDb;
 public partial class admin_shwzwtg : System.Web.UI.Page
 {
     DBAccess1 DBA = new DBAccess1();
-    public string title = null;
-    public string txt = null;
+    public static  string title = null;
+    public static  string txt = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        TextBox1.Text = null;
+      
         if (!IsPostBack)
         {
             GridView5_content();
@@ -26,7 +26,7 @@ public partial class admin_shwzwtg : System.Web.UI.Page
                 Panel1.Visible = false;
             }
         }
-        GridView5_content();
+       // GridView5_content();
     }
     protected void GridView5_content()
     {
@@ -56,17 +56,18 @@ public partial class admin_shwzwtg : System.Web.UI.Page
         {
             string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='是' , txtfbzt='True'  where txtid = '" + vtxtid + "'";
             DBA.ExeSql(sql);
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');</script>");
+            TextBox1.Text = "";
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核并通过!');location='tgwz.aspx'</script>");
         }
-        if (DropDownList1.SelectedItem.Text == "否")
+        else
         {
             if (TextBox1.Text != "" )
             {
 
                 string sql = "update Txtinf set shsj='" + d + "',adminid='" + t + "',shzk='已审核',sftg='否' , txtfbzt='False' , wtgly='" + TextBox1.Text + "' where txtid = '" + vtxtid + "'";
                 DBA.ExeSql(sql);
-                TextBox1.Text = null;
-                ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核成功!');</script>");
+                TextBox1.Text = "";
+                ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('审核成功!');location='tgwz.aspx'</script>");
             }
             else
             {

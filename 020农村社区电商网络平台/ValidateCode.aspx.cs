@@ -61,6 +61,7 @@ public partial class Code : System.Web.UI.Page
             g.DrawString(strsj, font, brush, rect);
             //输出图象            
             img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            Session.Timeout = 60;
             Session["iCode"] = strsj.ToLower();
             //return strRand().ToLower();
         }

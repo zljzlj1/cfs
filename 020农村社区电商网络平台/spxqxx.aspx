@@ -18,6 +18,10 @@
         {
             height: 18px;
         }
+        .style3
+        {
+            height: 45px;
+        }
     </style>
   
 </head>
@@ -88,8 +92,14 @@
                                         ErrorMessage="请正确输入（格式：1.00）" ValidationExpression="^[0-9]+(.[0-9]{2})?$" 
                                         Font-Size="12px" ForeColor="Red"></asp:RegularExpressionValidator></td>
                             </tr>
+                               <tr>
+                                <td style="height: 22px; color: #808080;" align="left">
+                                    (已累计销售：<asp:Label ID="Label9" runat="server" Text="Label"></asp:Label><asp:Label ID="Label10" runat="server" Text="Label"></asp:Label>）
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                            </tr>
 							<tr>
-								<td align="left">
+								<td align="left" class="style3">
                                     &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" 
                                         ImageUrl="~/image/add2cart_default.png" onclick="ImageButton2_Click" />
                                 </td>
@@ -179,7 +189,7 @@
                               
                                      </td>
                                      <td style="height: 10px">
-          <div style="margin-top: 0px"  > <%#Eval("Username") %> &nbsp;评论时间：<%# DataBinder.Eval(Container.DataItem, "sppltime")%></div> <div style="margin-top: 20px"  ><%#Eval("sppjxx")%></div></td>
+          <div style="margin-top: 0px"  > <%#Eval("Username") %> &nbsp;评论时间：<%#Eval("sppltime", "{0:yyyy-MM-dd HH:mm:ss}")%></div> <div style="margin-top: 20px"  ><%#Eval("sppjxx")%></div></td>
                                  </tr>
            
                              </table>

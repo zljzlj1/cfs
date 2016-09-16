@@ -45,7 +45,7 @@ public partial class spxqxx : System.Web.UI.Page
         string djl = dr["sjdjl"].ToString();
         sjdjl = Convert.ToInt32(djl);
         }
-        string sll = "select spmc,kcsl,spxx,xsdw,lbmc,sptp,spjg from Sp,Splb where Sp.splbid=Splb.splbid and spid='" + vspid + "' ";
+        string sll = "select spmc,kcsl,spxx,xsdw,lbmc,sptp,spjg,xssl from Sp,Splb where Sp.splbid=Splb.splbid and spid='" + vspid + "' ";
         OleDbDataReader drs = DBA.GetDataReader(sll);
 
         if (drs.Read())
@@ -60,6 +60,8 @@ public partial class spxqxx : System.Web.UI.Page
             Image2.ImageUrl = drs["sptp"].ToString();
             Label6.Text = drs["xsdw"].ToString();
             Label4.Text = drs["spxx"].ToString();
+            Label9.Text = drs["xssl"].ToString();
+            Label10.Text = drs["xsdw"].ToString();
             string vkcsl = drs["kcsl"].ToString();
            kc = Convert.ToDecimal(vkcsl);
            string jg = drs["spjg"].ToString();
