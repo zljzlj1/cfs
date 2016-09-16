@@ -25,7 +25,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
   
     protected void GridView4_content()
     {
-        string strSa = "select xm,zid,zm from Adz,Adx where Adz.xid=Adx.xid";
+        string strSa = "select xm,zid,zm from Adx,Adz where Adz.xid=Adx.xid";
         DataSet ds = DBA.GetDataSet(strSa);
         GridView4.DataSource = ds.Tables["datatable"].DefaultView;
         GridView4.DataBind();
@@ -111,7 +111,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
 
       if (t != "")
       {
-          string sql = "select zm,zid,xm from Adz,Adx  where Adx.xid=Adz.zid and Adz.zm  like '%" + t + "%'";
+          string sql = "select zm,zid,xm from Adz,Adx where Adx.xid=Adz.xid and zm like '%" + t + "%'";
           DataSet ds = DBA.GetDataSet(sql);
           GridView4.DataSource = ds.Tables["datatable"].DefaultView;
           GridView4.DataBind();
@@ -141,7 +141,7 @@ public partial class admin_xgzdz : System.Web.UI.Page
 
         if (t != "" )
         {
-            string sql = "select zm,zid,xm from Adz,Adx  where Adx.xid=Adz.zid and Adz.zm  like '%" + t + "%'";
+            string sql = "select zm,zid,xm from Adz,Adx where Adx.xid=Adz.xid and zm like '%" + t + "%'";
             DataSet ds = DBA.GetDataSet(sql);
             GridView4.DataSource = ds.Tables["datatable"].DefaultView;
             GridView4.DataBind();

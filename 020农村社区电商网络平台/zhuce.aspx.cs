@@ -144,7 +144,7 @@ public partial class zhuce : System.Web.UI.Page
             string strsql = "insert into [User] (Username,mm,lxdh,yb,sfid,sid,xid,zid,cid,Jtdz,truename) values('" + TextBox1.Text + "','" + TextBox2.Text + "','" + TextBox4.Text + "','" +
               TextBox5.Text + "',' "+bind_Province.SelectedItem.Value+" ','"+ bind_City.SelectedItem.Value+"','"+ bind_Borough.SelectedItem.Value +"','"+ bind_zh.SelectedItem.Value+" ','"+ bind_cun.SelectedItem.Value+"','" + TextBox6.Text + "','" + TextBox7.Text + "')";
             DBA.ExeSql(strsql);
-             Session["Username"] = TextBox1.Text;
+           
             ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('注册成功!');location.href= 'index.aspx ' ; </script>");
        TextBox1.Text = "";
         TextBox2.Text = "";

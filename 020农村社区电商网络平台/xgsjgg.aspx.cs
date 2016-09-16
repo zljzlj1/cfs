@@ -81,7 +81,7 @@ public partial class xgsjgg : System.Web.UI.Page
 
         }
         else
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写详细农产品信息!');</script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写错误!');</script>");
 
     }
     protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
@@ -97,7 +97,7 @@ public partial class xgsjgg : System.Web.UI.Page
 
         }
         else
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写招聘信息!');</script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('填写错误!');</script>");
 
     }
 }

@@ -119,6 +119,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
     }
     protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
     {
+       
         GridView3_content();
     }
     protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,12 +132,9 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
     }
     protected void GridView3_content()
     {
-        //string vsjid = Session["sjid"].ToString();
-        //int sj = Convert.ToInt32(vsjid);
-        //ddid,gmrq,spmc,num,spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd 
+        
         string strSQ = "select Orderxx.ddid,gmrq,spmc,num,spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Orderxx.ddid=[Order].ddid and Sj.sjid='" + Session["sjid"].ToString() + "'  and yhsfzf='" + DropDownList3.SelectedItem.Value + "' and zt='True'  order by gmrq desc ";
-        //select   Orderxx.ddid,gmrq,spmc,num,SP.spjg,ktfy,ddxqid,sjqr,fh,sfzf,ddhd from Sp ,Sj,Orderxx,[Order] where Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid and Sp.sjid=Sj.sjid and Orderxx.ddid=[Order].ddid and Sj.sjid='1' order by gmrq desc  ;
-        DataSet ds = DBA.GetDataSet(strSQ);
+       DataSet ds = DBA.GetDataSet(strSQ);
         GridView3.DataSource = ds.Tables["datatable"].DefaultView;
         GridView3.DataBind();
         if (ds.Tables[0].Rows.Count == 0)
@@ -158,7 +156,7 @@ if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataContro
         if (t != "")
         {
           
-            string sql = "select Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid  and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and ddhd='" + DropDownList4.SelectedItem.Value + "' and zt='True' and  Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
+            string sql = "select Orderxx.ddid,gmrq,spmc,num,SP.spjg,tyjg,ddxqid,sjqr,fh,yhsfzf,ddhd from Sp,Sj,Orderxx,[Order] where  Orderxx.sjid=Sj.sjid and Sp.spid=Orderxx.spid  and Orderxx.ddid=[Order].ddid  and Sj.sjid='" + Session["sjid"].ToString() + "'and yhsfzf='" + DropDownList3.SelectedItem.Value + "' and zt='True' and  Orderxx.ddid like '%" + t + "%' order by gmrq desc  ";
             DataSet ds = DBA.GetDataSet(sql);
             GridView3.DataSource = ds.Tables["datatable"].DefaultView;
             GridView3.DataBind();

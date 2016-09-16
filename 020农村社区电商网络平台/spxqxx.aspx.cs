@@ -120,7 +120,7 @@ public partial class spxqxx : System.Web.UI.Page
              d = vspjg * sl;
            string strSQ = "insert into Gwc(UserID,num,jg,spid,sjid,zt)values('" + Session["UserID"] + "','" + TextBox2.Text + "','"+d+"','" + vspid + "','"+vsjid+"','"+DropDownList1.SelectedItem.Value+"')";
             DBA.ExeSql(strSQ);
-            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('成功加入购物车!');location='index.aspx'; </script>");
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "alert", "<script>alert('成功加入购物车!');location='gwc.aspx'; </script>");
 
          
    
